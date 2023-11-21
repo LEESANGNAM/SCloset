@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import Alamofire
 
-enum TestError: Error {
+enum NetWorkError: Error {
     case notKey(statusCode: Int, message: String) //= 420
     case overcall(statusCode: Int, message: String) //= 429
     case requestPathError(statusCode: Int, message: String) //= 444
@@ -36,7 +36,7 @@ enum TestError: Error {
         }
     }
 }
-struct testErrorMessages: Decodable {
+struct ErrorResponseMessages: Decodable {
     let message: String
     
 }
@@ -65,8 +65,8 @@ class NetworkManager {
                         }
                     } else {
                         do {
-                            let errorMessage = try JSONDecoder().decode(testErrorMessages.self, from: data)
-                            let errorType = TestError(statusCode: statusCode, message: errorMessage.message)
+                            let errorMessage = try JSONDecoder().decode(ErrorResponseMessages.self, from: data)
+                            let errorType = NetWorkError(statusCode: statusCode, message: errorMessage.message)
                             observer.onError(errorType)
                         } catch {
                             print("에러메세지 변환실패")
