@@ -6,15 +6,23 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
-
+    let disposeBag = DisposeBag()
+  let mainView = LoginView()
+    
+    override func loadView() {
+        view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         // Do any additional setup after loading the view.
     }
-
+    
 
 }
 

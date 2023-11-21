@@ -11,8 +11,8 @@ class BaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        setconstraints()
         setHierarchy()
+        setconstraints()
     }
     
     required init?(coder: NSCoder) {

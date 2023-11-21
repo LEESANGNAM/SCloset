@@ -22,6 +22,14 @@
 		D667939B2B03DF8C0022A47F /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D667939A2B03DF8C0022A47F /* Toast */; };
 		D667939D2B03E01E0022A47F /* .gitIgnore in Resources */ = {isa = PBXBuildFile; fileRef = D667939C2B03E01E0022A47F /* .gitIgnore */; };
 		D667939F2B03E1E20022A47F /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667939E2B03E1E20022A47F /* APIKey.swift */; };
+		D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793AD2B0504C00022A47F /* LoginViewModel.swift */; };
+		D66793B12B0512F50022A47F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793B02B0512F50022A47F /* Router.swift */; };
+		D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793B22B05248A0022A47F /* NetworkManager.swift */; };
+		D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665692B0CE899009610E9 /* LoginModel.swift */; };
+		D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696656B2B0CE8D3009610E9 /* SignUpModel.swift */; };
+		D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696656F2B0CFB9B009610E9 /* LoginView.swift */; };
+		D69665732B0CFBC5009610E9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665722B0CFBC5009610E9 /* BaseViewController.swift */; };
+		D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665742B0CFBCA009610E9 /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +42,14 @@
 		D66793722B03DE7A0022A47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D667939C2B03E01E0022A47F /* .gitIgnore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitIgnore; sourceTree = "<group>"; };
 		D667939E2B03E1E20022A47F /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		D66793AD2B0504C00022A47F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D66793B02B0512F50022A47F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D66793B22B05248A0022A47F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D69665692B0CE899009610E9 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		D696656B2B0CE8D3009610E9 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		D696656F2B0CFB9B009610E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D69665722B0CFBC5009610E9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D69665742B0CFBCA009610E9 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +90,11 @@
 		D66793632B03DE780022A47F /* SCloset */ = {
 			isa = PBXGroup;
 			children = (
+				D69665712B0CFBAF009610E9 /* Base */,
+				D66793AF2B0512E90022A47F /* Network */,
+				D66793AC2B0504420022A47F /* Login */,
 				D66793642B03DE780022A47F /* AppDelegate.swift */,
 				D66793662B03DE780022A47F /* SceneDelegate.swift */,
-				D66793682B03DE780022A47F /* LoginViewController.swift */,
 				D667936D2B03DE7A0022A47F /* Assets.xcassets */,
 				D667936F2B03DE7A0022A47F /* LaunchScreen.storyboard */,
 				D66793722B03DE7A0022A47F /* Info.plist */,
@@ -84,6 +102,60 @@
 				D667939E2B03E1E20022A47F /* APIKey.swift */,
 			);
 			path = SCloset;
+			sourceTree = "<group>";
+		};
+		D66793AC2B0504420022A47F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D696656E2B0CFB69009610E9 /* Viewmodel */,
+				D696656D2B0CFB60009610E9 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D66793AF2B0512E90022A47F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D69665682B0CE885009610E9 /* Model */,
+				D66793B02B0512F50022A47F /* Router.swift */,
+				D66793B22B05248A0022A47F /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D69665682B0CE885009610E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D69665692B0CE899009610E9 /* LoginModel.swift */,
+				D696656B2B0CE8D3009610E9 /* SignUpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D696656D2B0CFB60009610E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D66793682B03DE780022A47F /* LoginViewController.swift */,
+				D696656F2B0CFB9B009610E9 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D696656E2B0CFB69009610E9 /* Viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				D66793AD2B0504C00022A47F /* LoginViewModel.swift */,
+			);
+			path = Viewmodel;
+			sourceTree = "<group>";
+		};
+		D69665712B0CFBAF009610E9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D69665722B0CFBC5009610E9 /* BaseViewController.swift */,
+				D69665742B0CFBCA009610E9 /* BaseView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +249,15 @@
 			files = (
 				D66793692B03DE780022A47F /* LoginViewController.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,
+				D69665732B0CFBC5009610E9 /* BaseViewController.swift in Sources */,
+				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
+				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
+				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
+				D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */,
+				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
+				D66793B12B0512F50022A47F /* Router.swift in Sources */,
+				D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */,
 				D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
