@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+class SignUpViewController: BaseViewController {
+    
+    let mainView = SignUpView()
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
