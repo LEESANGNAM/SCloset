@@ -14,6 +14,7 @@ class LoginViewModel {
     private var emailText = ""
     private var passwordText = ""
     private var success = PublishRelay<Bool>()
+    var errorMessage =  PublishRelay<String>()
     struct Input {
         let emailTextfieldChange: ControlProperty<String>
         let pwTextfieldChange: ControlProperty<String>
@@ -21,11 +22,10 @@ class LoginViewModel {
     }
     struct Output {
         let loginSuccess: PublishRelay<Bool>
+        let errorMessage: PublishRelay<String>
     }
     
     func transform(input: Input) -> Output {
-        
-        
         input.emailTextfieldChange
             .bind(with: self) { owner, text in
             owner.emailText = text
@@ -39,10 +39,14 @@ class LoginViewModel {
         input.loginButtonTapped
             .bind(with: self) { owner, _ in
                 owner.testRequest()
-                print("탭 되고있음")
             }.disposed(by: disposeBag)
         
-        return Output(loginSuccess: success)
+        return Output(loginSuccess: success,errorMessage: errorMessage)
+    }
+    
+    private func setToken(token: String, refesh: String) {
+        UserDefaultsManager.token = token
+        UserDefaultsManager.refresh = refesh
     }
     
     private func testRequest() {
@@ -50,10 +54,8 @@ class LoginViewModel {
 
         let test = NetworkManager.shared.request(type: LoginResponseModel.self, api: .login(testLoginModel))
         test.subscribe(with: self) { owner, value in
-           let text = "토큰값 : \(value.token) \n ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 리프레시 토큰값 \(value.refreshToken) 유저디폴트에 저장"
-            print("로그인 성공")
             owner.success.accept(true)
-            print(text)
+            owner.setToken(token: value.token, refesh: value.refreshToken)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 switch testErrorType {
@@ -63,7 +65,7 @@ class LoginViewModel {
                          let .missingParameter(statusCode, message),
                          let .notUser(statusCode, message),
                          let .invalidServerError(statusCode, message):
-                        print( "오류코드: \(statusCode) 메세지: \(message) 토스트메세지 띄움" )
+                    owner.errorMessage.accept("오류코드 \(statusCode): \(message) ")
                     }
                 owner.success.accept(false)
             }

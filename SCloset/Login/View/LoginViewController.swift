@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Toast
 
 class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
@@ -29,9 +30,14 @@ class LoginViewController: UIViewController {
         
         output.loginSuccess
             .bind(with: self) { owner, value in
-                owner.mainView.loginButton.setTitle(value ? "성공": "실패", for: .normal)
+                if value {
+                    print("화면 체인지.")
+                }
             }.disposed(by: disposeBag)
-        
+        output.errorMessage
+            .bind(with: self) { owner, errorText in
+                owner.view.makeToast(errorText, position: .top)
+            }.disposed(by: disposeBag)
     }
     
 

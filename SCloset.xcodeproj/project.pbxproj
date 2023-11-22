@@ -30,6 +30,7 @@
 		D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696656F2B0CFB9B009610E9 /* LoginView.swift */; };
 		D69665732B0CFBC5009610E9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665722B0CFBC5009610E9 /* BaseViewController.swift */; };
 		D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665742B0CFBCA009610E9 /* BaseView.swift */; };
+		D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696657E2B0DFB2B009610E9 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		D696656F2B0CFB9B009610E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D69665722B0CFBC5009610E9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D69665742B0CFBCA009610E9 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		D696657E2B0DFB2B009610E9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		D66793632B03DE780022A47F /* SCloset */ = {
 			isa = PBXGroup;
 			children = (
+				D696657D2B0DF901009610E9 /* Service */,
 				D69665712B0CFBAF009610E9 /* Base */,
 				D66793AF2B0512E90022A47F /* Network */,
 				D66793AC2B0504420022A47F /* Login */,
@@ -156,6 +159,14 @@
 				D69665742B0CFBCA009610E9 /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D696657D2B0DF901009610E9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D696657E2B0DFB2B009610E9 /* UserDefaultsManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
+				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
 				D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
