@@ -9,26 +9,14 @@ import UIKit
 
 class LoginView: BaseView {
     
-    let emailLabel = {
-       let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 10)
-        view.text = "이메일 주소"
-        view.textColor = .black
-        return view
-    }()
+    let emailLabel = TextfieldTitleLabel(text: "이메일 주소")
     let emailTextField = {
        let view = UITextField()
         view.placeholder = "예) SCloset@closet.com"
         return view
     }()
     
-    let passwordLabel = {
-       let view = UILabel()
-        view.font = .boldSystemFont(ofSize: 10)
-        view.text = "비밀번호"
-        view.textColor = .black
-        return view
-    }()
+    let passwordLabel = TextfieldTitleLabel(text: "비밀번호")
     
     let passwordTextField = {
        let view = UITextField()
