@@ -31,9 +31,18 @@ class LoginView: BaseView {
         view.layer.cornerRadius = 10
         return view
     }()
+    let signUpButton = {
+       let view = UIButton()
+        view.setTitle("이메일로 회원가입", for: .normal)
+        view.backgroundColor = .white
+        view.setTitleColor(.systemGray4, for: .normal)
+        view.layer.cornerRadius = 10
+        return view
+    }()
     
     override func setHierarchy() {
         addSubview(loginButton)
+        addSubview(signUpButton)
         addSubview(passwordTextField)
         addSubview(passwordLabel)
         addSubview(emailTextField)
@@ -54,6 +63,11 @@ extension LoginView {
             make.centerY.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
+        }
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.height.equalTo(30)
         }
     }
     private func setPasswordLayout(){

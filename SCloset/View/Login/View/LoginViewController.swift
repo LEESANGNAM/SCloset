@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     private func bind(){
-        let input = LoginViewModel.Input(emailTextfieldChange: mainView.emailTextField.rx.text.orEmpty, pwTextfieldChange: mainView.passwordTextField.rx.text.orEmpty, loginButtonTapped: mainView.loginButton.rx.tap)
+        let input = LoginViewModel.Input(emailTextfieldChange: mainView.emailTextField.rx.text.orEmpty, pwTextfieldChange: mainView.passwordTextField.rx.text.orEmpty, loginButtonTapped: mainView.loginButton.rx.tap, signUpButtonTapped: mainView.signUpButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         output.loginSuccess
@@ -34,10 +34,17 @@ class LoginViewController: UIViewController {
                     print("화면 체인지.")
                 }
             }.disposed(by: disposeBag)
+        
         output.errorMessage
             .bind(with: self) { owner, errorText in
                 owner.view.makeToast(errorText, position: .top)
             }.disposed(by: disposeBag)
+        
+        output.signUpButtonTapped
+            .bind(with: self) { owner, _ in
+                owner.present(SignUpViewController(), animated: true)
+            }.disposed(by: disposeBag)
+        
     }
     
 

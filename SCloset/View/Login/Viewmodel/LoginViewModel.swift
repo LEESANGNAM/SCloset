@@ -19,10 +19,12 @@ class LoginViewModel {
         let emailTextfieldChange: ControlProperty<String>
         let pwTextfieldChange: ControlProperty<String>
         let loginButtonTapped: ControlEvent<Void>
+        let signUpButtonTapped: ControlEvent<Void>
     }
     struct Output {
         let loginSuccess: PublishRelay<Bool>
         let errorMessage: PublishRelay<String>
+        let signUpButtonTapped: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -41,7 +43,7 @@ class LoginViewModel {
                 owner.testRequest()
             }.disposed(by: disposeBag)
         
-        return Output(loginSuccess: success,errorMessage: errorMessage)
+        return Output(loginSuccess: success,errorMessage: errorMessage, signUpButtonTapped: input.signUpButtonTapped)
     }
     
     private func setToken(token: String, refesh: String) {
