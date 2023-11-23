@@ -14,3 +14,8 @@ struct SignUpRequestModel: Encodable {
     var phoneNum: String?
     var birthDay: String?
 }
+struct SignUpResponeModel: Decodable {
+    var _id: String
+    var email: String
+    var nick: String
+}

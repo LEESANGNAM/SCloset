@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
     
     case join(SignUpRequestModel)
     case login(LoginRequestModel)
+    case emailVlidation(EmailValidRequestModel)
     
     
     private var baseURL: URL {
@@ -28,9 +29,11 @@ enum Router: URLRequestConvertible {
     private var path: String {
         switch self {
         case .login:
-            return "login"
+            return "/login"
         case .join:
-            return "join"
+            return "/join"
+        case .emailVlidation:
+            return "/validation/email"
         }
     }
     
@@ -43,9 +46,7 @@ enum Router: URLRequestConvertible {
     }
     var query: [String: String] {
         switch self {
-        case .join(let signUpRequestModel):
-            return ["":""]
-        case .login(let loginRequestModel):
+        case .join, .login, .emailVlidation:
             return ["":""]
         }
     }
@@ -61,6 +62,8 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(signUpRequestModel, into: requst)
         case .login(let loginRequestModel):
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(loginRequestModel, into: requst)
+        case .emailVlidation(let emailValidationRequestModel):
+            requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
         }
         
         

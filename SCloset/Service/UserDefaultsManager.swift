@@ -12,6 +12,8 @@ struct UserDefaultsManager {
     static var token
     @UserDefaultsWrapper(key: "refresh", defaultValue: "")
     static var refresh
+    @UserDefaultsWrapper(key: "nickname", defaultValue: "")
+    static var nickname
 }
 
 @propertyWrapper
