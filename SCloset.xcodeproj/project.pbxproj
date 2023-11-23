@@ -34,6 +34,8 @@
 		D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A40D2B0E0E5C00C93AA0 /* SignUpView.swift */; };
 		D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A40F2B0E0E6A00C93AA0 /* SignUpViewController.swift */; };
 		D699A4132B0E355A00C93AA0 /* TextfieldTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */; };
+		D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */; };
+		D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		D699A40D2B0E0E5C00C93AA0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		D699A40F2B0E0E6A00C93AA0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldTitleLabel.swift; sourceTree = "<group>"; };
+		D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			children = (
 				D69665692B0CE899009610E9 /* LoginModel.swift */,
 				D696656B2B0CE8D3009610E9 /* SignUpModel.swift */,
+				D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 		D699A40C2B0E0B3100C93AA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -308,9 +314,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D66793692B03DE780022A47F /* LoginViewController.swift in Sources */,
+				D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,
 				D69665732B0CFBC5009610E9 /* BaseViewController.swift in Sources */,
 				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
+				D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
