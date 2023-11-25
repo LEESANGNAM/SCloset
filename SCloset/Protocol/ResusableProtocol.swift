@@ -1,5 +1,5 @@
 //
-//  any.swift
+//  ResusableProtocol.swift
 //  SCloset
 //
 //  Created by 이상남 on 11/25/23.

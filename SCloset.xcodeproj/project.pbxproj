@@ -38,6 +38,9 @@
 		D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */; };
 		D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4522B11C18100C93AA0 /* TabbarController.swift */; };
 		D699A4552B11EE3E00C93AA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4542B11EE3E00C93AA0 /* HomeViewController.swift */; };
+		D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */; };
+		D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4592B11FE4F00C93AA0 /* BaseCollectionViewCell.swift */; };
+		D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidModel.swift; sourceTree = "<group>"; };
 		D699A4522B11C18100C93AA0 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		D699A4542B11EE3E00C93AA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D699A4592B11FE4F00C93AA0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResusableProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		D66793632B03DE780022A47F /* SCloset */ = {
 			isa = PBXGroup;
 			children = (
+				D699A45B2B120D8D00C93AA0 /* Protocol */,
 				D696657D2B0DF901009610E9 /* Service */,
 				D69665802B0E0A48009610E9 /* View */,
 				D66793642B03DE780022A47F /* AppDelegate.swift */,
@@ -170,6 +177,7 @@
 			children = (
 				D69665722B0CFBC5009610E9 /* BaseViewController.swift */,
 				D69665742B0CFBCA009610E9 /* BaseView.swift */,
+				D699A4592B11FE4F00C93AA0 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 		D699A4112B0E353200C93AA0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				D699A4562B11F40000C93AA0 /* cell */,
 				D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */,
 			);
 			path = Component;
@@ -260,6 +269,22 @@
 				D699A4522B11C18100C93AA0 /* TabbarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		D699A4562B11F40000C93AA0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		D699A45B2B120D8D00C93AA0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +383,7 @@
 				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
 				D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
+				D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
@@ -365,6 +391,8 @@
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,
+				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
+				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
 				D699A4552B11EE3E00C93AA0 /* HomeViewController.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
