@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         output.loginSuccess
             .bind(with: self) { owner, value in
                 if value {
-                    print("화면 체인지.")
+                    owner.changeRootView()
                 }
             }.disposed(by: disposeBag)
         
@@ -47,6 +47,13 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func changeRootView(){
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                let vc = TabbarController()
+                sceneDelegate?.window?.rootViewController = vc
+                sceneDelegate?.window?.makeKeyAndVisible()
+    }
 
 }
 

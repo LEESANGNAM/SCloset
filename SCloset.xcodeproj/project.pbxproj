@@ -36,6 +36,8 @@
 		D699A4132B0E355A00C93AA0 /* TextfieldTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */; };
 		D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */; };
 		D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */; };
+		D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4522B11C18100C93AA0 /* TabbarController.swift */; };
+		D699A4552B11EE3E00C93AA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4542B11EE3E00C93AA0 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldTitleLabel.swift; sourceTree = "<group>"; };
 		D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidModel.swift; sourceTree = "<group>"; };
+		D699A4522B11C18100C93AA0 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		D699A4542B11EE3E00C93AA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,9 +186,11 @@
 		D69665802B0E0A48009610E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D699A4512B11C16F00C93AA0 /* TabBar */,
+				D699A44E2B11C13E00C93AA0 /* Home */,
+				D69665712B0CFBAF009610E9 /* Base */,
 				D699A4112B0E353200C93AA0 /* Component */,
 				D699A40A2B0E0B0900C93AA0 /* SignUp */,
-				D69665712B0CFBAF009610E9 /* Base */,
 				D66793AC2B0504420022A47F /* Login */,
 			);
 			path = View;
@@ -222,6 +228,38 @@
 				D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		D699A44E2B11C13E00C93AA0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4502B11C16300C93AA0 /* ViewModel */,
+				D699A44F2B11C15A00C93AA0 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D699A44F2B11C15A00C93AA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4542B11EE3E00C93AA0 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D699A4502B11C16300C93AA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D699A4512B11C16F00C93AA0 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4522B11C18100C93AA0 /* TabbarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +365,8 @@
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,
+				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
+				D699A4552B11EE3E00C93AA0 /* HomeViewController.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
 				D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */,
 				D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */,
