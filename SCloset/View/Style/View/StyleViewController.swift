@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+class StyleViewController: BaseViewController {
     lazy var collectionView:  UICollectionView = {
             let cv = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
             cv.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -15,7 +15,7 @@ class HomeViewController: BaseViewController {
             return cv
         }()
     
-    let viewModel = HomeViewModel()
+    let viewModel = StyleViewModel()
     
     override func viewDidLoad() {
         view.backgroundColor = .blue
@@ -64,7 +64,7 @@ class HomeViewController: BaseViewController {
         }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension StyleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }

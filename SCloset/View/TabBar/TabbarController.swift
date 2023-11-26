@@ -8,11 +8,11 @@
 import UIKit
 
 class TabbarController: UITabBarController {
-    let HomeVC = UINavigationController(rootViewController: HomeViewController())
+    let StyleVC = UINavigationController(rootViewController: StyleViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [HomeVC]
+        viewControllers = [StyleVC]
         setupTabbar()
     }
     
@@ -24,7 +24,7 @@ class TabbarController: UITabBarController {
     }
     
     private func setupTabbarItem(){
-        HomeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house.fill"), tag: 0)
+        StyleVC.tabBarItem = UITabBarItem(title: "스타일", image: UIImage(systemName: "tshirt.fill"), tag: 0)
     }
     
     
