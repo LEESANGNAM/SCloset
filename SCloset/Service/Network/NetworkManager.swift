@@ -57,6 +57,7 @@ class NetworkManager {
                     let sucess = (200..<300).contains(statusCode)
                     if sucess {
                         do {
+                            print(data)
                             let dataResult = try JSONDecoder().decode(T.self, from: data)
                             observer.onNext(dataResult)
                             observer.onCompleted()

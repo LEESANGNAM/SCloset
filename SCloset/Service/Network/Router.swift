@@ -20,7 +20,7 @@ enum Router: URLRequestConvertible {
     case join(SignUpRequestModel)
     case login(LoginRequestModel)
     case emailVlidation(EmailValidRequestModel)
-    
+    case postLoad(next: String, limit: String, product_id: String)
     
     private var baseURL: URL {
         return URL(string: APIKey.baseURL)!
@@ -34,22 +34,36 @@ enum Router: URLRequestConvertible {
             return "/join"
         case .emailVlidation:
             return "/validation/email"
+        case .postLoad(let next, let limit, let id):
+            return "/post"
+//            ?next=\(next)&limit=\(limit)&product_id=\(id)"
         }
     }
     
     
     var header: HTTPHeaders {
-        return ["SesacKey": Router.key ]
-    }
-    var method: HTTPMethod {
-        return .post
-    }
-    var query: [String: String] {
         switch self {
         case .join, .login, .emailVlidation:
-            return ["":""]
+            return ["SesacKey": Router.key ]
+        case .postLoad:
+            return ["SesacKey": Router.key, "Authorization": UserDefaultsManager.token ]
+        }
+//        return ["SesacKey": Router.key ]
+    }
+    var method: HTTPMethod {
+        switch self {
+        case .join, .login, .emailVlidation:
+            return .post
+        case .postLoad:
+            return .get
         }
     }
+//    var query: [String: String] {
+//        switch self {
+//        case .join, .login, .emailVlidation:
+//            return ["":""]
+//        }
+//    }
     
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
@@ -64,6 +78,8 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(loginRequestModel, into: requst)
         case .emailVlidation(let emailValidationRequestModel):
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
+        case .postLoad:
+            break
         }
         
         

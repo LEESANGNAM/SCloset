@@ -15,11 +15,29 @@ class HomeViewController: BaseViewController {
             return cv
         }()
     
+    let viewModel = HomeViewModel()
+    
     override func viewDidLoad() {
         view.backgroundColor = .blue
         setCollectionView()
+        setupSearchBar()
+        setupRigthButton()
     }
    
+    private func setupSearchBar(){
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "검색어를 입력해주세요"
+        navigationItem.titleView = searchBar
+    }
+    private func setupRigthButton(){
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func addButtonTapped(){
+        viewModel.testRoadPost()
+    }
+    
     private func setCollectionView(){
         view.addSubview(collectionView)
         collectionView.delegate = self
