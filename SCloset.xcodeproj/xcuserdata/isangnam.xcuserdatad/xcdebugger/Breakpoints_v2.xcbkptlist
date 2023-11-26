@@ -140,8 +140,8 @@
             filePath = "SCloset/Service/Network/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "request(type:api:)"
             landmarkType = "7">
             <Locations>
