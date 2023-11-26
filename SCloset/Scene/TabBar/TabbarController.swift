@@ -8,7 +8,7 @@
 import UIKit
 
 class TabbarController: UITabBarController {
-    let StyleVC = UINavigationController(rootViewController: StyleViewController())
+    let StyleVC = UINavigationController(rootViewController: StyleListViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()

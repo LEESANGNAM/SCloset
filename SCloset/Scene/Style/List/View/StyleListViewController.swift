@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StyleViewController: BaseViewController {
+class StyleListViewController: BaseViewController {
     lazy var collectionView:  UICollectionView = {
             let cv = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
             cv.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -15,7 +15,7 @@ class StyleViewController: BaseViewController {
             return cv
         }()
     
-    let viewModel = StyleViewModel()
+    let viewModel = StyleListViewModel()
     
     override func viewDidLoad() {
         view.backgroundColor = .blue
@@ -64,7 +64,7 @@ class StyleViewController: BaseViewController {
         }
 }
 
-extension StyleViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }

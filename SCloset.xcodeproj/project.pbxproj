@@ -41,11 +41,11 @@
 		D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */; };
 		D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */; };
 		D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4522B11C18100C93AA0 /* TabbarController.swift */; };
-		D699A4552B11EE3E00C93AA0 /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4542B11EE3E00C93AA0 /* StyleViewController.swift */; };
+		D699A4552B11EE3E00C93AA0 /* StyleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4542B11EE3E00C93AA0 /* StyleListViewController.swift */; };
 		D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */; };
 		D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4592B11FE4F00C93AA0 /* BaseCollectionViewCell.swift */; };
 		D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */; };
-		D699A45F2B125A5D00C93AA0 /* StyleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45E2B125A5D00C93AA0 /* StyleViewModel.swift */; };
+		D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */; };
 		D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4602B1269A600C93AA0 /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,11 +78,11 @@
 		D699A4142B0E6B9D00C93AA0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidModel.swift; sourceTree = "<group>"; };
 		D699A4522B11C18100C93AA0 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
-		D699A4542B11EE3E00C93AA0 /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
+		D699A4542B11EE3E00C93AA0 /* StyleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListViewController.swift; sourceTree = "<group>"; };
 		D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D699A4592B11FE4F00C93AA0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResusableProtocol.swift; sourceTree = "<group>"; };
-		D699A45E2B125A5D00C93AA0 /* StyleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewModel.swift; sourceTree = "<group>"; };
+		D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListViewModel.swift; sourceTree = "<group>"; };
 		D699A4602B1269A600C93AA0 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +114,46 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		D66338D62B139656004EEDA0 /* Closet */ = {
+			isa = PBXGroup;
+			children = (
+				D66338D72B139E61004EEDA0 /* List */,
+			);
+			path = Closet;
+			sourceTree = "<group>";
+		};
+		D66338D72B139E61004EEDA0 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D66338D92B139E71004EEDA0 /* ViewModel */,
+				D66338D82B139E6C004EEDA0 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D66338D82B139E6C004EEDA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D66338D92B139E71004EEDA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D66338DA2B13A26C004EEDA0 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4502B11C16300C93AA0 /* ViewModel */,
+				D699A44F2B11C15A00C93AA0 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		D66793582B03DE780022A47F = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +175,7 @@
 			children = (
 				D699A45B2B120D8D00C93AA0 /* Protocol */,
 				D696657D2B0DF901009610E9 /* Service */,
-				D69665802B0E0A48009610E9 /* View */,
+				D69665802B0E0A48009610E9 /* Scene */,
 				D66793642B03DE780022A47F /* AppDelegate.swift */,
 				D66793662B03DE780022A47F /* SceneDelegate.swift */,
 				D667936D2B03DE7A0022A47F /* Assets.xcassets */,
@@ -216,9 +256,10 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		D69665802B0E0A48009610E9 /* View */ = {
+		D69665802B0E0A48009610E9 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D66338D62B139656004EEDA0 /* Closet */,
 				D66793AC2B0504420022A47F /* Login */,
 				D699A40A2B0E0B0900C93AA0 /* SignUp */,
 				D699A44E2B11C13E00C93AA0 /* Style */,
@@ -226,7 +267,7 @@
 				D699A4512B11C16F00C93AA0 /* TabBar */,
 				D699A4112B0E353200C93AA0 /* Component */,
 			);
-			path = View;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		D699A40A2B0E0B0900C93AA0 /* SignUp */ = {
@@ -267,8 +308,7 @@
 		D699A44E2B11C13E00C93AA0 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				D699A4502B11C16300C93AA0 /* ViewModel */,
-				D699A44F2B11C15A00C93AA0 /* View */,
+				D66338DA2B13A26C004EEDA0 /* List */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -276,7 +316,7 @@
 		D699A44F2B11C15A00C93AA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D699A4542B11EE3E00C93AA0 /* StyleViewController.swift */,
+				D699A4542B11EE3E00C93AA0 /* StyleListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,7 +324,7 @@
 		D699A4502B11C16300C93AA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D699A45E2B125A5D00C93AA0 /* StyleViewModel.swift */,
+				D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -422,8 +462,8 @@
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
-				D699A4552B11EE3E00C93AA0 /* StyleViewController.swift in Sources */,
-				D699A45F2B125A5D00C93AA0 /* StyleViewModel.swift in Sources */,
+				D699A4552B11EE3E00C93AA0 /* StyleListViewController.swift in Sources */,
+				D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
 				D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */,
