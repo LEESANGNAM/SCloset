@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */; };
+		D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */; };
 		D66793652B03DE780022A47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793642B03DE780022A47F /* AppDelegate.swift */; };
 		D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793662B03DE780022A47F /* SceneDelegate.swift */; };
 		D66793692B03DE780022A47F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793682B03DE780022A47F /* LoginViewController.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIntercetor.swift; sourceTree = "<group>"; };
+		D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		D66793612B03DE780022A47F /* SCloset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCloset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66793642B03DE780022A47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D66793662B03DE780022A47F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				D69665682B0CE885009610E9 /* Model */,
 				D66793B02B0512F50022A47F /* Router.swift */,
 				D66793B22B05248A0022A47F /* NetworkManager.swift */,
+				D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				D696656B2B0CE8D3009610E9 /* SignUpModel.swift */,
 				D699A4442B0F7BB400C93AA0 /* EmailValidModel.swift */,
 				D699A4602B1269A600C93AA0 /* PostModel.swift */,
+				D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */,
 				D66793692B03DE780022A47F /* LoginViewController.swift in Sources */,
 				D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,
@@ -406,6 +413,7 @@
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
 				D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */,
 				D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */,
+				D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */,
 				D699A4132B0E355A00C93AA0 /* TextfieldTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

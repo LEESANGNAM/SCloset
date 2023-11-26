@@ -48,9 +48,8 @@ class NetworkManager {
     
     
     func request<T: Decodable>(type: T.Type, api: Router) -> Observable<T> {
-        
         return Observable<T>.create { observer in
-            AF.request(api).validate(statusCode: 200...500).responseData { response in
+            AF.request(api,interceptor: TokenIntercetor()).validate().responseData { response in
                 switch response.result {
                 case .success(let data):
                     guard let statusCode = response.response?.statusCode else { return }
@@ -80,7 +79,5 @@ class NetworkManager {
             }
             return Disposables.create()
         }
-        
-        
     }
 }

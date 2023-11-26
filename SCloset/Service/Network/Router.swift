@@ -20,6 +20,7 @@ enum Router: URLRequestConvertible {
     case join(SignUpRequestModel)
     case login(LoginRequestModel)
     case emailVlidation(EmailValidRequestModel)
+    case refresh
     case postLoad(next: String, limit: String, product_id: String)
     
     private var baseURL: URL {
@@ -34,6 +35,8 @@ enum Router: URLRequestConvertible {
             return "/join"
         case .emailVlidation:
             return "/validation/email"
+        case .refresh:
+            return "/refresh"
         case .postLoad(let next, let limit, let id):
             return "/post"
 //            ?next=\(next)&limit=\(limit)&product_id=\(id)"
@@ -46,7 +49,13 @@ enum Router: URLRequestConvertible {
         case .join, .login, .emailVlidation:
             return ["SesacKey": Router.key ]
         case .postLoad:
-            return ["SesacKey": Router.key, "Authorization": UserDefaultsManager.token ]
+            return ["SesacKey": Router.key]
+        case .refresh:
+            return [
+                "SeSacKey": Router.key,
+                "Authorization": UserDefaultsManager.token,
+                "Refresh": UserDefaultsManager.refresh
+            ]
         }
 //        return ["SesacKey": Router.key ]
     }
@@ -54,7 +63,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation:
             return .post
-        case .postLoad:
+        case .postLoad, .refresh:
             return .get
         }
     }
@@ -78,7 +87,7 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(loginRequestModel, into: requst)
         case .emailVlidation(let emailValidationRequestModel):
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
-        case .postLoad:
+        case .postLoad, .refresh:
             break
         }
         

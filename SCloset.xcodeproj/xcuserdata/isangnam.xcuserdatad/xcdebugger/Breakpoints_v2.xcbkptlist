@@ -3,4 +3,180 @@
    uuid = "7E2AA859-1104-466F-9348-AE5DCDFCFEE3"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2BF242A1-FB8D-4B14-AA73-E83417D35427"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Service/Network/TokenIntercetor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "retry(_:for:dueTo:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2BF242A1-FB8D-4B14-AA73-E83417D35427 - fb8983e413666d2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.retry(_: Alamofire.Request, for: Alamofire.Session, dueTo: Swift.Error, completion: (Alamofire.RetryResult) -&gt; ()) -&gt; ()"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "2BF242A1-FB8D-4B14-AA73-E83417D35427 - fb8983e413666d0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.retry(_: Alamofire.Request, for: Alamofire.Session, dueTo: Swift.Error, completion: (Alamofire.RetryResult) -&gt; ()) -&gt; ()"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E20F835-F634-4B2E-870D-7E49D42B148D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Service/Network/TokenIntercetor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "TokenIntercetor"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2E20F835-F634-4B2E-870D-7E49D42B148D - 33406eecc881b704"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.deinit"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "2E20F835-F634-4B2E-870D-7E49D42B148D - 3ed4fca96d410d37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.__deallocating_deinit"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "2E20F835-F634-4B2E-870D-7E49D42B148D - 799dfb6bf9c8b65"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.__allocating_init() -&gt; SCloset.TokenIntercetor"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "2E20F835-F634-4B2E-870D-7E49D42B148D - b1700f3bc2a19628"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.init() -&gt; SCloset.TokenIntercetor"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Service/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "request(type:api:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784 - 9662b7aeedd76c4b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RxSwift.AnyObserver&lt;&#x3c4;_0_0&gt;) -&gt; RxSwift.Disposable in SCloset.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(type: &#x3c4;_0_0.Type, api: SCloset.Router) -&gt; RxSwift.Observable&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784 - 1b91e90049cd0276"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;&#x3c4;_0_0&gt;) -&gt; RxSwift.Disposable in SCloset.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(type: &#x3c4;_0_0.Type, api: SCloset.Router) -&gt; RxSwift.Observable&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
