@@ -50,7 +50,9 @@ class LoginViewModel {
         UserDefaultsManager.token = token
         UserDefaultsManager.refresh = refesh
     }
-    
+    private func setIsLogin() {
+        UserDefaultsManager.isLogin = true
+    }
     private func testRequest() {
         let testLoginModel = LoginRequestModel(email: emailText, password: passwordText) // 입력창에서 받아와서 객체생성 
 
@@ -58,6 +60,7 @@ class LoginViewModel {
         test.subscribe(with: self) { owner, value in
             owner.success.accept(true)
             owner.setToken(token: value.token, refesh: value.refreshToken)
+            owner.setIsLogin()
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 switch testErrorType {

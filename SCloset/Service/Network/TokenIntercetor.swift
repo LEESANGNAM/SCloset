@@ -58,10 +58,16 @@ class TokenIntercetor: RequestInterceptor {
     }
     
     private func changeRootView(){
+        resetLogin()
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
                 let vc = LoginViewController()
                 sceneDelegate?.window?.rootViewController = vc
                 sceneDelegate?.window?.makeKeyAndVisible()
+    }
+    private func resetLogin(){
+        UserDefaultsManager.isLogin = false
+        UserDefaultsManager.token = ""
+        UserDefaultsManager.refresh = ""
     }
 }

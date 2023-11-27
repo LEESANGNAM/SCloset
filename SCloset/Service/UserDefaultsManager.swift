@@ -8,6 +8,8 @@
 import Foundation
 
 struct UserDefaultsManager {
+    @UserDefaultsWrapper(key: "isLogin", defaultValue: false)
+    static var isLogin
     @UserDefaultsWrapper(key: "token", defaultValue: "")
     static var token
     @UserDefaultsWrapper(key: "refresh", defaultValue: "")

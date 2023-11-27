@@ -23,6 +23,10 @@ class StyleListViewController: BaseViewController {
         setupSearchBar()
         setupRigthButton()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.testRoadPost()
+    }
    
     private func setupSearchBar(){
         let searchBar = UISearchBar()
@@ -35,7 +39,7 @@ class StyleListViewController: BaseViewController {
     }
     
     @objc private func addButtonTapped(){
-        viewModel.testRoadPost()
+        navigationController?.pushViewController(StyleAddViewController(), animated: true)
     }
     
     private func setCollectionView(){

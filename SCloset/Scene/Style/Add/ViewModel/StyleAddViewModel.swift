@@ -1,24 +1,24 @@
 //
-//  HomeViewModel.swift
+//  StyleAddViewModel.swift
 //  SCloset
 //
-//  Created by 이상남 on 11/26/23.
+//  Created by 이상남 on 11/27/23.
 //
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-class StyleListViewModel {
- 
+class StyleAddViewModel {
+    
     let disposeBag = DisposeBag()
     
-    
-    func testRoadPost(){
-
-        let test = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .postLoad(next: "", limit: "", product_id: "Scloset"))
+    func postUpLoad(data: Data){
+        print(data)
+//        let api = Router.postUpLoad(imageData: data, title: "테스트1234", content: "테스트내용1234", product_id: "Scloset", content1: "위치 : 날씨")
+        //        let test = NetworkManager.shared.request(type: PostUpLoad.self, api: api)
+        let test =  NetworkManager.shared.postUpload(imageData: data, title: "테스트12345", content: "테스트내용12345", product_id: "Scloset", content1: "위치 : 날씨ㅁㄴㅇㄴㅁㅇ")
         test.subscribe(with: self) { owner, value in
-            print("포스트 조회기능 : ", value)
+            print("포스트 작성기능 : ", value)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 switch testErrorType {
@@ -37,5 +37,4 @@ class StyleListViewModel {
             print("네트워크 디스포즈")
         }.disposed(by: disposeBag)
     }
-    
 }
