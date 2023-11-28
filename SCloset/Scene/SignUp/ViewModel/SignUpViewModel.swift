@@ -103,17 +103,8 @@ class SignUpViewModel {
             owner.emailCheck.accept(true)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
-                switch testErrorType {
-                case let .notKey(statusCode, message),
-                    let .overcall(statusCode, message),
-                    let .requestPathError(statusCode, message),
-                    let .missingParameter(statusCode, message),
-                    let .notUser(statusCode, message),
-                    let .invalidServerError(statusCode, message):
-                    
-                    let text = "오류코드 \(statusCode): \(message) "
-                    owner.message.accept(text)
-                }
+                let errorText = testErrorType.message()
+                owner.message.accept(errorText)
                 owner.emailCheck.accept(false)
             }
         } onCompleted: { _ in
@@ -135,17 +126,8 @@ class SignUpViewModel {
              owner.signUpCheck.accept(true)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
-                switch testErrorType {
-                    case let .notKey(statusCode, message),
-                         let .overcall(statusCode, message),
-                         let .requestPathError(statusCode, message),
-                         let .missingParameter(statusCode, message),
-                         let .notUser(statusCode, message),
-                         let .invalidServerError(statusCode, message):
-                         let text = "오류코드 \(statusCode): \(message) "
-                    owner.message.accept(text)
-                    
-                    }
+                let errorText = testErrorType.message()
+                owner.message.accept(errorText)
                 owner.signUpCheck.accept(false)
             }
         } onCompleted: { _ in

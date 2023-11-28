@@ -21,15 +21,8 @@ class StyleAddViewModel {
             print("포스트 작성기능 : ", value)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
-                switch testErrorType {
-                    case let .notKey(statusCode, message),
-                         let .overcall(statusCode, message),
-                         let .requestPathError(statusCode, message),
-                         let .missingParameter(statusCode, message),
-                         let .notUser(statusCode, message),
-                         let .invalidServerError(statusCode, message):
-                    print("오류코드 \(statusCode): \(message) ")
-                    }
+                let errortext = testErrorType.message()
+                print(errortext)
             }
         } onCompleted: { _ in
             print("네트워킹 완료")

@@ -63,15 +63,8 @@ class LoginViewModel {
             owner.setIsLogin()
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
-                switch testErrorType {
-                    case let .notKey(statusCode, message),
-                         let .overcall(statusCode, message),
-                         let .requestPathError(statusCode, message),
-                         let .missingParameter(statusCode, message),
-                         let .notUser(statusCode, message),
-                         let .invalidServerError(statusCode, message):
-                    owner.errorMessage.accept("오류코드 \(statusCode): \(message) ")
-                    }
+                let errorText = testErrorType.message()
+                owner.errorMessage.accept(errorText)
                 owner.success.accept(false)
             }
         } onCompleted: { _ in
