@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         if UserDefaultsManager.isLogin {
             window = UIWindow(windowScene: scene)
-            let vc = TabbarController()
+            let vc = WeatherTestViewController()
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
         } else {
