@@ -22,6 +22,7 @@ class StyleListViewController: BaseViewController {
         setCollectionView()
         setupSearchBar()
         setupRigthButton()
+        WeatherManager.shared.updateWeather()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

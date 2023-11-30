@@ -15,5 +15,6 @@ class StyleAddViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("애드뷰 찍기",WeatherManager.shared.getTodayWeather())
     }
 }
