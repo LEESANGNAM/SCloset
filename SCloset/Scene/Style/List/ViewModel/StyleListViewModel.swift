@@ -12,13 +12,58 @@ import RxCocoa
 class StyleListViewModel {
  
     let disposeBag = DisposeBag()
+    let postData = BehaviorRelay<[PostLoad]>(value: [])
+    let cursor = BehaviorRelay(value: "")
     
     
-    func testRoadPost(){
+    struct Input {
+        let viewDidLoad: Observable<Void>
+        let viewWillAppear: Observable<Void>
+        let addButtonTap: ControlEvent<Void>
+        let cellTap: ControlEvent<IndexPath>
+        let modelSelect: ControlEvent<PostLoad>
+    }
+    
+    struct Output {
+        let addButtonTap: ControlEvent<Void>
+        let postData: BehaviorRelay<[PostLoad]>
+    }
+    
+    func transform(input: Input) -> Output{
+        input.viewDidLoad
+            .bind(with: self) { owner, _ in
+                WeatherManager.shared.updateWeather()
+            }.disposed(by: disposeBag)
+        
+        input.viewWillAppear
+            .bind(with: self) { owner, _ in
+                owner.postLoad()
+            }.disposed(by: disposeBag)
+        
+        
+        return Output( addButtonTap: input.addButtonTap, postData: postData)
+    }
+    
+    func getPostCount() -> Int {
+        return postData.value.count
+    }
+    func getPostData(index: Int) -> PostLoad {
+        return postData.value[index]
+    }
+    func getCursor() -> String {
+        return cursor.value
+    }
+    
+    func postLoad(){
 
-        let test = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .postLoad(next: "", limit: "", product_id: "Scloset"))
-        test.subscribe(with: self) { owner, value in
-            print("포스트 조회기능 : ", value)
+        let result = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .postLoad(next: cursor.value, limit: "10", product_id: "Scloset"))
+        result.subscribe(with: self) { owner, value in
+            var data = owner.postData.value
+            data.append(contentsOf: value.data)
+            owner.postData.accept(data)
+            owner.setCursor(value.next_cursor)
+            print("포스트 조회기능 : ", value.data)
+            print("포스트 cusor : ", value.next_cursor)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 let errorText = testErrorType.message()
@@ -31,4 +76,11 @@ class StyleListViewModel {
         }.disposed(by: disposeBag)
     }
     
+    private func setCursor(_ cursor: String) {
+        if cursor == "0" {
+            self.cursor.accept("")
+        } else {
+            self.cursor.accept(cursor)
+        }
+    }
 }
