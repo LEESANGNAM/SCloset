@@ -57,7 +57,7 @@ class WeatherManager: NSObject {
         }
     }
     
-    private func fetchAddressName() {
+    private func fetchAddressNameAndWeather() {
         guard let location = currentLocation else {
             return
         }
@@ -69,6 +69,7 @@ class WeatherManager: NSObject {
             }
             if let placemark = placemarks?.first {
                 self.locationName = self.getAddressName(placemark: placemark)
+                self.fetchCurrentWeather()
             } else {
                 print("placemarks 실패")
             }
@@ -95,9 +96,8 @@ extension WeatherManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             currentLocation = location
-            fetchAddressName()
+            fetchAddressNameAndWeather()
             locationManager.stopUpdatingLocation()
-            fetchCurrentWeather()
             
         }
     }

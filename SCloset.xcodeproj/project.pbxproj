@@ -18,6 +18,7 @@
 		D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D663393C2B18E0EA004EEDA0 /* WeatherManager.swift */; };
 		D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66339402B18F380004EEDA0 /* Date+Extension.swift */; };
 		D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66339422B18F880004EEDA0 /* TodayWeatherModel.swift */; };
+		D66339652B1B2F18004EEDA0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66339642B1B2F18004EEDA0 /* UIViewController+Extension.swift */; };
 		D66793652B03DE780022A47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793642B03DE780022A47F /* AppDelegate.swift */; };
 		D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793662B03DE780022A47F /* SceneDelegate.swift */; };
 		D66793692B03DE780022A47F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793682B03DE780022A47F /* LoginViewController.swift */; };
@@ -69,6 +70,7 @@
 		D663393C2B18E0EA004EEDA0 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		D66339402B18F380004EEDA0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D66339422B18F880004EEDA0 /* TodayWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherModel.swift; sourceTree = "<group>"; };
+		D66339642B1B2F18004EEDA0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D66793612B03DE780022A47F /* SCloset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCloset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66793642B03DE780022A47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D66793662B03DE780022A47F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				D66339402B18F380004EEDA0 /* Date+Extension.swift */,
+				D66339642B1B2F18004EEDA0 /* UIViewController+Extension.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
 				D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */,
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,
+				D66339652B1B2F18004EEDA0 /* UIViewController+Extension.swift in Sources */,
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,

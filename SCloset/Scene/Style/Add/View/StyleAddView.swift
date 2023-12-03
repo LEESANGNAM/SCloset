@@ -15,12 +15,18 @@ class StyleAddView: BaseView {
     }()
 
     let contentView = UIView()
-    lazy var contentList: [UIView] = [lookImageView,titleTextField,locationLabel,contentTextView]
+    lazy var contentList: [UIView] = [lookImageView,plusImageView,titleTextField,locationLabel,contentTextView]
     
     let lookImageView = {
         let view = UIImageView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemGray5
         view.contentMode = .scaleAspectFill
+        return view
+    }()
+    let plusImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "plus")
+        view.tintColor = .systemGray
         return view
     }()
     let titleTextField = {
@@ -60,12 +66,18 @@ class StyleAddView: BaseView {
             make.width.equalTo(contentView)
             make.height.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.6)
         }
+        plusImageView.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.centerX.equalTo(lookImageView.snp.centerX)
+            make.centerY.equalTo(lookImageView.snp.centerY)
+        }
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(lookImageView.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         locationLabel.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom).offset(10)
+            make.height.equalTo(20)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
         contentTextView.snp.makeConstraints { make in

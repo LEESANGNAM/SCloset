@@ -13,4 +13,10 @@ struct TodayWeatherModel {
     let highTemperature: Measurement<UnitTemperature>
     let lowTemperature: Measurement<UnitTemperature>
     let symbolName: String
+    
+    
+    var temperatureString: String {
+        return "\(lowTemperature) / \(highTemperature)"
+    }
+    
 }
