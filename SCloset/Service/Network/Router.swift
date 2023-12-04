@@ -31,17 +31,17 @@ enum Router: URLRequestConvertible {
     private var path: String {
         switch self {
         case .login:
-            return "/login"
+            return "login"
         case .join:
-            return "/join"
+            return "join"
         case .emailVlidation:
-            return "/validation/email"
+            return "validation/email"
         case .refresh:
-            return "/refresh"
+            return "refresh"
         case .postLoad(let next, let limit, let id):
-            return "/post"
+            return "post"
         case .postUpLoad:
-            return "/post"
+            return "post"
         }
     }
     

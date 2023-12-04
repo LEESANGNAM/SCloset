@@ -97,7 +97,8 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell()}
-        
+        let data = viewModel.getPostData(index: indexPath.row)
+        cell.setData(data: data)
         return cell
     }
     

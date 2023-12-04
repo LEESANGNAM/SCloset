@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeCollectionViewCell: BaseCollectionViewCell {
     let lookImageView = {
@@ -80,5 +81,51 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         }
         
         
+    }
+    func setData(data: PostLoad){
+        if let locationContent = data.content1 {
+            contentLabel.text = locationContent
+        }
+        let username = data.creator.nick
+        
+        userNameLabel.text = username
+        setImage(data: data)
+        
+    }
+    
+    private func setImage(data: PostLoad) {
+        if let imageBase = data.image.first {
+            print("이미지 베이스 url",imageBase)
+            if let imageBase {
+                print("이미지 베이스 iflet url",imageBase)
+                print("apikey.baseurl",APIKey.baseURL)
+                print("이거 왜안찍힘",URL(string: APIKey.baseURL + imageBase))
+                if let url = URL(string: APIKey.baseURL +  imageBase){
+                    print("이미지 url",url)
+                    lookImageView.kf.indicatorType = .activity //인디케이터
+                    
+                    let imageLoadRequest = AnyModifier { request in
+                        var requestBody = request
+                        requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
+                        requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
+                        return requestBody
+                    }
+                    
+                    
+                    lookImageView.kf.setImage(
+                        with: url,
+                        options: [
+                            .requestModifier(imageLoadRequest)
+                        ]) { result in
+                            switch result {
+                            case .success(let value):
+                                print("성공",value)
+                            case .failure(let error):
+                                print("실패",error)
+                            }
+                        }
+                }
+            }
+        }
     }
 }

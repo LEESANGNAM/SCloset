@@ -22,6 +22,7 @@ struct PostLoad: Decodable {
     let time: String?
     let title: String?
     let content: String?
+    let content1: String?
     let product_id: String?
 }
 
