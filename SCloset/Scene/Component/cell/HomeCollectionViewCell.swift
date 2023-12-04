@@ -10,39 +10,39 @@ import Kingfisher
 
 class HomeCollectionViewCell: BaseCollectionViewCell {
     let lookImageView = {
-            let image = UIImageView()
-            image.layer.cornerRadius = 15
-            image.layer.masksToBounds = true
+        let image = UIImageView()
+        image.layer.cornerRadius = 15
+        image.layer.masksToBounds = true
         image.backgroundColor = .systemGray
-            return image
-        }()
-        let userNameLabel = {
-            let label = UILabel()
-            label.text = "Scloset.test1"
-            label.font = .systemFont(ofSize: 14)
-            return label
-        }()
-        let likeButton = {
-            let button = UIButton()
-            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            button.tintColor = .black
-            return button
-        }()
-        let likeCountLabel = {
-            let label = UILabel()
-            label.text = "999"
-            label.numberOfLines = 2
-            label.font = .systemFont(ofSize: 14)
-            return label
-        }()
-        let contentLabel = {
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.text = "오늘의룩 짜자잔 "
-            label.font = .systemFont(ofSize: 14)
-            return label
-        }()
-        
+        return image
+    }()
+    let userNameLabel = {
+        let label = UILabel()
+        label.text = "Scloset.test1"
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    let likeButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    let likeCountLabel = {
+        let label = UILabel()
+        label.text = "999"
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    let contentLabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "오늘의룩 짜자잔 "
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
     override func setHierarchy() {
         contentView.addSubview(lookImageView)
         contentView.addSubview(userNameLabel)
@@ -94,38 +94,35 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
     }
     
     private func setImage(data: PostLoad) {
-        if let imageBase = data.image.first {
-            print("이미지 베이스 url",imageBase)
-            if let imageBase {
-                print("이미지 베이스 iflet url",imageBase)
-                print("apikey.baseurl",APIKey.baseURL)
-                print("이거 왜안찍힘",URL(string: APIKey.baseURL + imageBase))
-                if let url = URL(string: APIKey.baseURL +  imageBase){
-                    print("이미지 url",url)
-                    lookImageView.kf.indicatorType = .activity //인디케이터
-                    
-                    let imageLoadRequest = AnyModifier { request in
-                        var requestBody = request
-                        requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
-                        requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
-                        return requestBody
-                    }
-                    
-                    
-                    lookImageView.kf.setImage(
-                        with: url,
-                        options: [
-                            .requestModifier(imageLoadRequest)
-                        ]) { result in
-                            switch result {
-                            case .success(let value):
-                                print("성공",value)
-                            case .failure(let error):
-                                print("실패",error)
-                            }
-                        }
-                }
+        layoutIfNeeded()
+        if let imageBase = data.image.first,
+           let imageBase,
+           let url = URL(string: APIKey.baseURL +  imageBase){
+            
+            let imageSize = lookImageView.frame.size
+            let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize ) //사이즈만큼 줄이기
+            lookImageView.kf.indicatorType = .activity //인디케이터
+            
+            let imageLoadRequest = AnyModifier { request in
+                var requestBody = request
+                requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
+                requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
+                return requestBody
             }
+            
+            lookImageView.kf.setImage(
+                with: url,
+                options: [
+                    .processor(dowunSizeProcessor),
+                    .requestModifier(imageLoadRequest)
+                ]) { result in
+                    switch result {
+                    case .success(_):
+                        print("성공")
+                    case .failure(_):
+                        print("실패")
+                    }
+                }
         }
     }
 }
