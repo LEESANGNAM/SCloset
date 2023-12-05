@@ -25,7 +25,7 @@ class StyleListViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var addbutton: UIBarButtonItem!
     override func viewDidLoad() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         setCollectionView()
         setupSearchBar()
         setupRigthButton()
