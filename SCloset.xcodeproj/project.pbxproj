@@ -55,6 +55,7 @@
 		D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */; };
 		D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */; };
 		D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4602B1269A600C93AA0 /* PostModel.swift */; };
+		D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResusableProtocol.swift; sourceTree = "<group>"; };
 		D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListViewModel.swift; sourceTree = "<group>"; };
 		D699A4602B1269A600C93AA0 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +375,7 @@
 		D699A44E2B11C13E00C93AA0 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				D6F1A7762B208B6D002CFDE3 /* Detail */,
 				D66338DB2B13A2EE004EEDA0 /* Add */,
 				D66338DA2B13A26C004EEDA0 /* List */,
 			);
@@ -417,6 +420,30 @@
 				D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D6F1A7762B208B6D002CFDE3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D6F1A7782B208B7C002CFDE3 /* ViewModel */,
+				D6F1A7772B208B77002CFDE3 /* View */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		D6F1A7772B208B77002CFDE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6F1A7782B208B7C002CFDE3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +562,7 @@
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
 				D699A4552B11EE3E00C93AA0 /* StyleListViewController.swift in Sources */,
+				D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */,
 				D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
