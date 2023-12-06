@@ -56,6 +56,10 @@
 		D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */; };
 		D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4602B1269A600C93AA0 /* PostModel.swift */; };
 		D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */; };
+		D6F1A77D2B20CC7C002CFDE3 /* NickNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A77C2B20CC7C002CFDE3 /* NickNameLabel.swift */; };
+		D6F1A77F2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */; };
+		D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7802B20D0A3002CFDE3 /* StyleDetailViewController.swift */; };
+		D6F1A7832B20D220002CFDE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7822B20D220002CFDE3 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +107,10 @@
 		D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListViewModel.swift; sourceTree = "<group>"; };
 		D699A4602B1269A600C93AA0 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailView.swift; sourceTree = "<group>"; };
+		D6F1A77C2B20CC7C002CFDE3 /* NickNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameLabel.swift; sourceTree = "<group>"; };
+		D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGrayStyleLabel.swift; sourceTree = "<group>"; };
+		D6F1A7802B20D0A3002CFDE3 /* StyleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailViewController.swift; sourceTree = "<group>"; };
+		D6F1A7822B20D220002CFDE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,8 +374,8 @@
 		D699A4112B0E353200C93AA0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				D6F1A77B2B20CC13002CFDE3 /* View */,
 				D699A4562B11F40000C93AA0 /* cell */,
-				D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -435,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */,
+				D6F1A7802B20D0A3002CFDE3 /* StyleDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,6 +453,17 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D6F1A77B2B20CC13002CFDE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D699A4122B0E355A00C93AA0 /* TextfieldTitleLabel.swift */,
+				D6F1A77C2B20CC7C002CFDE3 /* NickNameLabel.swift */,
+				D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */,
+				D6F1A7822B20D220002CFDE3 /* ProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +557,7 @@
 			files = (
 				D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */,
 				D66338D52B138558004EEDA0 /* ErrorResponseMessages.swift in Sources */,
+				D6F1A77F2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift in Sources */,
 				D66793692B03DE780022A47F /* LoginViewController.swift in Sources */,
 				D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,
@@ -555,7 +576,9 @@
 				D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */,
 				D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
+				D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */,
 				D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */,
+				D6F1A77D2B20CC7C002CFDE3 /* NickNameLabel.swift in Sources */,
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,
 				D66339652B1B2F18004EEDA0 /* UIViewController+Extension.swift in Sources */,
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
@@ -572,6 +595,7 @@
 				D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */,
 				D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */,
 				D66338E12B13A68C004EEDA0 /* StyleAddViewController.swift in Sources */,
+				D6F1A7832B20D220002CFDE3 /* ProfileView.swift in Sources */,
 				D699A4132B0E355A00C93AA0 /* TextfieldTitleLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

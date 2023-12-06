@@ -49,7 +49,7 @@ class ProfileView: BaseView {
         profileImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.size.equalTo(50)
+            make.size.equalTo(40)
         }
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalTo(profileImageView.snp.bottom)
@@ -58,7 +58,7 @@ class ProfileView: BaseView {
             make.width.equalTo(40)
         }
         nicknameLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(dateLabel.snp.top).offset(-10)
+            make.bottom.equalTo(dateLabel.snp.top)
             make.leading.equalTo(profileImageView.snp.trailing).offset(10)
             make.height.equalTo(20)
             make.width.equalTo(40)
@@ -66,13 +66,13 @@ class ProfileView: BaseView {
         ellipsisButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
-            make.size.equalTo(40)
+            make.size.equalTo(20)
         }
         followButton.snp.makeConstraints { make in
             make.trailing.equalTo(ellipsisButton.snp.leading).offset(-20)
             make.centerY.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(60)
+            make.height.equalTo(30)
+            make.width.equalTo(80)
         }
         
     }

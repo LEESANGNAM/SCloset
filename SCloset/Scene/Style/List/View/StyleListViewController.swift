@@ -102,6 +102,11 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = viewModel.getPostData(index: indexPath.row)
+        print(data)
+    }
+    
     
     
 }
