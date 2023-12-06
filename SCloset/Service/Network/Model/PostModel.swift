@@ -36,7 +36,7 @@ struct Comment: Decodable {
 struct Creator: Decodable {
     let _id: String
     let nick: String
-//    let profile: String?
+    let profile: String?
 }
 
 
