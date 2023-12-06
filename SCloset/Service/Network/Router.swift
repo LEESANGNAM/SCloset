@@ -119,29 +119,8 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
         case .postLoad(let next,let limit,let product_id):
             requst = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: requst)
-        case .refresh:
+        case .refresh, .postUpLoad:
             break
-        case .postUpLoad(let imageData, let title, let content,let product_id, let content1):
-            break
-//            requst = try AF.upload(
-//                multipartFormData: { multipartFormData in
-//                    print("ㅡㅡㅡㅡㅡㅡㅡ여기멀티폼데이터안ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-//                    print(multipartFormData)
-//                    multipartFormData.append(title.data(using: .utf8)!, withName: "title")
-//                    multipartFormData.append(content.data(using: .utf8)!, withName: "content")
-//                    multipartFormData.append(imageData, withName: "file", fileName: "testImage.jpeg", mimeType: "image/jpeg")
-//                    multipartFormData.append(product_id.data(using: .utf8)!, withName: "product_id")
-//                    multipartFormData.append(content1.data(using: .utf8)!, withName: "content1")
-//                    
-//                    print("ㅡㅡㅡㅡㅡㅡㅡ여기멀티폼데이터안 여긴 끝날 때ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-//                    print(multipartFormData)
-//                },
-//                to: url,
-//                method: .post,
-//                headers: header
-//            ).convertible.asURLRequest()
-//            
-//            print("파일 업로드 요청 requst: \(requst)")
         }
         return requst
     }
