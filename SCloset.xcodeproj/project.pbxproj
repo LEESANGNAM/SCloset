@@ -373,7 +373,6 @@
 		D699A44E2B11C13E00C93AA0 /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				D6F1A7732B1F9153002CFDE3 /* Detail */,
 				D66338DB2B13A2EE004EEDA0 /* Add */,
 				D66338DA2B13A26C004EEDA0 /* List */,
 			);
@@ -418,29 +417,6 @@
 				D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		D6F1A7732B1F9153002CFDE3 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				D6F1A7752B1F9164002CFDE3 /* ViewModel */,
-				D6F1A7742B1F915E002CFDE3 /* View */,
-			);
-			path = Detail;
-			sourceTree = "<group>";
-		};
-		D6F1A7742B1F915E002CFDE3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D6F1A7752B1F9164002CFDE3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
