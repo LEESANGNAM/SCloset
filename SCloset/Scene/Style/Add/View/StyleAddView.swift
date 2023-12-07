@@ -20,7 +20,7 @@ class StyleAddView: BaseView {
     let lookImageView = {
         let view = UIImageView()
         view.backgroundColor = .systemGray5
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleToFill
         return view
     }()
     let plusImageView = {

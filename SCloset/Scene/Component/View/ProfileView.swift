@@ -12,9 +12,8 @@ class ProfileView: BaseView {
     let profileImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "person")
-        view.layer.cornerRadius = view.frame.width / 2
         view.clipsToBounds = true
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemGray5
         return view
     }()
     
@@ -55,13 +54,13 @@ class ProfileView: BaseView {
             make.bottom.equalTo(profileImageView.snp.bottom)
             make.leading.equalTo(profileImageView.snp.trailing).offset(10)
             make.height.equalTo(15)
-            make.width.equalTo(40)
+            make.trailing.lessThanOrEqualTo(ellipsisButton.snp.leading).offset(-10)
         }
         nicknameLabel.snp.makeConstraints { make in
             make.bottom.equalTo(dateLabel.snp.top)
             make.leading.equalTo(profileImageView.snp.trailing).offset(10)
             make.height.equalTo(20)
-            make.width.equalTo(40)
+            make.trailing.lessThanOrEqualTo(ellipsisButton.snp.leading).offset(-10)
         }
         ellipsisButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -78,10 +77,6 @@ class ProfileView: BaseView {
     }
     
     
-}
-
-#Preview {
-    ProfileView()
 }
 
 

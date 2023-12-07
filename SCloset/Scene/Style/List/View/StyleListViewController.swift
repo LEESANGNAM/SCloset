@@ -105,6 +105,9 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = viewModel.getPostData(index: indexPath.row)
         print(data)
+        let vc = StyleDetailViewController()
+        vc.testData = data
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
