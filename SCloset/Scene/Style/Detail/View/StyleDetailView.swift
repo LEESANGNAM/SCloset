@@ -20,7 +20,7 @@ class StyleDetailView: BaseView {
         likeButton,commentButton,locationLabel,
         likeCountLabel,commentCountLabel,
         contentLabel,
-        commentLabel
+        commentStackView
     ]
     
     let profileView = ProfileView()
@@ -65,28 +65,18 @@ class StyleDetailView: BaseView {
         view.numberOfLines = 0
         return view
     }()
-    let commentLabel = {
-        let view = UILabel()
-        view.text = """
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                        댓글 뷰 새로 넣을 꺼임
-                    """
-        view.numberOfLines = 0
+    let commentView1 = CommentView()
+    let commentView2 = CommentView()
+    let commentView3 = CommentView()
+    let commentView4 = CommentView()
+    let commentView5 = CommentView()
+    lazy var commentStackView = {
+        let view = UIStackView(arrangedSubviews: [commentView1,commentView2,commentView3,commentView4,commentView5])
+        commentView1.commentLabel.text = "comment1comment1comment1comment1comment1comment1comment1comment1"
+        commentView3.commentLabel.text = "댓글"
+        view.axis = .vertical
+        view.spacing = 0
+        view.distribution = .fill
         return view
     }()
     
@@ -144,11 +134,16 @@ class StyleDetailView: BaseView {
             make.leading.equalTo(likeCountLabel.snp.leading)
             make.trailing.equalTo(commentCountLabel.snp.trailing)
         }
-        commentLabel.snp.makeConstraints { make in
+        commentStackView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.width.equalTo(contentView)
             make.bottom.equalTo(contentView.snp.bottom)
         }
+//        commentLabel.snp.makeConstraints { make in
+//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
+//            make.width.equalTo(contentView)
+//            make.bottom.equalTo(contentView.snp.bottom)
+//        }
         
         
         
