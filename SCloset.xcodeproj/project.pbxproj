@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D61D4C2F2B246475001EA7D1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */; };
 		D61D4C312B24720B001EA7D1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */; };
+		D61D4C332B2479AC001EA7D1 /* StyleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C322B2479AC001EA7D1 /* StyleDetailViewModel.swift */; };
+		D61D4C352B249E3D001EA7D1 /* CommentWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */; };
 		D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */; };
 		D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */; };
 		D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */; };
@@ -68,6 +70,8 @@
 /* Begin PBXFileReference section */
 		D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		D61D4C322B2479AC001EA7D1 /* StyleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailViewModel.swift; sourceTree = "<group>"; };
+		D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWriteView.swift; sourceTree = "<group>"; };
 		D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIntercetor.swift; sourceTree = "<group>"; };
 		D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkErrorType.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 		D6F1A7782B208B7C002CFDE3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D61D4C322B2479AC001EA7D1 /* StyleDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */,
 				D6F1A7822B20D220002CFDE3 /* ProfileView.swift */,
 				D6F1A7842B214ED6002CFDE3 /* CommentView.swift */,
+				D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 				D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
 				D61D4C312B24720B001EA7D1 /* UIImage+Extension.swift in Sources */,
+				D61D4C332B2479AC001EA7D1 /* StyleDetailViewModel.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66338F52B14AF21004EEDA0 /* PostUploadModel.swift in Sources */,
 				D66338DF2B13A5F2004EEDA0 /* StyleAddView.swift in Sources */,
@@ -599,6 +606,7 @@
 				D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */,
 				D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
+				D61D4C352B249E3D001EA7D1 /* CommentWriteView.swift in Sources */,
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
 				D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */,
 				D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */,

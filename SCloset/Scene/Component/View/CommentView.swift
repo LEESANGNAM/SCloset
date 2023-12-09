@@ -57,4 +57,9 @@ class CommentView: BaseView {
         
     }
     
+    func setData(corner: CGFloat){
+        profileImageView.layer.cornerRadius = corner
+        
+    }
+    
 }

@@ -75,7 +75,10 @@ class ProfileView: BaseView {
         }
         
     }
-    
+    func setData(corner: CGFloat ) {
+        profileImageView.layer.cornerRadius = corner
+        followButton.layer.cornerRadius = 10
+    }
     
 }
 

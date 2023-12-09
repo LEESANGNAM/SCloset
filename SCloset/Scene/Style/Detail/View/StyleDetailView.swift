@@ -22,7 +22,7 @@ class StyleDetailView: BaseView {
         contentLabel,
         commentStackView
     ]
-    
+    let commentWriteView = CommentWriteView()
     let profileView = ProfileView()
     let lookImageView = {
         let view = UIImageView()
@@ -84,6 +84,7 @@ class StyleDetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentList.forEach { contentView.addSubview($0) }
+        addSubview(commentWriteView)
         profileView.nicknameLabel.text = "닉네임"
         profileView.dateLabel.text = "0일전"
         locationLabel.text = "서울특별시 00동 00도/00도"
@@ -139,6 +140,13 @@ class StyleDetailView: BaseView {
             make.width.equalTo(contentView)
             make.bottom.equalTo(contentView.snp.bottom)
         }
+        
+        commentWriteView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            make.bottom.equalTo(keyboardLayoutGuide.snp.top)
+            make.height.greaterThanOrEqualTo(50)
+        }
+        
 //        commentLabel.snp.makeConstraints { make in
 //            make.top.equalTo(contentLabel.snp.bottom).offset(10)
 //            make.width.equalTo(contentView)

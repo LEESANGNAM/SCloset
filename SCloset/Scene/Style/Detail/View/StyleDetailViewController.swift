@@ -44,8 +44,9 @@ class StyleDetailViewController: BaseViewController {
     
     private func setImage(data: PostLoad) {
         view.layoutIfNeeded()
-        mainView.profileView.profileImageView.layer.cornerRadius = mainView.profileView.profileImageView.frame.width / 2
-        mainView.commentView1.profileImageView.layer.cornerRadius = mainView.commentView1.profileImageView.frame.width / 2
+        mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2)
+
+        mainView.commentView1.setData(corner: mainView.commentView1.profileImageView.frame.width / 2)
         if let imageBase = data.image.first,
            let imageBase{
             let urlString = APIKey.baseURL +  imageBase
