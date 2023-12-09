@@ -22,8 +22,8 @@ class StyleDetailViewController: BaseViewController {
         title = "게시물"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setData()
     }
     
@@ -47,33 +47,11 @@ class StyleDetailViewController: BaseViewController {
         mainView.profileView.profileImageView.layer.cornerRadius = mainView.profileView.profileImageView.frame.width / 2
         mainView.commentView1.profileImageView.layer.cornerRadius = mainView.commentView1.profileImageView.frame.width / 2
         if let imageBase = data.image.first,
-           let imageBase,
-           let url = URL(string: APIKey.baseURL +  imageBase){
-            
+           let imageBase{
+            let urlString = APIKey.baseURL +  imageBase
             let imageSize = mainView.lookImageView.frame.size
-            let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize ) //사이즈만큼 줄이기
-            mainView.lookImageView.kf.indicatorType = .activity //인디케이터
             
-            let imageLoadRequest = AnyModifier { request in
-                var requestBody = request
-                requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
-                requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
-                return requestBody
-            }
-            
-            mainView.lookImageView.kf.setImage(
-                with: url,
-                options: [
-                    .processor(dowunSizeProcessor),
-                    .requestModifier(imageLoadRequest)
-                ]) { result in
-                    switch result {
-                    case .success(_):
-                        print("성공")
-                    case .failure(_):
-                        print("실패")
-                    }
-                }
+            mainView.lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "star")
         }
     }
     

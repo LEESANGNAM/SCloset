@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61D4C2F2B246475001EA7D1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */; };
+		D61D4C312B24720B001EA7D1 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */; };
 		D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */; };
 		D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */; };
 		D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIntercetor.swift; sourceTree = "<group>"; };
 		D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkErrorType.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 			children = (
 				D66339402B18F380004EEDA0 /* Date+Extension.swift */,
 				D66339642B1B2F18004EEDA0 /* UIViewController+Extension.swift */,
+				D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */,
+				D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -570,12 +576,14 @@
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
 				D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
+				D61D4C312B24720B001EA7D1 /* UIImage+Extension.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66338F52B14AF21004EEDA0 /* PostUploadModel.swift in Sources */,
 				D66338DF2B13A5F2004EEDA0 /* StyleAddView.swift in Sources */,
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
 				D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */,
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
+				D61D4C2F2B246475001EA7D1 /* UIImageView+Extension.swift in Sources */,
 				D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */,
 				D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,

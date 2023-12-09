@@ -96,33 +96,32 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
     private func setImage(data: PostLoad) {
         layoutIfNeeded()
         if let imageBase = data.image.first,
-           let imageBase,
-           let url = URL(string: APIKey.baseURL +  imageBase){
-            
+           let imageBase {
+            let urlString = APIKey.baseURL + imageBase
             let imageSize = lookImageView.frame.size
-            let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize ) //사이즈만큼 줄이기
-            lookImageView.kf.indicatorType = .activity //인디케이터
+//            let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize ) //사이즈만큼 줄이기
+//            lookImageView.kf.indicatorType = .activity //인디케이터
             
-            let imageLoadRequest = AnyModifier { request in
-                var requestBody = request
-                requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
-                requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
-                return requestBody
-            }
-            
-            lookImageView.kf.setImage(
-                with: url,
-                options: [
-                    .processor(dowunSizeProcessor),
-                    .requestModifier(imageLoadRequest)
-                ]) { result in
-                    switch result {
-                    case .success(_):
-                        print("성공")
-                    case .failure(_):
-                        print("실패")
-                    }
-                }
+//            let imageLoadRequest = AnyModifier { request in
+//                var requestBody = request
+//                requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
+//                requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
+//                return requestBody
+//            }
+            lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "photo.fill")
+//            lookImageView.kf.setImage(
+//                with: url,
+//                options: [
+//                    .processor(dowunSizeProcessor),
+//                    .requestModifier(imageLoadRequest)
+//                ]) { result in
+//                    switch result {
+//                    case .success(_):
+//                        print("성공")
+//                    case .failure(_):
+//                        print("실패")
+//                    }
+//                }
         }
     }
 }
