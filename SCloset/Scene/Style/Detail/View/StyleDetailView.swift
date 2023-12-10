@@ -21,9 +21,13 @@ class StyleDetailView: BaseView {
         likeCountLabel,commentCountLabel,
         contentLabel,
         commentStackView
-//        commentTableView
     ]
     let commentWriteView = CommentWriteView()
+    let commentWriteBackView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     let profileView = ProfileView()
     let lookImageView = {
         let view = UIImageView()
@@ -66,20 +70,7 @@ class StyleDetailView: BaseView {
         view.numberOfLines = 0
         return view
     }()
-//    let commentView1 = CommentView()
-//    let commentView2 = CommentView()
-//    let commentView3 = CommentView()
-//    let commentView4 = CommentView()
-//    let commentView5 = CommentView()
-//    lazy var commentStackView = {
-//        let view = UIStackView(arrangedSubviews: [commentView1,commentView2,commentView3,commentView4,commentView5])
-//        commentView1.commentLabel.text = "comment1comment1comment1comment1comment1comment1comment1comment1"
-//        commentView3.commentLabel.text = "댓글"
-//        view.axis = .vertical
-//        view.spacing = 0
-//        view.distribution = .fill
-//        return view
-//    }()
+    
     let commentTableView = {
         let view = SelfSizingTableView()
         view.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
@@ -99,10 +90,9 @@ class StyleDetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentList.forEach { contentView.addSubview($0) }
-        addSubview(commentWriteView)
-        profileView.nicknameLabel.text = "닉네임"
-        profileView.dateLabel.text = "0일전"
-        locationLabel.text = "서울특별시 00동 00도/00도"
+        commentWriteBackView.addSubview(commentWriteView)
+        addSubview(commentWriteBackView)
+        
     }
     
     override func setconstraints() {
@@ -150,28 +140,24 @@ class StyleDetailView: BaseView {
             make.leading.equalTo(likeCountLabel.snp.leading)
             make.trailing.equalTo(commentCountLabel.snp.trailing)
         }
-//        commentTableView.snp.makeConstraints { make in
-//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
-//            make.width.equalTo(contentView)
-//            make.bottom.equalTo(contentView.snp.bottom)
-//        }
+        
         commentStackView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.width.equalTo(contentView)
             make.bottom.equalTo(contentView.snp.bottom)
         }
         
-        commentWriteView.snp.makeConstraints { make in
+        commentWriteBackView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
+        }
+        
+        commentWriteView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(keyboardLayoutGuide.snp.top)
             make.height.greaterThanOrEqualTo(50)
         }
-        
-//        commentLabel.snp.makeConstraints { make in
-//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
-//            make.width.equalTo(contentView)
-//            make.bottom.equalTo(contentView.snp.bottom)
-//        }
         
         
         
