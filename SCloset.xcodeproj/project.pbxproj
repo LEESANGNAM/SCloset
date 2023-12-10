@@ -12,6 +12,8 @@
 		D61D4C332B2479AC001EA7D1 /* StyleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C322B2479AC001EA7D1 /* StyleDetailViewModel.swift */; };
 		D61D4C352B249E3D001EA7D1 /* CommentWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */; };
 		D61D4C372B25E70E001EA7D1 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C362B25E70E001EA7D1 /* ViewModelProtocol.swift */; };
+		D61D4C392B262D3A001EA7D1 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C382B262D3A001EA7D1 /* CommentTableViewCell.swift */; };
+		D61D4C3B2B2632C4001EA7D1 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D4C3A2B2632C4001EA7D1 /* SelfSizingTableView.swift */; };
 		D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */; };
 		D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */; };
 		D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */; };
@@ -74,6 +76,8 @@
 		D61D4C322B2479AC001EA7D1 /* StyleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailViewModel.swift; sourceTree = "<group>"; };
 		D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWriteView.swift; sourceTree = "<group>"; };
 		D61D4C362B25E70E001EA7D1 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		D61D4C382B262D3A001EA7D1 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		D61D4C3A2B2632C4001EA7D1 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
 		D66338CD2B133220004EEDA0 /* TokenIntercetor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIntercetor.swift; sourceTree = "<group>"; };
 		D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkErrorType.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */,
+				D61D4C382B262D3A001EA7D1 /* CommentTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				D6F1A7822B20D220002CFDE3 /* ProfileView.swift */,
 				D6F1A7842B214ED6002CFDE3 /* CommentView.swift */,
 				D61D4C342B249E3D001EA7D1 /* CommentWriteView.swift */,
+				D61D4C3A2B2632C4001EA7D1 /* SelfSizingTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 				D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */,
 				D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
+				D61D4C3B2B2632C4001EA7D1 /* SelfSizingTableView.swift in Sources */,
 				D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */,
 				D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */,
 				D6F1A77D2B20CC7C002CFDE3 /* NickNameLabel.swift in Sources */,
@@ -605,6 +612,7 @@
 				D66339652B1B2F18004EEDA0 /* UIViewController+Extension.swift in Sources */,
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
+				D61D4C392B262D3A001EA7D1 /* CommentTableViewCell.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
 				D699A4552B11EE3E00C93AA0 /* StyleListViewController.swift in Sources */,
 				D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */,

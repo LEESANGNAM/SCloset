@@ -13,6 +13,8 @@ class StyleDetailViewModel: ViewModelProtocol {
     
     var postData: PostLoad
     
+    var item: [String] = ["테스트1","테스트2"]
+    
     init(postData: PostLoad) {
         self.postData = postData
     }
@@ -41,4 +43,7 @@ class StyleDetailViewModel: ViewModelProtocol {
         return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped)
     }
     
+    func additem() {
+        item.append("테스트\(Int.random(in: 1...500))")
+    }
 }

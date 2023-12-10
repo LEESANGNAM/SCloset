@@ -36,6 +36,8 @@ class StyleDetailViewController: BaseViewController {
     }
     
     func bind() {
+        mainView.commentTableView.dataSource = self
+        mainView.commentTableView.delegate = self
         let profileView = mainView.profileView
         let commentWriteView = mainView.commentWriteView
         let input = StyleDetailViewModel.Input(
@@ -68,6 +70,12 @@ class StyleDetailViewController: BaseViewController {
 
             }.disposed(by: disposeBag)
         
+        output.commentDoneButtonTapped
+            .bind(with: self) { owner, _ in
+                owner.viewModel.additem()
+                owner.mainView.commentTableView.reloadData()
+            }.disposed(by: disposeBag)
+        
         
     }
     
@@ -89,7 +97,7 @@ class StyleDetailViewController: BaseViewController {
         view.layoutIfNeeded()
         mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2)
 
-        mainView.commentView1.setData(corner: mainView.commentView1.profileImageView.frame.width / 2)
+//        mainView.commentView1.setData(corner: mainView.commentView1.profileImageView.frame.width / 2)
         if let imageBase = data.image.first,
            let imageBase{
             let urlString = APIKey.baseURL +  imageBase
@@ -118,4 +126,21 @@ class StyleDetailViewController: BaseViewController {
         
         present(actionSheet, animated: true)
     }
+}
+
+extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.item.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
+        
+        cell.backgroundColor = .brown
+        cell.commentLabel.text = viewModel.item[indexPath.row]
+        
+        return cell
+    }
+    
+    
 }

@@ -21,6 +21,7 @@ class StyleDetailView: BaseView {
         likeCountLabel,commentCountLabel,
         contentLabel,
         commentStackView
+//        commentTableView
     ]
     let commentWriteView = CommentWriteView()
     let profileView = ProfileView()
@@ -65,18 +66,32 @@ class StyleDetailView: BaseView {
         view.numberOfLines = 0
         return view
     }()
-    let commentView1 = CommentView()
-    let commentView2 = CommentView()
-    let commentView3 = CommentView()
-    let commentView4 = CommentView()
-    let commentView5 = CommentView()
+//    let commentView1 = CommentView()
+//    let commentView2 = CommentView()
+//    let commentView3 = CommentView()
+//    let commentView4 = CommentView()
+//    let commentView5 = CommentView()
+//    lazy var commentStackView = {
+//        let view = UIStackView(arrangedSubviews: [commentView1,commentView2,commentView3,commentView4,commentView5])
+//        commentView1.commentLabel.text = "comment1comment1comment1comment1comment1comment1comment1comment1"
+//        commentView3.commentLabel.text = "댓글"
+//        view.axis = .vertical
+//        view.spacing = 0
+//        view.distribution = .fill
+//        return view
+//    }()
+    let commentTableView = {
+        let view = SelfSizingTableView()
+        view.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
+        view.allowsSelection = false
+        view.rowHeight = UITableView.automaticDimension
+        view.isScrollEnabled = false
+        view.estimatedRowHeight = 120
+        return view
+    }()
     lazy var commentStackView = {
-        let view = UIStackView(arrangedSubviews: [commentView1,commentView2,commentView3,commentView4,commentView5])
-        commentView1.commentLabel.text = "comment1comment1comment1comment1comment1comment1comment1comment1"
-        commentView3.commentLabel.text = "댓글"
+       let view = UIStackView(arrangedSubviews: [commentTableView])
         view.axis = .vertical
-        view.spacing = 0
-        view.distribution = .fill
         return view
     }()
     
@@ -135,6 +150,11 @@ class StyleDetailView: BaseView {
             make.leading.equalTo(likeCountLabel.snp.leading)
             make.trailing.equalTo(commentCountLabel.snp.trailing)
         }
+//        commentTableView.snp.makeConstraints { make in
+//            make.top.equalTo(contentLabel.snp.bottom).offset(10)
+//            make.width.equalTo(contentView)
+//            make.bottom.equalTo(contentView.snp.bottom)
+//        }
         commentStackView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.width.equalTo(contentView)
