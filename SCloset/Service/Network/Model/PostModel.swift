@@ -16,7 +16,7 @@ struct PostLoad: Decodable {
     let likes: [String?]
     let image: [String?]
     let hashTags: [String?]?
-    let comments: [Comment?]?
+    let comments: [Comment?]
     let _id: String
     let creator: Creator
     let time: String?
@@ -24,6 +24,13 @@ struct PostLoad: Decodable {
     let content: String?
     let content1: String?
     let product_id: String?
+    
+    var likeCount: Int {
+        return likes.count
+    }
+    var commnetCount: Int {
+        return comments.count
+    }
 }
 
 struct Comment: Decodable {
