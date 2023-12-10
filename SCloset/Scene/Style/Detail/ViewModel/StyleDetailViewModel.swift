@@ -9,22 +9,36 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class StyleDetailViewModel {
+class StyleDetailViewModel: ViewModelProtocol {
+    
+    var postData: PostLoad
+    
+    init(postData: PostLoad) {
+        self.postData = postData
+    }
     
     struct Input {
-//        let followButtonTapped
-//        let ellipsisButtonTapped
-//        let likeButtonTapped
-//        let commentButtonTapped
-//        let
+        let viewWillAppear: Observable<Void>
+        let followButtonTapped: ControlEvent<Void>
+        let ellipsisButtonTapped: ControlEvent<Void>
+        let likeButtonTapped: ControlEvent<Void>
+        let commentButtonTapped: ControlEvent<Void>
+        let commentWriteTextFieldChange: ControlProperty<String>
+        let commentDoneButtonTapped: ControlEvent<Void>
     }
     
-    struct OutPut {
-        
+    struct Output {
+        let viewWillAppear: Observable<Void>
+        let ellipsisButtonTapped: ControlEvent<Void>
+//        let followResult: PublishRelay<Bool>
+        let commentButtonTapped: ControlEvent<Void>
+        let commentDoneButtonTapped: ControlEvent<Void>
     }
     
-    func transfrom(){
+    func transform(input: Input) -> Output{
+     
         
+        return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped)
     }
     
 }

@@ -105,9 +105,8 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = viewModel.getPostData(index: indexPath.row)
         print(data)
-        let vc = StyleDetailViewController()
+        let vc = StyleDetailViewController(viewModel: StyleDetailViewModel(postData: data))
         vc.hidesBottomBarWhenPushed = true
-        vc.testData = data
         navigationController?.pushViewController(vc, animated: true)
     }
     
