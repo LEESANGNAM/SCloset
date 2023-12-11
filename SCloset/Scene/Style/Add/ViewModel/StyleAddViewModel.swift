@@ -78,7 +78,7 @@ class StyleAddViewModel {
     
     func postUpLoad(){
         guard let data = imageDataRelay.value  else { return }
-        let test =  NetworkManager.shared.postUpload(imageData: data, title: titleText, content: contentText, product_id: "Scloset", content1: locationMessage.value)
+        let test = NetworkManager.shared.postUpload(api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: "Scloset", content1: locationMessage.value))
         test.subscribe(with: self) { owner, value in
             print("포스트 작성기능 : ", value)
         } onError: { owner, error in

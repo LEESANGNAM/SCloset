@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     case refresh
     case postLoad(next: String, limit: String, product_id: String)
     case postUpLoad(imageData: Data, title: String, content: String,product_id: String, content1: String)
+    case postChange(postId: String, imageData: Data?, title: String?, content: String?)
     
     private var baseURL: URL {
         return URL(string: APIKey.baseURL)!
@@ -42,6 +43,8 @@ enum Router: URLRequestConvertible {
             return "post"
         case .postUpLoad:
             return "post"
+        case .postChange(let postId,_,_,_):
+            return "post/\(postId)"
         }
     }
     
@@ -58,7 +61,7 @@ enum Router: URLRequestConvertible {
                 "Authorization": UserDefaultsManager.token,
                 "Refresh": UserDefaultsManager.refresh
             ]
-        case .postUpLoad:
+        case .postUpLoad,.postChange:
             return [
                 "SeSacKey": Router.key,
                 "Content-Type": "multipart/form-data"
@@ -72,6 +75,8 @@ enum Router: URLRequestConvertible {
             return .post
         case .postLoad, .refresh:
             return .get
+        case .postChange:
+            return .put
         }
     }
     var query: [String: String] {
@@ -90,15 +95,26 @@ enum Router: URLRequestConvertible {
     var multipart: MultipartFormData {
         switch self {
         case .postUpLoad(let imageData, let title, let content, let product_id, let content1):
-            let mutlpart = MultipartFormData()
-            mutlpart.append(title.data(using: .utf8)!, withName: "title")
-            mutlpart.append(content.data(using: .utf8)!, withName: "content")
-            mutlpart.append(imageData, withName: "file", fileName: "testImage.jpeg", mimeType: "image/jpeg")
-            mutlpart.append(product_id.data(using: .utf8)!, withName: "product_id")
-            mutlpart.append(content1.data(using: .utf8)!, withName: "content1")
+            let multipart = MultipartFormData()
+            multipart.append(title.data(using: .utf8)!, withName: "title")
+            multipart.append(content.data(using: .utf8)!, withName: "content")
+            multipart.append(imageData, withName: "file", fileName: "testImage.jpeg", mimeType: "image/jpeg")
+            multipart.append(product_id.data(using: .utf8)!, withName: "product_id")
+            multipart.append(content1.data(using: .utf8)!, withName: "content1")
+            return multipart
+        case .postChange(_, let imageData, let title, let content):
+            let multipart = MultipartFormData()
+            if let imageData {
+                multipart.append(imageData, withName: "file",fileName: "image.jpeg",  mimeType: "image/jpeg")
+            }
+            if let title {
+                multipart.append(title.data(using: .utf8)!, withName: "title")
+            }
             
-            return mutlpart
-        
+            if let content {
+                multipart.append(content.data(using: .utf8)!, withName: "content")
+            }
+            return multipart
         default: return MultipartFormData()
         }
     }
@@ -117,9 +133,10 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(loginRequestModel, into: requst)
         case .emailVlidation(let emailValidationRequestModel):
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
-        case .postLoad(let next,let limit,let product_id):
+        case .postLoad:
             requst = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: requst)
-        case .refresh, .postUpLoad:
+        case .refresh, .postUpLoad,.postChange:
+//            ,.postChange:
             break
         }
         return requst

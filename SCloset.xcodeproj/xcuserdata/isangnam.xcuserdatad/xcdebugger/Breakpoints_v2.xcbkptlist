@@ -130,53 +130,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SCloset/Service/Network/NetworkManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "request(type:api:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784 - 9662b7aeedd76c4b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (RxSwift.AnyObserver&lt;&#x3c4;_0_0&gt;) -&gt; RxSwift.Disposable in SCloset.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(type: &#x3c4;_0_0.Type, api: SCloset.Router) -&gt; RxSwift.Observable&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "SCloset"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/NetworkManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  uuid = "6EB9A9EB-A7A7-4C07-A6F4-0A45ADC58784 - 1b91e90049cd0276"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;&#x3c4;_0_0&gt;) -&gt; RxSwift.Disposable in SCloset.NetworkManager.request&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(type: &#x3c4;_0_0.Type, api: SCloset.Router) -&gt; RxSwift.Observable&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "SCloset"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/NetworkManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "396">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

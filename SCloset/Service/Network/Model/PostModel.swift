@@ -15,7 +15,7 @@ struct PostLoadResponseModel: Decodable {
 struct PostLoad: Decodable {
     let likes: [String?]
     let image: [String?]
-    let hashTags: [String?]?
+    let hashTags: [String?]
     let comments: [Comment?]
     let _id: String
     let creator: Creator
@@ -30,6 +30,19 @@ struct PostLoad: Decodable {
     }
     var commnetCount: Int {
         return comments.count
+    }
+    func toPostInfo() -> PostInfoModel {
+        return PostInfoModel(likes: likes,
+                             image: image,
+                             hashTags: hashTags,
+                             comments: comments,
+                             _id: _id,
+                             creator: creator,
+                             time: time,
+                             title: title,
+                             content: content,
+                             content1: content1,
+                             product_id: product_id)
     }
 }
 
