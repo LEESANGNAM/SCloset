@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StyleAddView: BaseView {
+class StyleEditView: BaseView {
     let scrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -43,7 +43,6 @@ class StyleAddView: BaseView {
     }()
     let contentTextView = {
         let view = UITextView()
-        view.text = "자ㅏ라라라라라라랜요오옹오오내요요요오오옹내요요요요오오옹"
         return view
     }()
     

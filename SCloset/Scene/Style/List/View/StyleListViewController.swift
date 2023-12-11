@@ -44,7 +44,7 @@ class StyleListViewController: BaseViewController {
         
         output.addButtonTap
             .bind(with: self) { owner, _ in
-                owner.navigationController?.pushViewController(StyleAddViewController(), animated: true)
+                owner.navigationController?.pushViewController(StyleEditViewController(viewModel: StyleEditViewModel()), animated: true)
             }.disposed(by: disposeBag)
         output.postData
             .bind(with: self) { owner, _ in

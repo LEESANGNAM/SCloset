@@ -64,7 +64,12 @@ class StyleDetailViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 owner.showPostActionSheet {
                     print("수정")
-                    owner.viewModel.changePost()
+                    let vm = StyleEditViewModel()
+                    vm.postData.accept(owner.viewModel.postData)
+                    vm.setImageData(owner.mainView.lookImageView.image?.jpegData(compressionQuality: 1.0))
+                    let vc = StyleEditViewController(viewModel: vm)
+                    owner.navigationController?.pushViewController(vc, animated: true)
+//                    owner.viewModel.changePost()
                 } deleteAction: {
                     print("삭제")
                 }

@@ -11,12 +11,20 @@ import Toast
 import RxSwift
 import RxCocoa
 
-class StyleAddViewController: BaseViewController {
-    let mainView = StyleAddView()
-    let viewModel = StyleAddViewModel()
+class StyleEditViewController: BaseViewController {
+    let mainView = StyleEditView()
+    let viewModel: StyleEditViewModel
     let disposeBag = DisposeBag()
     var doneButton: UIBarButtonItem!
     var picker: PHPickerViewController!
+    init(viewModel: StyleEditViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func loadView() {
         self.view = mainView
     }
@@ -24,6 +32,7 @@ class StyleAddViewController: BaseViewController {
         super.viewDidLoad()
         setDoneButton()
         setupToolbar()
+        setcontenView()
         setPHPicker()
         setImageViewTapGesture()
         bind()
@@ -34,8 +43,8 @@ class StyleAddViewController: BaseViewController {
             viewDidLoad: Observable.just(()),
             titleTextfieldChange: mainView.titleTextField.rx.text.orEmpty,
             contentTextViewChange: mainView.contentTextView.rx.text.orEmpty,
-            contentTextViewDidBeginEditing:mainView.contentTextView.rx.didEndEditing,
-            contentTextViewDidEndEditing: mainView.contentTextView.rx.didBeginEditing,
+            contentTextViewDidBeginEditing:mainView.contentTextView.rx.didBeginEditing,
+            contentTextViewDidEndEditing: mainView.contentTextView.rx.didEndEditing,
             doneButtonTapped: doneButton.rx.tap
         )
         let output = viewModel.transform(input: input)
@@ -65,6 +74,21 @@ class StyleAddViewController: BaseViewController {
                 }
             }.disposed(by: disposeBag)
         
+        output.postData
+            .bind(with: self) { owner, postData in
+                guard let postData else { return }
+                owner.mainView.titleTextField.text = postData.title
+                owner.mainView.contentTextView.text = postData.content
+                owner.mainView.contentTextView.textColor = .black
+                owner.doneButton.title = "수정"
+            }.disposed(by: disposeBag)
+        
+        output.imageDataRelay
+            .bind(with: self) { owner, data in
+                guard let data else { return }
+                owner.mainView.lookImageView.image = UIImage(data: data)
+                owner.mainView.plusImageView.isHidden = true
+            }.disposed(by: disposeBag)
         
         output.doneButtonTapped
             .bind(with: self) { owner, _ in
@@ -72,8 +96,11 @@ class StyleAddViewController: BaseViewController {
             }.disposed(by: disposeBag)
         
         
-        
-        
+    }
+    
+    private func setcontenView(){
+        mainView.contentTextView.text = viewModel.getPlaceHolder()
+        mainView.contentTextView.textColor = .lightGray
     }
     private func setPHPicker(){
         var phPickerConfiguration = PHPickerConfiguration()
@@ -128,7 +155,6 @@ extension StyleAddViewController: PHPickerViewControllerDelegate{
                     if let imageData = (image as? UIImage)?.jpegData(compressionQuality: 0.5) {
                         self?.viewModel.setImageData(imageData)
                     }
-                    self?.mainView.lookImageView.image = image as? UIImage // 5
                     self?.mainView.plusImageView.isHidden = true
                 }
             }

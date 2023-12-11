@@ -18,10 +18,10 @@
 		D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */; };
 		D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */; };
 		D66338D52B138558004EEDA0 /* ErrorResponseMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338D42B138558004EEDA0 /* ErrorResponseMessages.swift */; };
-		D66338DF2B13A5F2004EEDA0 /* StyleAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338DE2B13A5F2004EEDA0 /* StyleAddView.swift */; };
-		D66338E12B13A68C004EEDA0 /* StyleAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338E02B13A68C004EEDA0 /* StyleAddViewController.swift */; };
+		D66338DF2B13A5F2004EEDA0 /* StyleEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338DE2B13A5F2004EEDA0 /* StyleEditView.swift */; };
+		D66338E12B13A68C004EEDA0 /* StyleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338E02B13A68C004EEDA0 /* StyleEditViewController.swift */; };
 		D66338F52B14AF21004EEDA0 /* PostInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338F42B14AF21004EEDA0 /* PostInfoModel.swift */; };
-		D66338F72B14C1E3004EEDA0 /* StyleAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338F62B14C1E3004EEDA0 /* StyleAddViewModel.swift */; };
+		D66338F72B14C1E3004EEDA0 /* StyleEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66338F62B14C1E3004EEDA0 /* StyleEditViewModel.swift */; };
 		D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D663393C2B18E0EA004EEDA0 /* WeatherManager.swift */; };
 		D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66339402B18F380004EEDA0 /* Date+Extension.swift */; };
 		D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66339422B18F880004EEDA0 /* TodayWeatherModel.swift */; };
@@ -81,10 +81,10 @@
 		D66338CF2B134EBF004EEDA0 /* RefreshModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshModel.swift; sourceTree = "<group>"; };
 		D66338D22B138536004EEDA0 /* NetWorkErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkErrorType.swift; sourceTree = "<group>"; };
 		D66338D42B138558004EEDA0 /* ErrorResponseMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseMessages.swift; sourceTree = "<group>"; };
-		D66338DE2B13A5F2004EEDA0 /* StyleAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleAddView.swift; sourceTree = "<group>"; };
-		D66338E02B13A68C004EEDA0 /* StyleAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleAddViewController.swift; sourceTree = "<group>"; };
+		D66338DE2B13A5F2004EEDA0 /* StyleEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleEditView.swift; sourceTree = "<group>"; };
+		D66338E02B13A68C004EEDA0 /* StyleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleEditViewController.swift; sourceTree = "<group>"; };
 		D66338F42B14AF21004EEDA0 /* PostInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoModel.swift; sourceTree = "<group>"; };
-		D66338F62B14C1E3004EEDA0 /* StyleAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleAddViewModel.swift; sourceTree = "<group>"; };
+		D66338F62B14C1E3004EEDA0 /* StyleEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleEditViewModel.swift; sourceTree = "<group>"; };
 		D66339152B17A9F3004EEDA0 /* SCloset.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SCloset.entitlements; sourceTree = "<group>"; };
 		D663393C2B18E0EA004EEDA0 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		D66339402B18F380004EEDA0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -195,20 +195,20 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		D66338DB2B13A2EE004EEDA0 /* Add */ = {
+		D66338DB2B13A2EE004EEDA0 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
 				D66338DD2B13A2F9004EEDA0 /* ViewModel */,
 				D66338DC2B13A2F4004EEDA0 /* View */,
 			);
-			path = Add;
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		D66338DC2B13A2F4004EEDA0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D66338DE2B13A5F2004EEDA0 /* StyleAddView.swift */,
-				D66338E02B13A68C004EEDA0 /* StyleAddViewController.swift */,
+				D66338DE2B13A5F2004EEDA0 /* StyleEditView.swift */,
+				D66338E02B13A68C004EEDA0 /* StyleEditViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 		D66338DD2B13A2F9004EEDA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D66338F62B14C1E3004EEDA0 /* StyleAddViewModel.swift */,
+				D66338F62B14C1E3004EEDA0 /* StyleEditViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F1A7762B208B6D002CFDE3 /* Detail */,
-				D66338DB2B13A2EE004EEDA0 /* Add */,
+				D66338DB2B13A2EE004EEDA0 /* Edit */,
 				D66338DA2B13A26C004EEDA0 /* List */,
 			);
 			path = Style;
@@ -593,7 +593,7 @@
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66338F52B14AF21004EEDA0 /* PostInfoModel.swift in Sources */,
 				D61D4C372B25E70E001EA7D1 /* ViewModelProtocol.swift in Sources */,
-				D66338DF2B13A5F2004EEDA0 /* StyleAddView.swift in Sources */,
+				D66338DF2B13A5F2004EEDA0 /* StyleEditView.swift in Sources */,
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
 				D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */,
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
@@ -619,10 +619,10 @@
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
 				D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */,
 				D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */,
-				D66338F72B14C1E3004EEDA0 /* StyleAddViewModel.swift in Sources */,
+				D66338F72B14C1E3004EEDA0 /* StyleEditViewModel.swift in Sources */,
 				D66793672B03DE780022A47F /* SceneDelegate.swift in Sources */,
 				D66338CE2B133220004EEDA0 /* TokenIntercetor.swift in Sources */,
-				D66338E12B13A68C004EEDA0 /* StyleAddViewController.swift in Sources */,
+				D66338E12B13A68C004EEDA0 /* StyleEditViewController.swift in Sources */,
 				D6F1A7832B20D220002CFDE3 /* ProfileView.swift in Sources */,
 				D699A4132B0E355A00C93AA0 /* TextfieldTitleLabel.swift in Sources */,
 			);
