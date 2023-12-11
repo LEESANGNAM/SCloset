@@ -11,11 +11,11 @@ import RxSwift
 
 class StyleDetailViewModel: ViewModelProtocol {
     
-    var postData: PostLoad
-    
+    var postData: PostInfoModel
+    let disposeBag = DisposeBag()
     var item: [String] = ["테스트1","테스트2"]
     
-    init(postData: PostLoad) {
+    init(postData: PostInfoModel) {
         self.postData = postData
     }
     
@@ -46,4 +46,22 @@ class StyleDetailViewModel: ViewModelProtocol {
     func additem() {
         item.append("테스트\(Int.random(in: 1...500))")
     }
+    
+    func changePost() {
+        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: nil, content: nil))
+        
+        postInfo.subscribe(with: self) { owner, value in
+            print("포스트 수정후 모델",value)
+        } onError: { owner, error in
+            if let testErrorType = error as? NetWorkError {
+                let errortext = testErrorType.message()
+                print(errortext)
+            }
+        } onCompleted: { _ in
+            print("네트워크완료")
+        } onDisposed: { _ in
+            print("네트워크 디스포즈")
+        }.disposed(by: disposeBag)
+    }
+    
 }

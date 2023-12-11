@@ -64,6 +64,7 @@ class StyleDetailViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 owner.showPostActionSheet {
                     print("수정")
+                    owner.viewModel.changePost()
                 } deleteAction: {
                     print("삭제")
                 }
@@ -93,7 +94,7 @@ class StyleDetailViewController: BaseViewController {
         mainView.commentCountLabel.text = "댓글 \(postdata.comments.count)개"
     }
     
-    private func setImage(data: PostLoad) {
+    private func setImage(data: PostInfoModel) {
         view.layoutIfNeeded()
         mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2)
 
