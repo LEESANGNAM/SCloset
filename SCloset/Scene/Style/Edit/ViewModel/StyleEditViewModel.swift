@@ -72,7 +72,11 @@ class StyleEditViewModel {
         
         input.doneButtonTapped
             .bind(with: self) { owner, _ in
-                owner.postUpLoad()
+                if let postInfo = owner.postData.value{
+                    owner.changePost(postInfo: postInfo)
+                } else {
+                    owner.postUpLoad()
+                }
             }.disposed(by: disposeBag)
     
         
@@ -111,21 +115,23 @@ class StyleEditViewModel {
             print("네트워크 디스포즈")
         }.disposed(by: disposeBag)
     }
-//    
-//    func changePost() {
-//        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: nil, content: nil))
-//        
-//        postInfo.subscribe(with: self) { owner, value in
-//            print("포스트 수정후 모델",value)
-//        } onError: { owner, error in
-//            if let testErrorType = error as? NetWorkError {
-//                let errortext = testErrorType.message()
-//                print(errortext)
-//            }
-//        } onCompleted: { _ in
-//            print("네트워크완료")
-//        } onDisposed: { _ in
-//            print("네트워크 디스포즈")
-//        }.disposed(by: disposeBag)
-//    }
+    
+    func changePost(postInfo: PostInfoModel) {
+        guard let data = imageDataRelay.value  else { return }
+        
+        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postInfo._id, imageData: data, title: titleText, content: contentText))
+        
+        postInfo.subscribe(with: self) { owner, value in
+            print("포스트 수정후 모델",value)
+        } onError: { owner, error in
+            if let testErrorType = error as? NetWorkError {
+                let errortext = testErrorType.message()
+                print(errortext)
+            }
+        } onCompleted: { _ in
+            print("네트워크완료")
+        } onDisposed: { _ in
+            print("네트워크 디스포즈")
+        }.disposed(by: disposeBag)
+    }
 }

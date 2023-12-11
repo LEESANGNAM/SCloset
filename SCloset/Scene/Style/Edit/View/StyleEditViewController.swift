@@ -39,7 +39,7 @@ class StyleEditViewController: BaseViewController {
     }
     
     private func bind() {
-        let input = StyleAddViewModel.Input(
+        let input = StyleEditViewModel.Input(
             viewDidLoad: Observable.just(()),
             titleTextfieldChange: mainView.titleTextField.rx.text.orEmpty,
             contentTextViewChange: mainView.contentTextView.rx.text.orEmpty,
@@ -143,7 +143,7 @@ class StyleEditViewController: BaseViewController {
     
 }
 
-extension StyleAddViewController: PHPickerViewControllerDelegate{
+extension StyleEditViewController: PHPickerViewControllerDelegate{
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         let itemProvider = results.first?.itemProvider // 2
