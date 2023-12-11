@@ -49,6 +49,21 @@
                   endingLineNumber = "23"
                   offsetFromSymbolStart = "212">
                </Location>
+               <Location
+                  uuid = "2BF242A1-FB8D-4B14-AA73-E83417D35427 - fb8983e413666d0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.retry(_: Alamofire.Request, for: Alamofire.Session, dueTo: Swift.Error, completion: (Alamofire.RetryResult) -&gt; ()) -&gt; ()"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "476">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,6 +143,54 @@
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51CD3D30-A3CF-42C5-8C49-0D411A91E57A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "bind()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D05B4FA-04FF-4F69-B977-E1CA58106990"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "setData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45F638D9-2C1C-4F49-B59E-63BFD9CAF4CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "setImage(data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

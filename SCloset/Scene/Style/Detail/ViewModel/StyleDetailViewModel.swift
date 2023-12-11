@@ -11,13 +11,9 @@ import RxSwift
 
 class StyleDetailViewModel: ViewModelProtocol {
     
-    var postData: PostInfoModel
+    var postData = BehaviorRelay<PostInfoModel?>(value: nil)
     let disposeBag = DisposeBag()
     var item: [String] = ["테스트1","테스트2"]
-    
-    init(postData: PostInfoModel) {
-        self.postData = postData
-    }
     
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -38,7 +34,10 @@ class StyleDetailViewModel: ViewModelProtocol {
     }
     
     func transform(input: Input) -> Output{
-     
+        input.viewWillAppear
+            .bind(with: self) { owner, _ in
+                owner.changePost()
+            }.disposed(by: disposeBag)
         
         return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped)
     }
@@ -47,11 +46,19 @@ class StyleDetailViewModel: ViewModelProtocol {
         item.append("테스트\(Int.random(in: 1...500))")
     }
     
+    func getPost() -> PostInfoModel? {
+        return postData.value
+    }
+    
     func changePost() {
-        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: nil, content: nil))
+        guard let postData = postData.value else { return }
+        print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
+        print("title: ",postData.title)
+        print("contenText: ",postData.content)
+        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: postData.title, content: postData.content))
         
         postInfo.subscribe(with: self) { owner, value in
-            print("포스트 수정후 모델",value)
+            owner.postData.accept(value)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 let errortext = testErrorType.message()

@@ -52,6 +52,9 @@ class StyleDetailViewController: BaseViewController {
         
         output.viewWillAppear
             .bind(with: self) { owner, _ in
+                print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
+                print("viewWillApper")
+                print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
                 owner.setData()
             }.disposed(by: disposeBag)
         
@@ -64,12 +67,14 @@ class StyleDetailViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 owner.showPostActionSheet {
                     print("수정")
-                    let vm = StyleEditViewModel()
-                    vm.postData.accept(owner.viewModel.postData)
-                    vm.setImageData(owner.mainView.lookImageView.image?.jpegData(compressionQuality: 1.0))
-                    let vc = StyleEditViewController(viewModel: vm)
-                    owner.navigationController?.pushViewController(vc, animated: true)
-//                    owner.viewModel.changePost()
+                    if let data = owner.viewModel.getPost(){
+                        let vm = StyleEditViewModel()
+                        vm.postData.accept(data)
+                        vm.setImageData(owner.mainView.lookImageView.image?.jpegData(compressionQuality: 1.0))
+                        let vc = StyleEditViewController(viewModel: vm)
+                        vc.delegate = self
+                        owner.navigationController?.pushViewController(vc, animated: true)
+                    }
                 } deleteAction: {
                     print("삭제")
                 }
@@ -86,16 +91,16 @@ class StyleDetailViewController: BaseViewController {
     }
     
    private func setData(){
-        let postdata = viewModel.postData
-            mainView.profileView.nicknameLabel.text = postdata.creator.nick
-            mainView.profileView.profileImageView.image = UIImage(systemName: "person")
-            mainView.profileView.dateLabel.text = postdata.time
-            setImage(data: postdata)
-            
-            mainView.contentLabel.text = postdata.content
-            mainView.locationLabel.text = postdata.content1
-            
-            mainView.likeCountLabel.text = "좋아요 \(postdata.likes.count)개"
+       guard let postdata = viewModel.getPost() else {return }
+        mainView.profileView.nicknameLabel.text = postdata.creator.nick
+        mainView.profileView.profileImageView.image = UIImage(systemName: "person")
+        mainView.profileView.dateLabel.text = postdata.time
+        setImage(data: postdata)
+        
+        mainView.contentLabel.text = postdata.content
+        mainView.locationLabel.text = postdata.content1
+        
+        mainView.likeCountLabel.text = "좋아요 \(postdata.likes.count)개"
         mainView.commentCountLabel.text = "댓글 \(postdata.comments.count)개"
     }
     
@@ -131,6 +136,12 @@ class StyleDetailViewController: BaseViewController {
         actionSheet.addAction(cancelAction)
         
         present(actionSheet, animated: true)
+    }
+}
+
+extension StyleDetailViewController: StyleEditDelegate {
+    func didUpdatePostData(_ postData: PostInfoModel) {
+        viewModel.postData.accept(postData)
     }
 }
 

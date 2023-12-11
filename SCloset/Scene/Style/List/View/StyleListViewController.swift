@@ -105,7 +105,9 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = viewModel.getPostData(index: indexPath.row)
         print(data)
-        let vc = StyleDetailViewController(viewModel: StyleDetailViewModel(postData: data.toPostInfo()))
+        let vm = StyleDetailViewModel()
+        vm.postData.accept(data.toPostInfo())
+        let vc = StyleDetailViewController(viewModel: vm)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -117,8 +119,8 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
 extension StyleListViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths{
-            print(indexPath)
-            print("커서값",viewModel.getCursor())
+//            print(indexPath)
+//            print("커서값",viewModel.getCursor())
             if viewModel.getPostCount() - 4 == indexPath.row &&  !viewModel.getCursor().isEmpty {
                 viewModel.postLoad()
             }

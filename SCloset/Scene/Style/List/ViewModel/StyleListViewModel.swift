@@ -65,8 +65,8 @@ class StyleListViewModel {
             data.append(contentsOf: value.data)
             owner.postData.accept(data)
             owner.setCursor(value.next_cursor)
-            print("포스트 조회기능 : ", value.data)
-            print("포스트 cusor : ", value.next_cursor)
+//            print("포스트 조회기능 : ", value.data)
+//            print("포스트 cusor : ", value.next_cursor)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 let errorText = testErrorType.message()

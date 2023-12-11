@@ -17,6 +17,9 @@ class StyleEditViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var doneButton: UIBarButtonItem!
     var picker: PHPickerViewController!
+    
+    weak var delegate: StyleEditDelegate?
+    
     init(viewModel: StyleEditViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -37,7 +40,6 @@ class StyleEditViewController: BaseViewController {
         setImageViewTapGesture()
         bind()
     }
-    
     private func bind() {
         let input = StyleEditViewModel.Input(
             viewDidLoad: Observable.just(()),
@@ -90,12 +92,16 @@ class StyleEditViewController: BaseViewController {
                 owner.mainView.plusImageView.isHidden = true
             }.disposed(by: disposeBag)
         
-        output.doneButtonTapped
-            .bind(with: self) { owner, _ in
-                owner.navigationController?.popViewController(animated: true)
+        
+        output.netWorkSucces
+            .bind(with: self) { owner, value in
+                if value.1,
+                   let data = value.0 {
+                    owner.delegate?.didUpdatePostData(data)
+                    owner.navigationController?.popViewController(animated: true)
+                }
             }.disposed(by: disposeBag)
-        
-        
+      
     }
     
     private func setcontenView(){

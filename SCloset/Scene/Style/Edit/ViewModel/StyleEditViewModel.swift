@@ -18,6 +18,7 @@ class StyleEditViewModel {
     private var locationMessage =  BehaviorRelay<String>(value: "")
     var postData = BehaviorRelay<PostInfoModel?>(value: nil)
     private var errorMessage =  PublishRelay<String>()
+    private let netWorkSucces = BehaviorRelay<(PostInfoModel?,Bool)>(value: (nil,false))
     struct Input {
         let viewDidLoad: Observable<Void>
         let titleTextfieldChange: ControlProperty<String>
@@ -29,7 +30,7 @@ class StyleEditViewModel {
     struct Output {
         let locationMessage: BehaviorRelay<String>
         let errorMessage: PublishRelay<String>
-        let doneButtonTapped: ControlEvent<Void>
+        let netWorkSucces: BehaviorRelay<(PostInfoModel?,Bool)>
         let contentTextViewDidBeginEditing:  ControlEvent<()>
         let contentTextViewDidEndEditing:  ControlEvent<()>
         let postData: BehaviorRelay<PostInfoModel?>
@@ -83,7 +84,7 @@ class StyleEditViewModel {
         return Output(
             locationMessage: locationMessage,
             errorMessage: errorMessage,
-            doneButtonTapped: input.doneButtonTapped,
+            netWorkSucces: netWorkSucces,
             contentTextViewDidBeginEditing: input.contentTextViewDidBeginEditing,
             contentTextViewDidEndEditing: input.contentTextViewDidEndEditing,
             postData: postInfoData, imageDataRelay: imageDataRelay
@@ -104,10 +105,12 @@ class StyleEditViewModel {
         let test = NetworkManager.shared.postUpload(api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: "Scloset", content1: locationMessage.value))
         test.subscribe(with: self) { owner, value in
             print("포스트 작성기능 : ", value)
+            owner.netWorkSucces.accept((value,true))
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 let errortext = testErrorType.message()
                 print(errortext)
+                owner.errorMessage.accept(errortext)
             }
         } onCompleted: { _ in
             print("네트워킹 완료")
@@ -118,15 +121,16 @@ class StyleEditViewModel {
     
     func changePost(postInfo: PostInfoModel) {
         guard let data = imageDataRelay.value  else { return }
-        
         let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postInfo._id, imageData: data, title: titleText, content: contentText))
         
         postInfo.subscribe(with: self) { owner, value in
             print("포스트 수정후 모델",value)
+            owner.netWorkSucces.accept((value,true))
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
                 let errortext = testErrorType.message()
                 print(errortext)
+                owner.errorMessage.accept(errortext)
             }
         } onCompleted: { _ in
             print("네트워크완료")
