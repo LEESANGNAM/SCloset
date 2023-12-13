@@ -24,7 +24,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
     }()
     let likeButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -66,13 +66,13 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         }
         likeButton.snp.makeConstraints { make in
             make.centerY.equalTo(userNameLabel)
-            make.leading.equalTo(userNameLabel.snp.trailing).offset(5)
+            make.leading.greaterThanOrEqualTo(userNameLabel.snp.trailing).offset(5)
             make.size.equalTo(20)
         }
         likeCountLabel.snp.makeConstraints { make in
             make.centerY.equalTo(likeButton)
             make.leading.equalTo(likeButton.snp.trailing).offset(5)
-            make.trailing.equalTo(self.safeAreaLayoutGuide)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-10)
         }
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(userNameLabel.snp.bottom).offset(5)
@@ -87,9 +87,17 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
             contentLabel.text = locationContent
         }
         let username = data.creator.nick
-        
         userNameLabel.text = username
         setImage(data: data)
+        likeCountLabel.text = "\(data.likeCount)"
+        var heartImage: UIImage
+        let islike = data.likes.contains(UserDefaultsManager.id)
+        if islike {
+            heartImage = UIImage(systemName: "heart.fill")!
+        }else {
+            heartImage = UIImage(systemName: "heart")!
+        }
+        likeButton.setImage(heartImage, for: .normal)
         
     }
     
@@ -99,29 +107,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
            let imageBase {
             let urlString = APIKey.baseURL + imageBase
             let imageSize = lookImageView.frame.size
-//            let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize ) //사이즈만큼 줄이기
-//            lookImageView.kf.indicatorType = .activity //인디케이터
-            
-//            let imageLoadRequest = AnyModifier { request in
-//                var requestBody = request
-//                requestBody.setValue(APIKey.key, forHTTPHeaderField: "SesacKey")
-//                requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
-//                return requestBody
-//            }
             lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "photo.fill")
-//            lookImageView.kf.setImage(
-//                with: url,
-//                options: [
-//                    .processor(dowunSizeProcessor),
-//                    .requestModifier(imageLoadRequest)
-//                ]) { result in
-//                    switch result {
-//                    case .success(_):
-//                        print("성공")
-//                    case .failure(_):
-//                        print("실패")
-//                    }
-//                }
         }
     }
 }

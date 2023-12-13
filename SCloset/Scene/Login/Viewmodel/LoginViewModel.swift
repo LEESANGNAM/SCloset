@@ -46,9 +46,10 @@ class LoginViewModel {
         return Output(loginSuccess: success,errorMessage: errorMessage, signUpButtonTapped: input.signUpButtonTapped)
     }
     
-    private func setToken(token: String, refesh: String) {
+    private func setToken(token: String, refesh: String,id: String) {
         UserDefaultsManager.token = token
         UserDefaultsManager.refresh = refesh
+        UserDefaultsManager.id = id
     }
     private func setIsLogin() {
         UserDefaultsManager.isLogin = true
@@ -59,7 +60,7 @@ class LoginViewModel {
         let test = NetworkManager.shared.request(type: LoginResponseModel.self, api: .login(testLoginModel))
         test.subscribe(with: self) { owner, value in
             owner.success.accept(true)
-            owner.setToken(token: value.token, refesh: value.refreshToken)
+            owner.setToken(token: value.token, refesh: value.refreshToken,id: value._id)
             owner.setIsLogin()
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {

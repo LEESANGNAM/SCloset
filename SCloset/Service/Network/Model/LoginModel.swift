@@ -14,4 +14,5 @@ struct LoginRequestModel: Encodable {
 struct LoginResponseModel: Decodable {
     var token: String
     var refreshToken: String
+    var _id: String
 }
