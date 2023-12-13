@@ -14,7 +14,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     var postData = BehaviorRelay<PostInfoModel?>(value: nil)
     let disposeBag = DisposeBag()
     var item: [String] = ["테스트1","테스트2"]
-    
+    let isLike = BehaviorRelay(value: false)
     struct Input {
         let viewWillAppear: Observable<Void>
         let followButtonTapped: ControlEvent<Void>
@@ -28,6 +28,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     struct Output {
         let viewWillAppear: Observable<Void>
         let ellipsisButtonTapped: ControlEvent<Void>
+        let isLike: BehaviorRelay<Bool>
 //        let followResult: PublishRelay<Bool>
         let commentButtonTapped: ControlEvent<Void>
         let commentDoneButtonTapped: ControlEvent<Void>
@@ -36,10 +37,14 @@ class StyleDetailViewModel: ViewModelProtocol {
     func transform(input: Input) -> Output{
         input.viewWillAppear
             .bind(with: self) { owner, _ in
-                owner.changePost()
+                owner.isLikeVaild()
+            }.disposed(by: disposeBag)
+        input.likeButtonTapped
+            .bind(with: self) { owner, _ in
+                owner.likeButtonTapped()
             }.disposed(by: disposeBag)
         
-        return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped)
+        return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped)
     }
     
     func additem() {
@@ -49,18 +54,15 @@ class StyleDetailViewModel: ViewModelProtocol {
     func getPost() -> PostInfoModel? {
         return postData.value
     }
-    func isLikeVaild() -> Bool {
+    func isLikeVaild(){
         if let post = getPost() {
-            return post.likes.contains(UserDefaultsManager.id)
+            let like = post.likes.contains(UserDefaultsManager.id)
+            isLike.accept(like)
         }
-        return false
     }
     
     func changePost() {
         guard let postData = postData.value else { return }
-        print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-        print("title: ",postData.title)
-        print("contenText: ",postData.content)
         let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: postData.title, content: postData.content))
         
         postInfo.subscribe(with: self) { owner, value in
@@ -74,6 +76,24 @@ class StyleDetailViewModel: ViewModelProtocol {
             print("네트워크완료")
         } onDisposed: { _ in
             print("네트워크 디스포즈")
+        }.disposed(by: disposeBag)
+    }
+    func likeButtonTapped() {
+        guard let postData = postData.value else { return }
+        let like = NetworkManager.shared.request(type: PostLikeModel.self, api: .postLike(postId: postData._id))
+        
+        like.subscribe(with: self) { owner, model in
+            let like = model.like_status
+            owner.isLike.accept(like)
+        } onError: { owner, error in
+            if let error = error as? NetWorkError {
+                let errorText = error.message()
+                print(errorText)
+            }
+        } onCompleted: { _ in
+            print("완료")
+        } onDisposed: { _ in
+            print("디스포즈")
         }.disposed(by: disposeBag)
     }
     

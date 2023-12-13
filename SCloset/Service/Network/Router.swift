@@ -24,6 +24,7 @@ enum Router: URLRequestConvertible {
     case postLoad(next: String, limit: String, product_id: String)
     case postUpLoad(imageData: Data, title: String, content: String,product_id: String, content1: String)
     case postChange(postId: String, imageData: Data?, title: String?, content: String?)
+    case postLike(postId: String)
     
     private var baseURL: URL {
         return URL(string: APIKey.baseURL)!
@@ -39,22 +40,22 @@ enum Router: URLRequestConvertible {
             return "validation/email"
         case .refresh:
             return "refresh"
-        case .postLoad(let next, let limit, let id):
+        case .postLoad(_,_,_):
             return "post"
         case .postUpLoad:
             return "post"
         case .postChange(let postId,_,_,_):
             return "post/\(postId)"
+        case .postLike(postId: let postId):
+            return "post/like/\(postId)"
         }
     }
     
     
     var header: HTTPHeaders {
         switch self {
-        case .join, .login, .emailVlidation:
+        case .join, .login, .emailVlidation,.postLoad, .postLike:
             return ["SesacKey": Router.key ]
-        case .postLoad:
-            return ["SesacKey": Router.key]
         case .refresh:
             return [
                 "SeSacKey": Router.key,
@@ -71,7 +72,7 @@ enum Router: URLRequestConvertible {
     }
     var method: HTTPMethod {
         switch self {
-        case .join, .login, .emailVlidation,.postUpLoad:
+        case .join, .login, .emailVlidation,.postUpLoad,.postLike:
             return .post
         case .postLoad, .refresh:
             return .get
@@ -135,7 +136,7 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
         case .postLoad:
             requst = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: requst)
-        case .refresh, .postUpLoad,.postChange:
+        case .refresh, .postUpLoad,.postChange,.postLike:
 //            ,.postChange:
             break
         }

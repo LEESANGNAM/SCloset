@@ -69,5 +69,6 @@ class TokenIntercetor: RequestInterceptor {
         UserDefaultsManager.isLogin = false
         UserDefaultsManager.token = ""
         UserDefaultsManager.refresh = ""
+        UserDefaultsManager.id = ""
     }
 }

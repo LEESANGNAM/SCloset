@@ -52,9 +52,6 @@ class StyleDetailViewController: BaseViewController {
         
         output.viewWillAppear
             .bind(with: self) { owner, _ in
-                print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-                print("viewWillApper")
-                print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
                 owner.setData()
             }.disposed(by: disposeBag)
         
@@ -78,7 +75,6 @@ class StyleDetailViewController: BaseViewController {
                 } deleteAction: {
                     print("삭제")
                 }
-
             }.disposed(by: disposeBag)
         
         output.commentDoneButtonTapped
@@ -87,6 +83,10 @@ class StyleDetailViewController: BaseViewController {
                 owner.mainView.commentTableView.reloadData()
             }.disposed(by: disposeBag)
         
+        output.isLike
+            .bind(with: self) { owner, value in
+                owner.setLikeButton(isLike: value)
+            }.disposed(by: disposeBag)
         
     }
     
@@ -96,7 +96,6 @@ class StyleDetailViewController: BaseViewController {
         mainView.profileView.profileImageView.image = UIImage(systemName: "person")
         mainView.profileView.dateLabel.text = postdata.time
         setImage(data: postdata)
-        setLikeButton(isLike: viewModel.isLikeVaild())
         mainView.contentLabel.text = postdata.content
         mainView.locationLabel.text = postdata.content1
         
