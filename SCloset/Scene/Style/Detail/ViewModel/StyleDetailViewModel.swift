@@ -49,6 +49,12 @@ class StyleDetailViewModel: ViewModelProtocol {
     func getPost() -> PostInfoModel? {
         return postData.value
     }
+    func isLikeVaild() -> Bool {
+        if let post = getPost() {
+            return post.likes.contains(UserDefaultsManager.id)
+        }
+        return false
+    }
     
     func changePost() {
         guard let postData = postData.value else { return }

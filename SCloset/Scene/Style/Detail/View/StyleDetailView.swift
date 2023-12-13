@@ -37,7 +37,7 @@ class StyleDetailView: BaseView {
     }()
     let likeButton = {
         let view = UIButton()
-        view.setImage(UIImage(systemName: "heart"), for: .normal)
+        view.setImage(UIImage(systemName: "star"), for: .normal)
         view.imageView?.contentMode = .scaleAspectFit
         view.contentHorizontalAlignment = .fill
         view.contentVerticalAlignment = .fill

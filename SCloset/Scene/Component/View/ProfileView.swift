@@ -75,8 +75,9 @@ class ProfileView: BaseView {
         }
         
     }
-    func setData(corner: CGFloat ) {
+    func setData(corner: CGFloat,data: PostInfoModel ) {
         profileImageView.layer.cornerRadius = corner
+        dateLabel.text = data.relativeDate
         followButton.layer.cornerRadius = 10
     }
     

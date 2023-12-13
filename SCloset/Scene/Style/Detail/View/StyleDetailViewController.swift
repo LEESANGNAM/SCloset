@@ -91,12 +91,12 @@ class StyleDetailViewController: BaseViewController {
     }
     
    private func setData(){
-       guard let postdata = viewModel.getPost() else {return }
+       guard let postdata = viewModel.getPost() else { return }
         mainView.profileView.nicknameLabel.text = postdata.creator.nick
         mainView.profileView.profileImageView.image = UIImage(systemName: "person")
         mainView.profileView.dateLabel.text = postdata.time
         setImage(data: postdata)
-        
+        setLikeButton(isLike: viewModel.isLikeVaild())
         mainView.contentLabel.text = postdata.content
         mainView.locationLabel.text = postdata.content1
         
@@ -106,15 +106,21 @@ class StyleDetailViewController: BaseViewController {
     
     private func setImage(data: PostInfoModel) {
         view.layoutIfNeeded()
-        mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2)
+        mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2, data: data)
 
-//        mainView.commentView1.setData(corner: mainView.commentView1.profileImageView.frame.width / 2)
         if let imageBase = data.image.first,
            let imageBase{
             let urlString = APIKey.baseURL +  imageBase
             let imageSize = mainView.lookImageView.frame.size
             
             mainView.lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "star")
+        }
+    }
+    private func setLikeButton(isLike: Bool) {
+        if isLike {
+            mainView.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            mainView.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
     

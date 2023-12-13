@@ -20,4 +20,14 @@ struct PostInfoModel: Decodable {
     let content: String?
     let content1: String?
     let product_id: String?
+    
+    var likeCount: Int {
+        return likes.count
+    }
+    var commnetCount: Int {
+        return comments.count
+    }
+    var relativeDate: String? {
+        time?.toDate()?.relativeDate()
+    }    
 }
