@@ -77,9 +77,8 @@ class StyleDetailViewController: BaseViewController {
                 }
             }.disposed(by: disposeBag)
         
-        output.commentDoneButtonTapped
+        output.item
             .bind(with: self) { owner, _ in
-                owner.viewModel.additem()
                 owner.mainView.commentTableView.reloadData()
             }.disposed(by: disposeBag)
         
@@ -152,14 +151,14 @@ extension StyleDetailViewController: StyleEditDelegate {
 
 extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.item.count
+        return viewModel.getcommnetsCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        
+        let data = viewModel.getcommnet(indexPath.row)
         cell.backgroundColor = .brown
-        cell.commentLabel.text = viewModel.item[indexPath.row]
+        cell.commentLabel.text = data?.content
         
         return cell
     }

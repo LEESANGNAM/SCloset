@@ -21,6 +21,12 @@ class TokenIntercetor: RequestInterceptor {
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         print("retry 진입 나와라")
+        if let response = request.task?.response {
+          print("무슨 리스폰스 타입이지",response)
+      } else {
+          // 응답이 없는 경우 처리 로직
+          print("이건 응답이없는건가?")
+      }
         guard let response = request.task?.response as? HTTPURLResponse else {
             print("HttpurlRespose 아님")
             completion(.doNotRetryWithError(error))

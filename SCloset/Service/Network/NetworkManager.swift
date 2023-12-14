@@ -20,6 +20,8 @@ class NetworkManager {
             guard let statusCode = response.response?.statusCode else { return }
             switch response.result {
             case .success(let data):
+                print("-----------------------------")
+                print("요청 데이터 용량",data)
                 do {
                     let dataResult = try JSONDecoder().decode(T.self, from: data)
                     observer.onNext(dataResult)
