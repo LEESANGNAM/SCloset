@@ -22,6 +22,7 @@ enum Router: URLRequestConvertible {
     case emailVlidation(EmailValidRequestModel)
     case refresh
     case postLoad(next: String, limit: String, product_id: String)
+    case postSearch(postId: String)
     case postUpLoad(imageData: Data, title: String, content: String,product_id: String, content1: String)
     case postChange(postId: String, imageData: Data?, title: String?, content: String?)
     case postLike(postId: String)
@@ -46,15 +47,17 @@ enum Router: URLRequestConvertible {
             return "post"
         case .postChange(let postId,_,_,_):
             return "post/\(postId)"
-        case .postLike(postId: let postId):
+        case .postLike(let postId):
             return "post/like/\(postId)"
+        case .postSearch(let postId):
+            return "post/\(postId)"
         }
     }
     
     
     var header: HTTPHeaders {
         switch self {
-        case .join, .login, .emailVlidation,.postLoad, .postLike:
+        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch:
             return ["SesacKey": Router.key ]
         case .refresh:
             return [
@@ -74,7 +77,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation,.postUpLoad,.postLike:
             return .post
-        case .postLoad, .refresh:
+        case .postLoad, .refresh,.postSearch:
             return .get
         case .postChange:
             return .put
@@ -136,8 +139,7 @@ enum Router: URLRequestConvertible {
             requst = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: requst)
         case .postLoad:
             requst = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: requst)
-        case .refresh, .postUpLoad,.postChange,.postLike:
-//            ,.postChange:
+        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch:
             break
         }
         return requst

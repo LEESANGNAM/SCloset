@@ -37,6 +37,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     func transform(input: Input) -> Output{
         input.viewWillAppear
             .bind(with: self) { owner, _ in
+                owner.postSearch()
                 owner.isLikeVaild()
             }.disposed(by: disposeBag)
         input.likeButtonTapped
@@ -61,11 +62,13 @@ class StyleDetailViewModel: ViewModelProtocol {
         }
     }
     
-    func changePost() {
+    func postSearch() {
         guard let postData = postData.value else { return }
-        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postData._id, imageData: nil, title: postData.title, content: postData.content))
-        
+        let postInfo = NetworkManager.shared.request(type: PostInfoModel.self, api: .postSearch(postId: postData._id))
         postInfo.subscribe(with: self) { owner, value in
+            print("포스트 한개 조회")
+            print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
+            print(value)
             owner.postData.accept(value)
         } onError: { owner, error in
             if let testErrorType = error as? NetWorkError {
@@ -78,6 +81,7 @@ class StyleDetailViewModel: ViewModelProtocol {
             print("네트워크 디스포즈")
         }.disposed(by: disposeBag)
     }
+    
     func likeButtonTapped() {
         guard let postData = postData.value else { return }
         let like = NetworkManager.shared.request(type: PostLikeModel.self, api: .postLike(postId: postData._id))
