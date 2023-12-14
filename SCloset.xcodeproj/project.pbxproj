@@ -48,6 +48,7 @@
 		D66793B12B0512F50022A47F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793B02B0512F50022A47F /* Router.swift */; };
 		D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66793B22B05248A0022A47F /* NetworkManager.swift */; };
 		D691DF542B2B3C8D0001B9E7 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691DF532B2B3C8D0001B9E7 /* CommentModel.swift */; };
+		D691DF562B2B5F750001B9E7 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D691DF552B2B5F750001B9E7 /* UITextField+Extension.swift */; };
 		D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69665692B0CE899009610E9 /* LoginModel.swift */; };
 		D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696656B2B0CE8D3009610E9 /* SignUpModel.swift */; };
 		D69665702B0CFB9B009610E9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696656F2B0CFB9B009610E9 /* LoginView.swift */; };
@@ -110,6 +111,7 @@
 		D66793B02B0512F50022A47F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D66793B22B05248A0022A47F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D691DF532B2B3C8D0001B9E7 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		D691DF552B2B5F750001B9E7 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D69665692B0CE899009610E9 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		D696656B2B0CE8D3009610E9 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		D696656F2B0CFB9B009610E9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				D61D4C2E2B246475001EA7D1 /* UIImageView+Extension.swift */,
 				D61D4C302B24720B001EA7D1 /* UIImage+Extension.swift */,
 				D657980D2B2A0FF20068B622 /* String+Extension.swift */,
+				D691DF552B2B5F750001B9E7 /* UITextField+Extension.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
 				D61D4C3B2B2632C4001EA7D1 /* SelfSizingTableView.swift in Sources */,
 				D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */,
+				D691DF562B2B5F750001B9E7 /* UITextField+Extension.swift in Sources */,
 				D66339432B18F880004EEDA0 /* TodayWeatherModel.swift in Sources */,
 				D6F1A77D2B20CC7C002CFDE3 /* NickNameLabel.swift in Sources */,
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,

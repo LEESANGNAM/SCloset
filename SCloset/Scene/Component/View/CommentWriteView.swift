@@ -34,7 +34,11 @@ class CommentWriteView: BaseView {
     override func setHierarchy() {
         addSubview(profileIamgeView)
         addSubview(commentTextField)
-        addSubview(doneButton)
+//        addSubview(doneButton)
+        commentTextField.addLeftPadding()
+        doneButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) 
+        commentTextField.rightView = doneButton
+        commentTextField.rightViewMode = .always
     }
     
     override func setconstraints() {
@@ -51,12 +55,12 @@ class CommentWriteView: BaseView {
             make.height.equalTo(40)
         }
         
-        doneButton.snp.makeConstraints { make in
-            make.centerY.equalTo(commentTextField)
-            make.trailing.equalTo(commentTextField.snp.trailing).offset(-10)
-            make.height.equalTo(commentTextField.snp.height)
-            make.size.equalTo(40)
-        }
+//        doneButton.snp.makeConstraints { make in
+//            make.centerY.equalTo(commentTextField)
+//            make.trailing.equalTo(commentTextField.snp.trailing).offset(-10)
+//            make.height.equalTo(commentTextField.snp.height)
+//            make.size.equalTo(40)
+//        }
         
     }
     

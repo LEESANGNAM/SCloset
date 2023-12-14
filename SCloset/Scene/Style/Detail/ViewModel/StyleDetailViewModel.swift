@@ -14,8 +14,9 @@ class StyleDetailViewModel: ViewModelProtocol {
     var postData = BehaviorRelay<PostInfoModel?>(value: nil)
     let disposeBag = DisposeBag()
     var item = BehaviorRelay<[Comment?]>(value: [])
-    var testText = ""
+    var commentText = ""
     let isLike = BehaviorRelay(value: false)
+    let isCommentValid = BehaviorRelay(value: true) // button ishidden
     let searchSuccess = BehaviorRelay(value: false)
     struct Input {
         let viewWillAppear: Observable<Void>
@@ -32,6 +33,7 @@ class StyleDetailViewModel: ViewModelProtocol {
         let ellipsisButtonTapped: ControlEvent<Void>
         let isLike: BehaviorRelay<Bool>
 //        let followResult: PublishRelay<Bool>
+        let isCommentValid: BehaviorRelay<Bool>
         let commentButtonTapped: ControlEvent<Void>
         let commentDoneButtonTapped: ControlEvent<Void>
         var item: BehaviorRelay<[Comment?]>
@@ -41,7 +43,7 @@ class StyleDetailViewModel: ViewModelProtocol {
         input.viewWillAppear
             .bind(with: self) { owner, _ in
                 owner.postSearch()
-                owner.isLikeVaild()
+                owner.isLikeValid()
             }.disposed(by: disposeBag)
         input.likeButtonTapped
             .bind(with: self) { owner, _ in
@@ -50,7 +52,8 @@ class StyleDetailViewModel: ViewModelProtocol {
         
         input.commentWriteTextFieldChange
             .bind(with: self) { owner, value in
-                owner.testText = value
+                owner.commentText = value
+                owner.CommentValid()
             }.disposed(by: disposeBag)
         
         input.commentDoneButtonTapped
@@ -58,7 +61,7 @@ class StyleDetailViewModel: ViewModelProtocol {
                 owner.writeCommnet()
             }.disposed(by: disposeBag)
         
-        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
+        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, isCommentValid: isCommentValid, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
     }
     
     func getcommnetsCount() -> Int{
@@ -71,17 +74,25 @@ class StyleDetailViewModel: ViewModelProtocol {
     func getPost() -> PostInfoModel? {
         return postData.value
     }
-    func isLikeVaild(){
+    func isLikeValid(){
         if let post = getPost() {
             let like = post.likes.contains(UserDefaultsManager.id)
             isLike.accept(like)
         }
     }
-    
+    func CommentValid() {
+        if commentText.isEmpty {
+            isCommentValid.accept(true)
+        } else if commentText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            isCommentValid.accept(true)
+        } else {
+            isCommentValid.accept(false)
+        }
+    }
     func writeCommnet(){
         guard let postData = postData.value else { return }
         
-        let comment = NetworkManager.shared.request(type: Comment.self, api: .writeComment(postId: postData._id, comment: commnetRequestModel(content: testText)))
+        let comment = NetworkManager.shared.request(type: Comment.self, api: .writeComment(postId: postData._id, comment: commnetRequestModel(content: commentText)))
         comment.subscribe(with: self) { owner, data in
             print("댓글작성~~")
             print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")

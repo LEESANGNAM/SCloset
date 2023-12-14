@@ -89,6 +89,10 @@ class StyleDetailViewController: BaseViewController {
                 owner.setLikeButton(isLike: value)
             }.disposed(by: disposeBag)
         
+        output.isCommentValid
+            .bind(to: mainView.commentWriteView.doneButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
     }
     
    private func setData(){
@@ -99,7 +103,7 @@ class StyleDetailViewController: BaseViewController {
         setImage(data: postdata)
         mainView.contentLabel.text = postdata.content
         mainView.locationLabel.text = postdata.content1
-        
+       mainView.commentWriteView.commentTextField.text = ""
         mainView.likeCountLabel.text = "좋아요 \(postdata.likes.count)개"
         mainView.commentCountLabel.text = "댓글 \(postdata.comments.count)개"
     }
