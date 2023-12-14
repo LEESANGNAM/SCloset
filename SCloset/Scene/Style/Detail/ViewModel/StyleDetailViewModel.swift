@@ -16,6 +16,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     var item = BehaviorRelay<[Comment?]>(value: [])
     var testText = ""
     let isLike = BehaviorRelay(value: false)
+    let searchSuccess = BehaviorRelay(value: false)
     struct Input {
         let viewWillAppear: Observable<Void>
         let followButtonTapped: ControlEvent<Void>
@@ -27,7 +28,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     }
     
     struct Output {
-        let viewWillAppear: Observable<Void>
+        let searchSuccess: BehaviorRelay<Bool>
         let ellipsisButtonTapped: ControlEvent<Void>
         let isLike: BehaviorRelay<Bool>
 //        let followResult: PublishRelay<Bool>
@@ -57,7 +58,7 @@ class StyleDetailViewModel: ViewModelProtocol {
                 owner.writeCommnet()
             }.disposed(by: disposeBag)
         
-        return Output(viewWillAppear: input.viewWillAppear, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
+        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
     }
     
     func getcommnetsCount() -> Int{
@@ -111,8 +112,8 @@ class StyleDetailViewModel: ViewModelProtocol {
                 let errortext = testErrorType.message()
                 print(errortext)
             }
-        } onCompleted: { _ in
-            print("네트워크완료")
+        } onCompleted: { owner in
+            owner.searchSuccess.accept(true)
         } onDisposed: { _ in
             print("네트워크 디스포즈")
         }.disposed(by: disposeBag)
@@ -130,8 +131,8 @@ class StyleDetailViewModel: ViewModelProtocol {
                 let errorText = error.message()
                 print(errorText)
             }
-        } onCompleted: { _ in
-            print("완료")
+        } onCompleted: { owner in
+            owner.postSearch()
         } onDisposed: { _ in
             print("디스포즈")
         }.disposed(by: disposeBag)

@@ -148,22 +148,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "51CD3D30-A3CF-42C5-8C49-0D411A91E57A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "bind()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7D05B4FA-04FF-4F69-B977-E1CA58106990"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -171,8 +155,8 @@
             filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "setData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -187,8 +171,8 @@
             filePath = "SCloset/Scene/Style/Detail/View/StyleDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "setImage(data:)"
             landmarkType = "7">
          </BreakpointContent>

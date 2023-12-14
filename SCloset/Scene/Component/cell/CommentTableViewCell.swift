@@ -69,8 +69,20 @@ class CommentTableViewCell: UITableViewCell {
         
     }
     
-    func setData(corner: CGFloat){
-        profileImageView.layer.cornerRadius = corner
+    func setData(size: CGSize,data: Comment){
+        print("프로필 사이즈",size)
+        profileImageView.layer.cornerRadius = size.width / 2
+        profileImageView.clipsToBounds = true
+        if let imageBase = data.creator.profile {
+            let urlString = APIKey.baseURL +  imageBase
+            profileImageView.setImage(with: urlString, frameSize: size, placeHolder: "person.fill")
+        } else {
+            print("프로필 여기서 넣음")
+            profileImageView.image = UIImage(systemName: "person.fill")
+        }
+        nickNameLabel.text = data.creator.nick
+        dateLabel.text = data.time.toDate()?.relativeDate()
+        commentLabel.text = data.content
         
     }
     

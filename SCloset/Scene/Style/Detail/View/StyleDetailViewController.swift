@@ -50,9 +50,11 @@ class StyleDetailViewController: BaseViewController {
             commentDoneButtonTapped: commentWriteView.doneButton.rx.tap)
         let output = viewModel.transform(input: input)
         
-        output.viewWillAppear
-            .bind(with: self) { owner, _ in
-                owner.setData()
+        output.searchSuccess
+            .bind(with: self) { owner, value in
+                if value {
+                    owner.setData()
+                }
             }.disposed(by: disposeBag)
         
         output.commentButtonTapped
@@ -156,9 +158,10 @@ extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        let data = viewModel.getcommnet(indexPath.row)
-        cell.backgroundColor = .brown
-        cell.commentLabel.text = data?.content
+        cell.layoutIfNeeded()
+        guard let data = viewModel.getcommnet(indexPath.row) else { return UITableViewCell() }
+        let size = cell.profileImageView.frame.size
+        cell.setData(size: size, data: data)
         
         return cell
     }
