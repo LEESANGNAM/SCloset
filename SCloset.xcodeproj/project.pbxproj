@@ -78,6 +78,7 @@
 		D6F504ED2B2DB3D300899840 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = D6F504EC2B2DB3D300899840 /* Tabman */; };
 		D6F504EF2B2DBA1400899840 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */; };
 		D6F504F12B2DBA2E00899840 /* MyLikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */; };
+		D6F504F32B2E1C5900899840 /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F22B2E1C5900899840 /* PostImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,7 @@
 		D6F504E92B2DB37000899840 /* TabManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManViewController.swift; sourceTree = "<group>"; };
 		D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikePostViewController.swift; sourceTree = "<group>"; };
+		D6F504F22B2E1C5900899840 /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,9 +421,6 @@
 			children = (
 				D6F1A77B2B20CC13002CFDE3 /* View */,
 				D699A4562B11F40000C93AA0 /* cell */,
-				D6F504E92B2DB37000899840 /* TabManViewController.swift */,
-				D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */,
-				D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -465,6 +464,7 @@
 			children = (
 				D699A4572B11FE2400C93AA0 /* HomeCollectionViewCell.swift */,
 				D61D4C382B262D3A001EA7D1 /* CommentTableViewCell.swift */,
+				D6F504F22B2E1C5900899840 /* PostImageCollectionViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -530,6 +530,7 @@
 		D6F504E32B2C8C7300899840 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D6F504F42B2E1EE000899840 /* TabManView */,
 				D6F504E52B2D933300899840 /* MyInfoView.swift */,
 				D6F504E72B2D933A00899840 /* MyInfoViewController.swift */,
 			);
@@ -541,6 +542,16 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D6F504F42B2E1EE000899840 /* TabManView */ = {
+			isa = PBXGroup;
+			children = (
+				D6F504E92B2DB37000899840 /* TabManViewController.swift */,
+				D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */,
+				D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */,
+			);
+			path = TabManView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -674,6 +685,7 @@
 				D65798102B2A19AC0068B622 /* PostLikeModel.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D6F504E82B2D933A00899840 /* MyInfoViewController.swift in Sources */,
+				D6F504F32B2E1C5900899840 /* PostImageCollectionViewCell.swift in Sources */,
 				D61D4C392B262D3A001EA7D1 /* CommentTableViewCell.swift in Sources */,
 				D6F504EA2B2DB37000899840 /* TabManViewController.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,

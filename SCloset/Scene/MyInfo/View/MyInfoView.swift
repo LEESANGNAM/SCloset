@@ -119,7 +119,13 @@ class MyInfoView: BaseView {
         tabmanView.snp.makeConstraints { make in
             make.top.equalTo(profileEditButton.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+//            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+            make.bottom.equalToSuperview()
+        }
+        tabmanVC.view.snp.makeConstraints { make in
+              make.top.equalToSuperview()
+              make.horizontalEdges.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         
         
