@@ -13,7 +13,7 @@ class MyLikePostViewController: BaseViewController {
     override func viewDidLoad() {
         test.text = "좋아요 게시글 화면"
         view.addSubview(test)
-        
+        view.backgroundColor = .white
         test.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
