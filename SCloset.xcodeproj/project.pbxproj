@@ -72,6 +72,12 @@
 		D6F1A77F2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */; };
 		D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7802B20D0A3002CFDE3 /* StyleDetailViewController.swift */; };
 		D6F1A7832B20D220002CFDE3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7822B20D220002CFDE3 /* ProfileView.swift */; };
+		D6F504E62B2D933300899840 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504E52B2D933300899840 /* MyInfoView.swift */; };
+		D6F504E82B2D933A00899840 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504E72B2D933A00899840 /* MyInfoViewController.swift */; };
+		D6F504EA2B2DB37000899840 /* TabManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504E92B2DB37000899840 /* TabManViewController.swift */; };
+		D6F504ED2B2DB3D300899840 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = D6F504EC2B2DB3D300899840 /* Tabman */; };
+		D6F504EF2B2DBA1400899840 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */; };
+		D6F504F12B2DBA2E00899840 /* MyLikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +141,11 @@
 		D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGrayStyleLabel.swift; sourceTree = "<group>"; };
 		D6F1A7802B20D0A3002CFDE3 /* StyleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailViewController.swift; sourceTree = "<group>"; };
 		D6F1A7822B20D220002CFDE3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D6F504E52B2D933300899840 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		D6F504E72B2D933A00899840 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		D6F504E92B2DB37000899840 /* TabManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManViewController.swift; sourceTree = "<group>"; };
+		D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
+		D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikePostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +158,7 @@
 				D66793982B03DF830022A47F /* SnapKit in Frameworks */,
 				D66793822B03DF5E0022A47F /* RxRelay in Frameworks */,
 				D667937E2B03DF5E0022A47F /* RxCocoa in Frameworks */,
+				D6F504ED2B2DB3D300899840 /* Tabman in Frameworks */,
 				D667938F2B03DF690022A47F /* RealmSwift in Frameworks */,
 				D66793862B03DF5E0022A47F /* RxSwift in Frameworks */,
 				D66793952B03DF790022A47F /* Alamofire in Frameworks */,
@@ -365,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				D66338D62B139656004EEDA0 /* Closet */,
+				D6F504E22B2C8C5600899840 /* MyInfo */,
 				D66793AC2B0504420022A47F /* Login */,
 				D699A40A2B0E0B0900C93AA0 /* SignUp */,
 				D699A44E2B11C13E00C93AA0 /* Style */,
@@ -406,6 +419,9 @@
 			children = (
 				D6F1A77B2B20CC13002CFDE3 /* View */,
 				D699A4562B11F40000C93AA0 /* cell */,
+				D6F504E92B2DB37000899840 /* TabManViewController.swift */,
+				D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */,
+				D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -502,6 +518,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D6F504E22B2C8C5600899840 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D6F504E42B2C8C7900899840 /* ViewModel */,
+				D6F504E32B2C8C7300899840 /* View */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		D6F504E32B2C8C7300899840 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6F504E52B2D933300899840 /* MyInfoView.swift */,
+				D6F504E72B2D933A00899840 /* MyInfoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6F504E42B2C8C7900899840 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,6 +568,7 @@
 				D66793942B03DF790022A47F /* Alamofire */,
 				D66793972B03DF830022A47F /* SnapKit */,
 				D667939A2B03DF8C0022A47F /* Toast */,
+				D6F504EC2B2DB3D300899840 /* Tabman */,
 			);
 			productName = SCloset;
 			productReference = D66793612B03DE780022A47F /* SCloset.app */;
@@ -563,6 +605,7 @@
 				D66793932B03DF790022A47F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D66793962B03DF830022A47F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D66793992B03DF8C0022A47F /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				D6F504EB2B2DB3D300899840 /* XCRemoteSwiftPackageReference "Tabman" */,
 			);
 			productRefGroup = D66793622B03DE780022A47F /* Products */;
 			projectDirPath = "";
@@ -598,6 +641,7 @@
 				D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,
 				D69665732B0CFBC5009610E9 /* BaseViewController.swift in Sources */,
+				D6F504E62B2D933300899840 /* MyInfoView.swift in Sources */,
 				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
 				D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
@@ -618,6 +662,7 @@
 				D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */,
 				D657980E2B2A0FF20068B622 /* String+Extension.swift in Sources */,
 				D696656A2B0CE899009610E9 /* LoginModel.swift in Sources */,
+				D6F504EF2B2DBA1400899840 /* MyPostViewController.swift in Sources */,
 				D61D4C3B2B2632C4001EA7D1 /* SelfSizingTableView.swift in Sources */,
 				D6F1A7812B20D0A3002CFDE3 /* StyleDetailViewController.swift in Sources */,
 				D691DF562B2B5F750001B9E7 /* UITextField+Extension.swift in Sources */,
@@ -628,13 +673,16 @@
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
 				D65798102B2A19AC0068B622 /* PostLikeModel.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
+				D6F504E82B2D933A00899840 /* MyInfoViewController.swift in Sources */,
 				D61D4C392B262D3A001EA7D1 /* CommentTableViewCell.swift in Sources */,
+				D6F504EA2B2DB37000899840 /* TabManViewController.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,
 				D699A4552B11EE3E00C93AA0 /* StyleListViewController.swift in Sources */,
 				D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */,
 				D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */,
 				D691DF542B2B3C8D0001B9E7 /* CommentModel.swift in Sources */,
 				D66793B12B0512F50022A47F /* Router.swift in Sources */,
+				D6F504F12B2DBA2E00899840 /* MyLikePostViewController.swift in Sources */,
 				D61D4C352B249E3D001EA7D1 /* CommentWriteView.swift in Sources */,
 				D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */,
 				D66338D32B138536004EEDA0 /* NetWorkErrorType.swift in Sources */,
@@ -917,6 +965,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		D6F504EB2B2DB3D300899840 /* XCRemoteSwiftPackageReference "Tabman" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uias/Tabman.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -959,6 +1015,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D66793992B03DF8C0022A47F /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		D6F504EC2B2DB3D300899840 /* Tabman */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6F504EB2B2DB3D300899840 /* XCRemoteSwiftPackageReference "Tabman" */;
+			productName = Tabman;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
