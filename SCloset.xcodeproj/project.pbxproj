@@ -79,6 +79,10 @@
 		D6F504EF2B2DBA1400899840 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */; };
 		D6F504F12B2DBA2E00899840 /* MyLikePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */; };
 		D6F504F32B2E1C5900899840 /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F22B2E1C5900899840 /* PostImageCollectionViewCell.swift */; };
+		D6F504F62B2ED08100899840 /* MyLikePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F52B2ED08100899840 /* MyLikePostViewModel.swift */; };
+		D6F504F82B2ED08900899840 /* MyPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F72B2ED08900899840 /* MyPostViewModel.swift */; };
+		D6F504FA2B2ED09300899840 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */; };
+		D6F504FC2B2EDFE600899840 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +152,10 @@
 		D6F504EE2B2DBA1400899840 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
 		D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikePostViewController.swift; sourceTree = "<group>"; };
 		D6F504F22B2E1C5900899840 /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6F504F52B2ED08100899840 /* MyLikePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikePostViewModel.swift; sourceTree = "<group>"; };
+		D6F504F72B2ED08900899840 /* MyPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewModel.swift; sourceTree = "<group>"; };
+		D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +342,7 @@
 				D66338F42B14AF21004EEDA0 /* PostInfoModel.swift */,
 				D657980F2B2A19AC0068B622 /* PostLikeModel.swift */,
 				D691DF532B2B3C8D0001B9E7 /* CommentModel.swift */,
+				D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +549,9 @@
 		D6F504E42B2C8C7900899840 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D6F504F52B2ED08100899840 /* MyLikePostViewModel.swift */,
+				D6F504F72B2ED08900899840 /* MyPostViewModel.swift */,
+				D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -656,8 +668,10 @@
 				D69665752B0CFBCA009610E9 /* BaseView.swift in Sources */,
 				D699A4452B0F7BB400C93AA0 /* EmailValidModel.swift in Sources */,
 				D667939F2B03E1E20022A47F /* APIKey.swift in Sources */,
+				D6F504F62B2ED08100899840 /* MyLikePostViewModel.swift in Sources */,
 				D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */,
 				D696656C2B0CE8D3009610E9 /* SignUpModel.swift in Sources */,
+				D6F504FC2B2EDFE600899840 /* MyProfileModel.swift in Sources */,
 				D61D4C312B24720B001EA7D1 /* UIImage+Extension.swift in Sources */,
 				D61D4C332B2479AC001EA7D1 /* StyleDetailViewModel.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
@@ -667,6 +681,7 @@
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
 				D66793AE2B0504C00022A47F /* LoginViewModel.swift in Sources */,
 				D65797FF2B2782940068B622 /* StyleEditDelegate.swift in Sources */,
+				D6F504FA2B2ED09300899840 /* MyInfoViewModel.swift in Sources */,
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
 				D61D4C2F2B246475001EA7D1 /* UIImageView+Extension.swift in Sources */,
 				D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */,
@@ -686,6 +701,7 @@
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D6F504E82B2D933A00899840 /* MyInfoViewController.swift in Sources */,
 				D6F504F32B2E1C5900899840 /* PostImageCollectionViewCell.swift in Sources */,
+				D6F504F82B2ED08900899840 /* MyPostViewModel.swift in Sources */,
 				D61D4C392B262D3A001EA7D1 /* CommentTableViewCell.swift in Sources */,
 				D6F504EA2B2DB37000899840 /* TabManViewController.swift in Sources */,
 				D699A4532B11C18100C93AA0 /* TabbarController.swift in Sources */,

@@ -27,6 +27,7 @@ enum Router: URLRequestConvertible {
     case postChange(postId: String, imageData: Data?, title: String?, content: String?)
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
+    case myInfo
     
     private var baseURL: URL {
         return URL(string: APIKey.baseURL)!
@@ -54,13 +55,15 @@ enum Router: URLRequestConvertible {
             return "post/\(postId)"
         case .writeComment(let postId,_):
             return "post/\(postId)/comment"
+        case .myInfo:
+            return "profile/me"
         }
     }
     
     
     var header: HTTPHeaders {
         switch self {
-        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment:
+        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment,.myInfo:
             return ["SesacKey": Router.key ]
         case .refresh:
             return [
@@ -80,7 +83,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation,.postUpLoad,.postLike,.writeComment:
             return .post
-        case .postLoad, .refresh,.postSearch:
+        case .postLoad, .refresh,.postSearch,.myInfo:
             return .get
         case .postChange:
             return .put
@@ -142,7 +145,7 @@ enum Router: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: request)
         case .postLoad:
             request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
-        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch:
+        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo:
             break
         case .writeComment(_,let comment):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(comment, into: request)
