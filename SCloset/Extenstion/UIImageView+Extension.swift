@@ -28,7 +28,8 @@ extension UIImageView {
                             requestBody.setValue(UserDefaultsManager.token, forHTTPHeaderField: "Authorization")
                             return requestBody
                         }
-                        let dowunSizeProcessor = DownsamplingImageProcessor(size: imageSize) //사이즈만큼 줄이기
+                        let testSize = CGSize(width: imageSize.width * 3, height: imageSize.height * 3)
+                        let dowunSizeProcessor = DownsamplingImageProcessor(size: testSize) //사이즈만큼 줄이기
                         
                         let resource = KF.ImageResource(downloadURL: url, cacheKey: urlString)
                         self.kf.setImage(
