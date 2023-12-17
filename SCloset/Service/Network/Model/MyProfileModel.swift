@@ -17,4 +17,11 @@ struct MyProfileModel: Decodable {
     let phoneNum: String
     let birthDay: String
     let profile: String?
+    
+    var followerCount: Int {
+        return followers.count
+    }
+    var followingCount: Int {
+        return following.count
+    }
 }

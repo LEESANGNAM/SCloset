@@ -83,6 +83,7 @@
 		D6F504F82B2ED08900899840 /* MyPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F72B2ED08900899840 /* MyPostViewModel.swift */; };
 		D6F504FA2B2ED09300899840 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */; };
 		D6F504FC2B2EDFE600899840 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */; };
+		D6F504FE2B2EE39500899840 /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504FD2B2EE39500899840 /* MyInfoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +157,7 @@
 		D6F504F72B2ED08900899840 /* MyPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewModel.swift; sourceTree = "<group>"; };
 		D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
+		D6F504FD2B2EE39500899840 /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +382,7 @@
 				D663393E2B18EEB1004EEDA0 /* Weather */,
 				D66793AF2B0512E90022A47F /* Network */,
 				D696657E2B0DFB2B009610E9 /* UserDefaultsManager.swift */,
+				D6F504FD2B2EE39500899840 /* MyInfoManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				D66338D02B134EBF004EEDA0 /* RefreshModel.swift in Sources */,
 				D66338D52B138558004EEDA0 /* ErrorResponseMessages.swift in Sources */,
 				D6F1A77F2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift in Sources */,
+				D6F504FE2B2EE39500899840 /* MyInfoManager.swift in Sources */,
 				D66793692B03DE780022A47F /* LoginViewController.swift in Sources */,
 				D699A4152B0E6B9D00C93AA0 /* SignUpViewModel.swift in Sources */,
 				D66793652B03DE780022A47F /* AppDelegate.swift in Sources */,

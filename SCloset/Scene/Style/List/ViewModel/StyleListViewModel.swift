@@ -33,6 +33,7 @@ class StyleListViewModel {
         input.viewDidLoad
             .bind(with: self) { owner, _ in
                 WeatherManager.shared.updateWeather()
+                MyInfoManager.shared.fetch()
             }.disposed(by: disposeBag)
         
         input.viewWillAppear
