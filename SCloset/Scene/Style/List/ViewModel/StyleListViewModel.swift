@@ -60,7 +60,7 @@ class StyleListViewModel {
     
     func postLoad(){
 
-        let result = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .postLoad(next: cursor.value, limit: "10", product_id: "Scloset"))
+        let result = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .postLoad(next: cursor.value, limit: "10", product_id: APIKey.product))
         result.subscribe(with: self) { owner, value in
             var data = owner.postData.value
             data.append(contentsOf: value.data)

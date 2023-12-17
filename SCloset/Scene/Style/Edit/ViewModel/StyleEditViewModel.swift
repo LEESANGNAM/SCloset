@@ -102,7 +102,7 @@ class StyleEditViewModel {
         if contentText == placeHoler {
             contentText = ""
         }
-        let test = NetworkManager.shared.postUpload(api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: "Scloset", content1: locationMessage.value))
+        let test = NetworkManager.shared.postUpload(api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: APIKey.product, content1: locationMessage.value))
         test.subscribe(with: self) { owner, value in
             print("포스트 작성기능 : ", value)
             owner.netWorkSucces.accept((value,true))
