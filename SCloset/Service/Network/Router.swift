@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
     case myInfo
+    case myPost(userId:String,next: String, limit: String, product_id: String)
     case myLikePost(next: String, limit: String)
     
     private var baseURL: URL {
@@ -60,13 +61,15 @@ enum Router: URLRequestConvertible {
             return "profile/me"
         case .myLikePost(_,_):
             return "post/like/me"
+        case .myPost(let id,_,_,_):
+            return "post/user/\(id)"
         }
     }
     
     
     var header: HTTPHeaders {
         switch self {
-        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment,.myInfo,.myLikePost:
+        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment,.myInfo,.myLikePost,.myPost:
             return ["SesacKey": Router.key ]
         case .refresh:
             return [
@@ -86,7 +89,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation,.postUpLoad,.postLike,.writeComment:
             return .post
-        case .postLoad, .refresh,.postSearch,.myInfo,.myLikePost:
+        case .postLoad, .refresh,.postSearch,.myInfo,.myLikePost,.myPost:
             return .get
         case .postChange:
             return .put
@@ -94,7 +97,8 @@ enum Router: URLRequestConvertible {
     }
     var query: [String: String] {
         switch self {
-        case .postLoad(next: let next, limit: let limit, product_id: let product_id):
+        case .postLoad(next: let next, limit: let limit, product_id: let product_id),
+                .myPost(_, next: let next, limit: let limit, product_id: let product_id):
             return [
                 "next": next,
                 "limit": limit,
@@ -151,7 +155,7 @@ enum Router: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(loginRequestModel, into: request)
         case .emailVlidation(let emailValidationRequestModel):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: request)
-        case .postLoad:
+        case .postLoad,.myPost:
             request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
         case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo:
             break

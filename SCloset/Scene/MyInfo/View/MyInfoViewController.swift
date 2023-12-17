@@ -21,8 +21,8 @@ class MyInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "마이페이지"
-        mainView.emailLabel.text = MyInfoManager.shared.myinfo.email
-        mainView.nicknameLabel.text = MyInfoManager.shared.myinfo.nick
+        mainView.emailLabel.text = MyInfoManager.shared.myinfo?.email
+        mainView.nicknameLabel.text = MyInfoManager.shared.myinfo?.nick
         mainView.followerLabel.text = "팔로워 \(MyInfoManager.shared.followerCount)"
         mainView.followingLabel.text = "팔로잉 \(MyInfoManager.shared.followingCount)"
     }

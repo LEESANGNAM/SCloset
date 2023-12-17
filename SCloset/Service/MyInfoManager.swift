@@ -11,7 +11,7 @@ import RxSwift
 class MyInfoManager {
     static let shared = MyInfoManager()
     private let disposeBag = DisposeBag()
-    var myinfo: MyProfileModel!
+    var myinfo: MyProfileModel?
     var posts: [String] = []
     var followerCount = 0
     var followingCount = 0

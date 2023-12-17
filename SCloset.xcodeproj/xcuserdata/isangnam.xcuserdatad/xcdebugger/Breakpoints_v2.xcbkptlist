@@ -64,6 +64,21 @@
                   endingLineNumber = "23"
                   offsetFromSymbolStart = "476">
                </Location>
+               <Location
+                  uuid = "2BF242A1-FB8D-4B14-AA73-E83417D35427 - fb8983e413666d0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SCloset.TokenIntercetor.retry(_: Alamofire.Request, for: Alamofire.Session, dueTo: Swift.Error, completion: (Alamofire.RetryResult) -&gt; ()) -&gt; ()"
+                  moduleName = "SCloset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isangnam/Documents/iOS/SeSac/SCloset/SCloset/Service/Network/TokenIntercetor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "372">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
