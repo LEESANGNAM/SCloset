@@ -11,7 +11,8 @@ import UIKit
 class MyInfoView: BaseView {
     let profileImageView = {
         let view = UIImageView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemGray5
+        view.tintColor = .lightGray
         return view
     }()
     let emailLabel = {
