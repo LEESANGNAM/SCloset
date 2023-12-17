@@ -35,13 +35,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         label.font = .systemFont(ofSize: 14)
         return label
     }()
-    let contentLabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-//        label.text = "오늘의룩 짜자잔 "
-        label.font = .systemFont(ofSize: 14)
-        return label
-    }()
+    let contentLabel = CommonGrayStyleLabel()
     
     override func setHierarchy() {
         contentView.addSubview(lookImageView)
@@ -49,6 +43,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         contentView.addSubview(likeButton)
         contentView.addSubview(likeCountLabel)
         contentView.addSubview(contentLabel)
+        contentLabel.numberOfLines = 0
         
     }
     

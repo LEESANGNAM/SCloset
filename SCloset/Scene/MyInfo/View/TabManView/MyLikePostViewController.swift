@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MyLikePostViewController: BaseViewController {
+    let disposeBag = DisposeBag()
     lazy var collectionView:  UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
         cv.register(PostImageCollectionViewCell.self, forCellWithReuseIdentifier: PostImageCollectionViewCell.identifier)
@@ -27,17 +30,36 @@ class MyLikePostViewController: BaseViewController {
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview()
         }
+        
+        test()
     }
+    
+    private func test() {
+        let likepostTest = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .myLikePost(next: "", limit: "10"))
+        likepostTest.subscribe(with: self) { owner, value in
+            print("좋아요 게시글 ",value)
+        } onError: { owner, error in
+            if let networkError = error as? NetWorkError {
+                let errorText = networkError.message()
+                      print(errorText)
+            }
+        } onCompleted: { _ in
+            print("좋아요 게시글 완료")
+        } onDisposed: { _ in
+            print("좋아요 게시글 디스포즈")
+        }.disposed(by: disposeBag)
+
+        
+    }
+    
     
     private func setCollectionViewLayout() -> UICollectionViewFlowLayout{
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         // 전체 너비 가져와서 빼기
         let width = UIScreen.main.bounds.width - (spacing * 3)
-//        let height = UIScreen.main.bounds.height - (spacing * 3)
         let itemWidth = width / 2
-//        let itemHeight = height / 2
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.2)
         //컬렉션뷰 inset
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
         // 최소 간격

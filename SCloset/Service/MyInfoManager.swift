@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import RxSwift
 
 class MyInfoManager {
     static let shared = MyInfoManager()
+    private let disposeBag = DisposeBag()
     var myinfo: MyProfileModel!
     var posts: [String] = []
     var followerCount = 0
@@ -31,7 +33,7 @@ class MyInfoManager {
             print("내정보 가져오기 완료")
         } onDisposed: { _ in
             print("디스포즈")
-        }
+        }.disposed(by: disposeBag)
     }
     
 }

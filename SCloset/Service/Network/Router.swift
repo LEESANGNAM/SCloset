@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
     case myInfo
+    case myLikePost(next: String, limit: String)
     
     private var baseURL: URL {
         return URL(string: APIKey.baseURL)!
@@ -57,13 +58,15 @@ enum Router: URLRequestConvertible {
             return "post/\(postId)/comment"
         case .myInfo:
             return "profile/me"
+        case .myLikePost(_,_):
+            return "post/like/me"
         }
     }
     
     
     var header: HTTPHeaders {
         switch self {
-        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment,.myInfo:
+        case .join, .login, .emailVlidation,.postLoad, .postLike,.postSearch,.writeComment,.myInfo,.myLikePost:
             return ["SesacKey": Router.key ]
         case .refresh:
             return [
@@ -83,7 +86,7 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation,.postUpLoad,.postLike,.writeComment:
             return .post
-        case .postLoad, .refresh,.postSearch,.myInfo:
+        case .postLoad, .refresh,.postSearch,.myInfo,.myLikePost:
             return .get
         case .postChange:
             return .put
@@ -97,6 +100,11 @@ enum Router: URLRequestConvertible {
                 "limit": limit,
                 "product_id": product_id
                     ]
+        case .myLikePost(next: let next, limit: let limit):
+            return [
+                "next": next,
+                "limit": limit
+                ]
         default:
             return ["":""]
         }
@@ -149,6 +157,8 @@ enum Router: URLRequestConvertible {
             break
         case .writeComment(_,let comment):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(comment, into: request)
+        case .myLikePost:
+            request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
         }
         return request
     }
