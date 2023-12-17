@@ -20,7 +20,7 @@ class PostImageCollectionViewCell: BaseCollectionViewCell {
     override func setHierarchy() {
         contentView.addSubview(lookImageView)
         contentView.addSubview(locationLabel)
-        locationLabel.text = "서울시 00동 00/00"
+        locationLabel.numberOfLines = 0
     }
     
     override func setConstraints() {
@@ -31,7 +31,20 @@ class PostImageCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(lookImageView.snp.bottom).offset(5)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.height.equalTo(20)
+            make.height.equalTo(30)
+        }
+    }
+    func setData(_ data: PostInfoModel) {
+        setImage(data: data)
+        locationLabel.text = data.content1
+    }
+    private func setImage(data: PostInfoModel) {
+        layoutIfNeeded()
+        if let imageBase = data.image.first,
+           let imageBase {
+            let urlString = APIKey.baseURL + imageBase
+            let imageSize = lookImageView.frame.size
+            lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "photo.fill")
         }
     }
 }

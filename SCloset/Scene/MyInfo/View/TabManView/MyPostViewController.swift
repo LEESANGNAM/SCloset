@@ -33,11 +33,9 @@ class MyPostViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         // 전체 너비 가져와서 빼기
-        let width = UIScreen.main.bounds.width - (spacing * 3)
-//        let height = UIScreen.main.bounds.height - (spacing * 3)
-        let itemWidth = width / 2
-//        let itemHeight = height / 2
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        let width = UIScreen.main.bounds.width - (spacing * 4)
+        let itemWidth = width / 3
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.3)
         //컬렉션뷰 inset
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
         // 최소 간격

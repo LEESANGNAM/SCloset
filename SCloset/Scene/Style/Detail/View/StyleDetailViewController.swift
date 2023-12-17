@@ -30,6 +30,7 @@ class StyleDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setbackButton()
         bind()
         view.backgroundColor = .white
         title = "게시물"
@@ -93,6 +94,18 @@ class StyleDetailViewController: BaseViewController {
             .bind(to: mainView.commentWriteView.doneButton.rx.isHidden)
             .disposed(by: disposeBag)
         
+    }
+    private func setbackButton() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
+    }
+    @objc func backButtonTapped() {
+        if let _ = self.presentingViewController {
+            dismiss(animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
    private func setData(){
