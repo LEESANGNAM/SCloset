@@ -11,9 +11,9 @@ class ProfileView: BaseView {
     
     let profileImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "person")
         view.clipsToBounds = true
         view.backgroundColor = .systemGray5
+        view.tintColor = .lightGray
         return view
     }()
     
@@ -76,9 +76,20 @@ class ProfileView: BaseView {
         
     }
     func setData(corner: CGFloat,data: PostInfoModel ) {
+        setImage(data: data)
         profileImageView.layer.cornerRadius = corner
         dateLabel.text = data.relativeDate
         followButton.layer.cornerRadius = 10
+    }
+    private func setImage(data: PostInfoModel) {
+        layoutIfNeeded()
+        if let imageBase = data.creator.profile {
+            let urlString = APIKey.baseURL +  imageBase
+            let imageSize = profileImageView.frame.size
+            profileImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "person.fill")
+        } else {
+            profileImageView.image = UIImage(systemName: "person.fill")
+        }
     }
     
 }
