@@ -391,7 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				D66338D62B139656004EEDA0 /* Closet */,
-				D6F504E22B2C8C5600899840 /* MyInfo */,
+				D6F504E22B2C8C5600899840 /* MyPage */,
 				D66793AC2B0504420022A47F /* Login */,
 				D699A40A2B0E0B0900C93AA0 /* SignUp */,
 				D699A44E2B11C13E00C93AA0 /* Style */,
@@ -530,13 +530,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D6F504E22B2C8C5600899840 /* MyInfo */ = {
+		D6F504E22B2C8C5600899840 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				D6F504E42B2C8C7900899840 /* ViewModel */,
-				D6F504E32B2C8C7300899840 /* View */,
+				D6F504FF2B2F4B0A00899840 /* Main */,
 			);
-			path = MyInfo;
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		D6F504E32B2C8C7300899840 /* View */ = {
@@ -567,6 +566,15 @@
 				D6F504F02B2DBA2E00899840 /* MyLikePostViewController.swift */,
 			);
 			path = TabManView;
+			sourceTree = "<group>";
+		};
+		D6F504FF2B2F4B0A00899840 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D6F504E42B2C8C7900899840 /* ViewModel */,
+				D6F504E32B2C8C7300899840 /* View */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
