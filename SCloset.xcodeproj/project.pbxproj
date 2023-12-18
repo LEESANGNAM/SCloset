@@ -84,6 +84,8 @@
 		D6F504FA2B2ED09300899840 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */; };
 		D6F504FC2B2EDFE600899840 /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */; };
 		D6F504FE2B2EE39500899840 /* MyInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F504FD2B2EE39500899840 /* MyInfoManager.swift */; };
+		D6F505042B2F4E7A00899840 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F505032B2F4E7A00899840 /* ProfileEditView.swift */; };
+		D6F505062B2F4E8200899840 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F505052B2F4E8200899840 /* ProfileEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +160,8 @@
 		D6F504F92B2ED09300899840 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
 		D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
 		D6F504FD2B2EE39500899840 /* MyInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoManager.swift; sourceTree = "<group>"; };
+		D6F505032B2F4E7A00899840 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		D6F505052B2F4E8200899840 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,6 +537,7 @@
 		D6F504E22B2C8C5600899840 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				D6F505002B2F4B2D00899840 /* Edit */,
 				D6F504FF2B2F4B0A00899840 /* Main */,
 			);
 			path = MyPage;
@@ -575,6 +580,31 @@
 				D6F504E32B2C8C7300899840 /* View */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D6F505002B2F4B2D00899840 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				D6F505022B2F4B4000899840 /* ViewModel */,
+				D6F505012B2F4B3A00899840 /* View */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		D6F505012B2F4B3A00899840 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6F505032B2F4E7A00899840 /* ProfileEditView.swift */,
+				D6F505052B2F4E8200899840 /* ProfileEditViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6F505022B2F4B4000899840 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,6 +718,7 @@
 				D61D4C332B2479AC001EA7D1 /* StyleDetailViewModel.swift in Sources */,
 				D696657F2B0DFB2B009610E9 /* UserDefaultsManager.swift in Sources */,
 				D66338F52B14AF21004EEDA0 /* PostInfoModel.swift in Sources */,
+				D6F505062B2F4E8200899840 /* ProfileEditViewController.swift in Sources */,
 				D61D4C372B25E70E001EA7D1 /* ViewModelProtocol.swift in Sources */,
 				D66338DF2B13A5F2004EEDA0 /* StyleEditView.swift in Sources */,
 				D66793B32B05248A0022A47F /* NetworkManager.swift in Sources */,
@@ -696,6 +727,7 @@
 				D6F504FA2B2ED09300899840 /* MyInfoViewModel.swift in Sources */,
 				D699A4102B0E0E6A00C93AA0 /* SignUpViewController.swift in Sources */,
 				D61D4C2F2B246475001EA7D1 /* UIImageView+Extension.swift in Sources */,
+				D6F505042B2F4E7A00899840 /* ProfileEditView.swift in Sources */,
 				D66339412B18F380004EEDA0 /* Date+Extension.swift in Sources */,
 				D663393D2B18E0EA004EEDA0 /* WeatherManager.swift in Sources */,
 				D657980E2B2A0FF20068B622 /* String+Extension.swift in Sources */,
