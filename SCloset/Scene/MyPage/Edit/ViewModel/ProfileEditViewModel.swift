@@ -38,8 +38,12 @@ class ProfileEditViewModel {
 
         input.viewDidLoad
             .bind(with: self) { owner, _ in
-                let myInfo = MyInfoManager.shared.myinfo
-                owner.profile.accept(myInfo)
+                if let myInfo = MyInfoManager.shared.myinfo{
+                    owner.profile.accept(myInfo)
+                    owner.nicknameText = myInfo.nick
+                    owner.phoneNumText = myInfo.phoneNum
+                    owner.birthDayText = myInfo.birthDay
+                }
             }.disposed(by: disposeBag)
         
         profileImageData
@@ -49,7 +53,11 @@ class ProfileEditViewModel {
         
         input.nicknameTextfieldChange
             .bind(with: self) { owner, text in
-                owner.nicknameText = text
+                if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    print("빈값")
+                } else {
+                    owner.nicknameText = text
+                }
             }.disposed(by: disposeBag)
         
         input.phoneNumTextfieldChange
@@ -65,6 +73,7 @@ class ProfileEditViewModel {
         input.doneButtonTapped
             .bind(with: self) { owner, _ in
                 print("던버튼 탭")
+                owner.testEdit()
             }.disposed(by: disposeBag)
     
        return Output(
@@ -83,15 +92,32 @@ class ProfileEditViewModel {
         if let data {
             let dataByteSize = data.count
             if dataByteSize > 1024 * 1024 { // 1MB를 넘는지 확인
-                print("데이터 크기가 1MB를 넘습니다.")
+                print("데이터 크기가 1MB를 넘습니다.",dataByteSize)
+                errorMessage.accept("프로필 사진은 1MB 까지입니다.")
                 imageDataValid.accept(true)
             } else {
-                print("데이터 크기가 1MB를 넘지 않습니다.")
+                print("데이터 크기가 1MB를 넘지 않습니다.",dataByteSize)
                 imageDataValid.accept(false)
             }
         } else {
             print("데이터 없어서 용량 체크 필요없음")
             imageDataValid.accept(false)
         }
+    }
+    
+    private func testEdit() {
+        let testProfile = NetworkManager.shared.upload(type: MyProfileModel.self, api: .editProfile(nick: nicknameText, phone: phoneNumText, birthday: birthDayText, profileImage: profileImageData.value))
+        testProfile.subscribe(with: self) { owner, profile in
+            print("프로필 변경 프로필값", profile)
+        } onError: { owner, error in
+            if let networkError = error as? NetWorkError {
+                let errorText = networkError.message()
+                owner.errorMessage.accept(errorText)
+            }
+        } onCompleted: { _ in
+            print("프로필 수정 완료")
+        } onDisposed: { _ in
+            print("프로필 수정 디스포즈 ")
+        }.disposed(by: disposeBag)
     }
 }
