@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
     case myInfo
+    case editProfile(nick: String, phone: String?, birthday: String?, profileImage: Data?)
     case myPost(userId:String,next: String, limit: String, product_id: String)
     case myLikePost(next: String, limit: String)
     
@@ -59,6 +60,8 @@ enum Router: URLRequestConvertible {
             return "post/\(postId)/comment"
         case .myInfo:
             return "profile/me"
+        case .editProfile:
+            return "profile/me"
         case .myLikePost(_,_):
             return "post/like/me"
         case .myPost(let id,_,_,_):
@@ -77,7 +80,7 @@ enum Router: URLRequestConvertible {
                 "Authorization": UserDefaultsManager.token,
                 "Refresh": UserDefaultsManager.refresh
             ]
-        case .postUpLoad,.postChange:
+        case .postUpLoad,.postChange, .editProfile:
             return [
                 "SeSacKey": Router.key,
                 "Content-Type": "multipart/form-data"
@@ -91,7 +94,7 @@ enum Router: URLRequestConvertible {
             return .post
         case .postLoad, .refresh,.postSearch,.myInfo,.myLikePost,.myPost:
             return .get
-        case .postChange:
+        case .postChange, .editProfile:
             return .put
         }
     }
@@ -137,6 +140,19 @@ enum Router: URLRequestConvertible {
                 multipart.append(content.data(using: .utf8)!, withName: "content")
             }
             return multipart
+        case .editProfile(let nick, let phone, let birthday, let profileImage):
+            let multipart = MultipartFormData()
+            multipart.append(nick.data(using: .utf8)!, withName: "nick")
+            if let phone {
+                multipart.append(phone.data(using: .utf8)!, withName: "phoneNum")
+            }
+            if let birthday {
+                multipart.append(birthday.data(using: .utf8)!, withName: "birthDay")
+            }
+            if let profileImage {
+                multipart.append(profileImage, withName: "profile",fileName: "profile.jpeg",  mimeType: "profile/jpeg")
+            }
+            return multipart
         default: return MultipartFormData()
         }
     }
@@ -157,7 +173,7 @@ enum Router: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: request)
         case .postLoad,.myPost:
             request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
-        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo:
+        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo,.editProfile:
             break
         case .writeComment(_,let comment):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(comment, into: request)

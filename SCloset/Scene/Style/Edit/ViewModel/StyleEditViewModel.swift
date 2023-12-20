@@ -102,7 +102,7 @@ class StyleEditViewModel {
         if contentText == placeHoler {
             contentText = ""
         }
-        let test = NetworkManager.shared.postUpload(api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: APIKey.product, content1: locationMessage.value))
+        let test = NetworkManager.shared.upload(type: PostInfoModel.self, api: .postUpLoad(imageData: data, title: titleText, content: contentText, product_id: APIKey.product, content1: locationMessage.value))
         test.subscribe(with: self) { owner, value in
             print("포스트 작성기능 : ", value)
             owner.netWorkSucces.accept((value,true))
@@ -121,7 +121,7 @@ class StyleEditViewModel {
     
     func changePost(postInfo: PostInfoModel) {
         guard let data = imageDataRelay.value  else { return }
-        let postInfo = NetworkManager.shared.postUpload(api: .postChange(postId: postInfo._id, imageData: data, title: titleText, content: contentText))
+        let postInfo = NetworkManager.shared.upload(type:PostInfoModel.self ,api: .postChange(postId: postInfo._id, imageData: data, title: titleText, content: contentText))
         
         postInfo.subscribe(with: self) { owner, value in
             print("포스트 수정후 모델",value)

@@ -53,8 +53,8 @@ class NetworkManager {
         }
     }
     
-    func postUpload(api: Router) -> Observable<PostInfoModel> {
-        return Observable<PostInfoModel>.create { observer in
+    func upload<T: Decodable>(type: T.Type, api: Router) -> Observable<T> {
+        return Observable<T>.create { observer in
         AF.upload(
             multipartFormData: api.multipart,
             with: api, interceptor: TokenIntercetor()).validate(statusCode: 200..<300).responseData { response in
@@ -63,6 +63,7 @@ class NetworkManager {
             return Disposables.create()
         }
     }
+    
     
     
     
