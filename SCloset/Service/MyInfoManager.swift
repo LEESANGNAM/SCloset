@@ -36,4 +36,11 @@ class MyInfoManager {
         }.disposed(by: disposeBag)
     }
     
+    func updateData(profile: MyProfileModel){
+        myinfo = profile
+        posts = profile.posts
+        followerCount = profile.followerCount
+        followingCount = profile.followingCount
+    }
+    
 }

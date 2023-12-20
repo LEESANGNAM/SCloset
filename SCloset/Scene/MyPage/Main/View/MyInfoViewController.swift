@@ -20,6 +20,7 @@ class MyInfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setEditButton()
         title = "마이페이지"
     }
     
@@ -28,6 +29,21 @@ class MyInfoViewController: BaseViewController {
         setData()
     }
     
+    private func setEditButton() {
+        mainView.profileEditButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    }
+    @objc func editButtonTapped(){
+        var imagedata: Data?
+        if let profile = MyInfoManager.shared.myinfo?.profile {
+            imagedata = mainView.profileImageView.image?.jpegData(compressionQuality: 1.0)
+        }
+        print("이미지 데이터 확인 : ", imagedata)
+        let vm = ProfileEditViewModel()
+        vm.setImageData(imagedata)
+        let vc = ProfileEditViewController(viewModel: vm)
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
     private func setData(){
         setImage()
         mainView.emailLabel.text = MyInfoManager.shared.myinfo?.email
