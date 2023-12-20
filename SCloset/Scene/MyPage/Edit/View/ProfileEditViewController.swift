@@ -71,9 +71,14 @@ class ProfileEditViewController: BaseViewController {
                     owner.mainView.phoneNumTextField.text = profile.phoneNum
                     owner.mainView.birthdayTextField.text = profile.birthDay
                     
-                
                 }
-                print("프로필 넘어오나 확인", profile)
+            }.disposed(by: dispostBag)
+        
+        output.netWorkSucces
+            .bind(with: self) { owner, value in
+                if value {
+                    owner.navigationController?.popViewController(animated: true)
+                }
             }.disposed(by: dispostBag)
         
         

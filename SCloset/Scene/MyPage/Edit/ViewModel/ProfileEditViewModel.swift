@@ -108,14 +108,15 @@ class ProfileEditViewModel {
     private func testEdit() {
         let testProfile = NetworkManager.shared.upload(type: MyProfileModel.self, api: .editProfile(nick: nicknameText, phone: phoneNumText, birthday: birthDayText, profileImage: profileImageData.value))
         testProfile.subscribe(with: self) { owner, profile in
-            print("프로필 변경 프로필값", profile)
+            MyInfoManager.shared.updateData(profile: profile)
         } onError: { owner, error in
             if let networkError = error as? NetWorkError {
                 let errorText = networkError.message()
                 owner.errorMessage.accept(errorText)
             }
-        } onCompleted: { _ in
+        } onCompleted: { owner in
             print("프로필 수정 완료")
+            owner.netWorkSucces.accept(true)
         } onDisposed: { _ in
             print("프로필 수정 디스포즈 ")
         }.disposed(by: disposeBag)
