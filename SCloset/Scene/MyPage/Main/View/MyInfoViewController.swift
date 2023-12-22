@@ -26,6 +26,7 @@ class MyInfoViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        MyInfoManager.shared.fetch()
         setData()
     }
     
