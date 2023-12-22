@@ -68,6 +68,7 @@
 		D699A45D2B120D9F00C93AA0 /* ResusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */; };
 		D699A45F2B125A5D00C93AA0 /* StyleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */; };
 		D699A4612B1269A600C93AA0 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D699A4602B1269A600C93AA0 /* PostModel.swift */; };
+		D6F072FE2B35EC5800F6858B /* FollowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F072FD2B35EC5800F6858B /* FollowModel.swift */; };
 		D6F1A77A2B208B8B002CFDE3 /* StyleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */; };
 		D6F1A77D2B20CC7C002CFDE3 /* NickNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A77C2B20CC7C002CFDE3 /* NickNameLabel.swift */; };
 		D6F1A77F2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */; };
@@ -146,6 +147,7 @@
 		D699A45C2B120D9F00C93AA0 /* ResusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResusableProtocol.swift; sourceTree = "<group>"; };
 		D699A45E2B125A5D00C93AA0 /* StyleListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleListViewModel.swift; sourceTree = "<group>"; };
 		D699A4602B1269A600C93AA0 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		D6F072FD2B35EC5800F6858B /* FollowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowModel.swift; sourceTree = "<group>"; };
 		D6F1A7792B208B8B002CFDE3 /* StyleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleDetailView.swift; sourceTree = "<group>"; };
 		D6F1A77C2B20CC7C002CFDE3 /* NickNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameLabel.swift; sourceTree = "<group>"; };
 		D6F1A77E2B20CFC0002CFDE3 /* CommonGrayStyleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonGrayStyleLabel.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				D657980F2B2A19AC0068B622 /* PostLikeModel.swift */,
 				D691DF532B2B3C8D0001B9E7 /* CommentModel.swift */,
 				D6F504FB2B2EDFE600899840 /* MyProfileModel.swift */,
+				D6F072FD2B35EC5800F6858B /* FollowModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				D699A40E2B0E0E5C00C93AA0 /* SignUpView.swift in Sources */,
 				D66339652B1B2F18004EEDA0 /* UIViewController+Extension.swift in Sources */,
 				D699A4582B11FE2400C93AA0 /* HomeCollectionViewCell.swift in Sources */,
+				D6F072FE2B35EC5800F6858B /* FollowModel.swift in Sources */,
 				D65798102B2A19AC0068B622 /* PostLikeModel.swift in Sources */,
 				D699A45A2B11FE4F00C93AA0 /* BaseCollectionViewCell.swift in Sources */,
 				D6F504E82B2D933A00899840 /* MyInfoViewController.swift in Sources */,
