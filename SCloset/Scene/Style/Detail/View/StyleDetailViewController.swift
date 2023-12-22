@@ -124,7 +124,7 @@ class StyleDetailViewController: BaseViewController {
     private func setImage(data: PostInfoModel) {
         view.layoutIfNeeded()
         mainView.profileView.setData(corner: mainView.profileView.profileImageView.frame.width / 2, data: data)
-
+        mainView.commentWriteView.setProfile()
         if let imageBase = data.image.first,
            let imageBase{
             let urlString = APIKey.baseURL +  imageBase

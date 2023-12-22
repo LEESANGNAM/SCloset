@@ -12,6 +12,8 @@ class CommentWriteView: BaseView {
     let profileIamgeView = {
         let view = UIImageView()
         view.backgroundColor = .systemGray5
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
         return view
     }()
     
@@ -55,13 +57,16 @@ class CommentWriteView: BaseView {
             make.height.equalTo(40)
         }
         
-//        doneButton.snp.makeConstraints { make in
-//            make.centerY.equalTo(commentTextField)
-//            make.trailing.equalTo(commentTextField.snp.trailing).offset(-10)
-//            make.height.equalTo(commentTextField.snp.height)
-//            make.size.equalTo(40)
-//        }
-        
+    }
+    
+    func setProfile() {
+        if let profileBase = MyInfoManager.shared.myinfo?.profile {
+            let urlString = APIKey.baseURL + profileBase
+            let imageSize = profileIamgeView.frame.size
+            profileIamgeView.setImage(with: urlString, frameSize: imageSize, placeHolder: "person.fill")
+        } else {
+            profileIamgeView.image = UIImage(systemName: "person.fill")
+        }
     }
     
 }
