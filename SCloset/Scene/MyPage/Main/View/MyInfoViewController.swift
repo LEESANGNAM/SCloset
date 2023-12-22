@@ -65,20 +65,4 @@ class MyInfoViewController: BaseViewController {
     }
     
     
-//    private func test() {
-//        let myinfo = NetworkManager.shared.request(type: MyProfileModel.self, api: .myInfo)
-//        myinfo.subscribe(with: self) { owner, value in
-//            print("내 프로필", value)
-//        } onError: { owner, error in
-//            if let networkError = error as? NetWorkError {
-//                let errorText = networkError.message()
-//                print(errorText)
-//            }
-//        } onCompleted: { _ in
-//            print("완료")
-//        } onDisposed: { _ in
-//            print("디스포즈")
-//        }
-//
-//    }
 }

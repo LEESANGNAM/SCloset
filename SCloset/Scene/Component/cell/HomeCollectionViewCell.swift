@@ -16,6 +16,14 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         image.backgroundColor = .systemGray
         return image
     }()
+    let userProfileImageView = {
+        let image = UIImageView()
+        image.layer.cornerRadius = 10
+        image.backgroundColor = .systemGray5
+        image.tintColor = .lightGray
+        image.layer.masksToBounds = true
+        return image
+    }()
     let userNameLabel = {
         let label = UILabel()
         label.text = "Scloset.test1"
@@ -24,7 +32,6 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
     }()
     let likeButton = {
         let button = UIButton()
-//        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -39,6 +46,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
     
     override func setHierarchy() {
         contentView.addSubview(lookImageView)
+        contentView.addSubview(userProfileImageView)
         contentView.addSubview(userNameLabel)
         contentView.addSubview(likeButton)
         contentView.addSubview(likeCountLabel)
@@ -53,9 +61,14 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.8)
         }
-        userNameLabel.snp.makeConstraints { make in
+        userProfileImageView.snp.makeConstraints { make in
             make.top.equalTo(lookImageView.snp.bottom).offset(5)
             make.leading.equalTo(self.safeAreaLayoutGuide)
+            make.size.equalTo(20)
+        }
+        userNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(lookImageView.snp.bottom).offset(5)
+            make.leading.equalTo(userProfileImageView.snp.trailing).offset(5)
             make.height.equalTo(20)
             make.width.equalToSuperview().multipliedBy(0.6)
         }
@@ -103,6 +116,13 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
             let urlString = APIKey.baseURL + imageBase
             let imageSize = lookImageView.frame.size
             lookImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "photo.fill")
+        }
+        if let profileBase = data.creator.profile {
+            let urlString = APIKey.baseURL + profileBase
+            let imageSize = userProfileImageView.frame.size
+            userProfileImageView.setImage(with: urlString, frameSize: imageSize, placeHolder: "person.fill")
+        } else {
+            userProfileImageView.image = UIImage(systemName: "person.fill")
         }
     }
 }
