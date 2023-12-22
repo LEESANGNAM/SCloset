@@ -50,7 +50,7 @@ class MyPostViewModel:ViewModelProtocol {
     
     func myPostLoad() {
         guard let userId =  MyInfoManager.shared.myinfo?._id else { return }
-        let likepostTest = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .myPost(userId: userId, next: cursor.value, limit: "5", product_id: APIKey.product))
+        let likepostTest = NetworkManager.shared.request(type: PostLoadResponseModel.self, api: .myPost(userId: userId, next: cursor.value, limit: "10", product_id: APIKey.product))
         likepostTest.subscribe(with: self) { owner, value in
             var data = owner.postData.value
             data.append(contentsOf: value.data)

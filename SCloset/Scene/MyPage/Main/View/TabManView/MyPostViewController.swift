@@ -91,7 +91,7 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension MyPostViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths{
-            if viewModel.getPostCount() - 2 == indexPath.row &&  !viewModel.getCursor().isEmpty {
+            if viewModel.getPostCount() - 1 == indexPath.row &&  !viewModel.getCursor().isEmpty {
                 viewModel.myPostLoad()
             }
         }

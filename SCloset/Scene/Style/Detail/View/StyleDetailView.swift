@@ -144,7 +144,7 @@ class StyleDetailView: BaseView {
         commentStackView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.width.equalTo(contentView)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-50)
         }
         
         commentWriteBackView.snp.makeConstraints { make in
