@@ -93,6 +93,13 @@ class StyleDetailViewController: BaseViewController {
         output.isCommentValid
             .bind(to: mainView.commentWriteView.doneButton.rx.isHidden)
             .disposed(by: disposeBag)
+        output.myPost
+            .bind(to: mainView.profileView.followButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        output.followResult
+            .bind(with: self) { owner, value in
+                owner.setfollowButton(isFollow: value)
+            }.disposed(by: disposeBag)
         
     }
     private func setbackButton() {
@@ -138,6 +145,19 @@ class StyleDetailViewController: BaseViewController {
             mainView.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             mainView.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    private func setfollowButton(isFollow: Bool) {
+        if isFollow {
+            mainView.profileView.followButton.backgroundColor = .white
+            mainView.profileView.followButton.layer.borderWidth = 1
+            mainView.profileView.followButton.layer.borderColor = UIColor.lightGray.cgColor
+            mainView.profileView.followButton.setTitle("팔로잉", for: .normal)
+            mainView.profileView.followButton.setTitleColor(.black, for: .normal)
+        } else {
+            mainView.profileView.followButton.backgroundColor = .black
+            mainView.profileView.followButton.setTitle("팔로우", for: .normal)
+            mainView.profileView.followButton.setTitleColor(.white, for: .normal)
         }
     }
     

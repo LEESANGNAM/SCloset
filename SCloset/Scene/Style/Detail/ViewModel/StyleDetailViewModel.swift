@@ -18,6 +18,8 @@ class StyleDetailViewModel: ViewModelProtocol {
     let isLike = BehaviorRelay(value: false)
     let isCommentValid = BehaviorRelay(value: true) // button ishidden
     let searchSuccess = BehaviorRelay(value: false)
+    let followResult = BehaviorRelay(value: false)
+    let myPost = BehaviorRelay(value: false)
     struct Input {
         let viewWillAppear: Observable<Void>
         let followButtonTapped: ControlEvent<Void>
@@ -32,7 +34,8 @@ class StyleDetailViewModel: ViewModelProtocol {
         let searchSuccess: BehaviorRelay<Bool>
         let ellipsisButtonTapped: ControlEvent<Void>
         let isLike: BehaviorRelay<Bool>
-//        let followResult: PublishRelay<Bool>
+        let myPost: BehaviorRelay<Bool>
+        let followResult: BehaviorRelay<Bool>
         let isCommentValid: BehaviorRelay<Bool>
         let commentButtonTapped: ControlEvent<Void>
         let commentDoneButtonTapped: ControlEvent<Void>
@@ -44,6 +47,8 @@ class StyleDetailViewModel: ViewModelProtocol {
             .bind(with: self) { owner, _ in
                 owner.postSearch()
                 owner.isLikeValid()
+                owner.isFollowValid()
+                owner.myPostValid()
             }.disposed(by: disposeBag)
         input.likeButtonTapped
             .bind(with: self) { owner, _ in
@@ -60,8 +65,13 @@ class StyleDetailViewModel: ViewModelProtocol {
             .bind(with: self) { owner, _ in
                 owner.writeCommnet()
             }.disposed(by: disposeBag)
+        input.followButtonTapped
+            .bind(with: self) { owner, _ in
+                owner.followButtonTapped()
+            }.disposed(by: disposeBag)
         
-        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, isCommentValid: isCommentValid, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
+        
+        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, myPost: myPost, followResult: followResult, isCommentValid: isCommentValid, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
     }
     
     func getcommnetsCount() -> Int{
@@ -80,6 +90,19 @@ class StyleDetailViewModel: ViewModelProtocol {
             isLike.accept(like)
         }
     }
+    private func myPostValid() {
+        if let post = getPost() {
+            let myPostValid = MyInfoManager.shared.mypost(postId: post._id)
+            myPost.accept(myPostValid)
+        }
+    }
+    private func isFollowValid() {
+        if let post = getPost() {
+            let userId = post.creator._id
+            let isFollow = MyInfoManager.shared.isFollowingUser(userId: userId)
+            followResult.accept(isFollow)
+        }
+    }
     func CommentValid() {
         if commentText.isEmpty {
             isCommentValid.accept(true)
@@ -94,9 +117,6 @@ class StyleDetailViewModel: ViewModelProtocol {
         
         let comment = NetworkManager.shared.request(type: Comment.self, api: .writeComment(postId: postData._id, comment: commnetRequestModel(content: commentText)))
         comment.subscribe(with: self) { owner, data in
-            print("댓글작성~~")
-            print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-            print(data)
         } onError: { owner, error in
             if let error = error as? NetWorkError {
                 let errorText = error.message()
@@ -113,9 +133,6 @@ class StyleDetailViewModel: ViewModelProtocol {
         guard let postData = postData.value else { return }
         let postInfo = NetworkManager.shared.request(type: PostInfoModel.self, api: .postSearch(postId: postData._id))
         postInfo.subscribe(with: self) { owner, value in
-            print("포스트 한개 조회")
-            print("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
-            print(value)
             owner.item.accept(value.comments)
             owner.postData.accept(value)
         } onError: { owner, error in
@@ -147,6 +164,34 @@ class StyleDetailViewModel: ViewModelProtocol {
         } onDisposed: { _ in
             print("디스포즈")
         }.disposed(by: disposeBag)
+    }
+    
+    private func followButtonTapped() {
+        guard let postData = postData.value else { return }
+        let isFollow = followResult.value
+        let userid = postData.creator._id
+        var followResult: Observable<FollowModel>
+        if isFollow {
+            followResult = NetworkManager.shared.request(type: FollowModel.self, api: .unfollow(userId: userid))
+        } else {
+            followResult = NetworkManager.shared.request(type: FollowModel.self, api: .follow(userId: userid))
+        }
+        
+        
+        followResult.subscribe(with: self) { owner, value in
+            print("이게 바로 팔로우 결과임",value.following_status)
+            owner.followResult.accept(value.following_status)
+        } onError: { owner, error in
+            if let networkError = error as? NetWorkError {
+                let errorText = networkError.message()
+                print(errorText)
+            }
+        } onCompleted: { _ in
+            MyInfoManager.shared.fetch()
+        } onDisposed: { _ in
+            print("디스포즈")
+        }.disposed(by: disposeBag)
+        
     }
     
 }

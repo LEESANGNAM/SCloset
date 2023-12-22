@@ -23,9 +23,7 @@ class ProfileView: BaseView {
     
     let followButton = {
         let view = UIButton()
-        view.backgroundColor = .black
-        view.setTitle("팔로우", for: .normal)
-        view.setTitleColor(.white, for: .normal)
+        view.layer.cornerRadius = 10
         return view
     }()
     
@@ -79,7 +77,6 @@ class ProfileView: BaseView {
         setImage(data: data)
         profileImageView.layer.cornerRadius = corner
         dateLabel.text = data.relativeDate
-        followButton.layer.cornerRadius = 10
     }
     private func setImage(data: PostInfoModel) {
         layoutIfNeeded()

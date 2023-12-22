@@ -42,5 +42,16 @@ class MyInfoManager {
         followerCount = profile.followerCount
         followingCount = profile.followingCount
     }
+    func mypost(postId: String) -> Bool {
+        guard let myinfo else { return false }
+        return myinfo.posts.contains(postId)
+    }
+    func isFollowingUser(userId: String) -> Bool {
+        guard let myinfo else { return false }
+        let isFollowing = myinfo.following.contains { creator in
+            creator._id == userId
+        }
+        return isFollowing
+    }
     
 }
