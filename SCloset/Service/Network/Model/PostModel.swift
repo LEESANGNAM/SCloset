@@ -59,5 +59,8 @@ struct Creator: Decodable {
     let profile: String?
 }
 
+struct PostDeleteModel: Decodable {
+    let _id: String
+}
 
 

@@ -20,6 +20,7 @@ class StyleDetailViewModel: ViewModelProtocol {
     let searchSuccess = BehaviorRelay(value: false)
     let followResult = BehaviorRelay(value: false)
     let myPost = BehaviorRelay(value: false)
+    let isPostDelete = BehaviorRelay(value: false)
     struct Input {
         let viewWillAppear: Observable<Void>
         let followButtonTapped: ControlEvent<Void>
@@ -40,6 +41,7 @@ class StyleDetailViewModel: ViewModelProtocol {
         let commentButtonTapped: ControlEvent<Void>
         let commentDoneButtonTapped: ControlEvent<Void>
         var item: BehaviorRelay<[Comment?]>
+        let isPostDelete: BehaviorRelay<Bool>
     }
     
     func transform(input: Input) -> Output{
@@ -71,7 +73,7 @@ class StyleDetailViewModel: ViewModelProtocol {
             }.disposed(by: disposeBag)
         
         
-        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, myPost: myPost, followResult: followResult, isCommentValid: isCommentValid, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item)
+        return Output(searchSuccess: searchSuccess, ellipsisButtonTapped: input.ellipsisButtonTapped, isLike: isLike, myPost: myPost, followResult: followResult, isCommentValid: isCommentValid, commentButtonTapped: input.commentButtonTapped, commentDoneButtonTapped: input.commentDoneButtonTapped, item: item, isPostDelete: isPostDelete)
     }
     
     func getcommnetsCount() -> Int{
@@ -193,5 +195,28 @@ class StyleDetailViewModel: ViewModelProtocol {
         }.disposed(by: disposeBag)
         
     }
+    
+    func postDelete() {
+        guard let postData = postData.value else { return }
+        let postid = postData._id
+        
+        let postDeleteResponse = NetworkManager.shared.request(type: PostDeleteModel.self, api: .postDelete(postId: postid))
+        
+        postDeleteResponse
+            .subscribe(with: self) { owner, value in
+                print("포스트 삭제: \(value)")
+            } onError: { owner, error in
+                if let networkError = error as? NetWorkError {
+                    let errorText = networkError.message()
+                    print(errorText)
+                }
+            } onCompleted: { owner in
+                owner.isPostDelete.accept(true)
+            } onDisposed: { _ in
+                print("포스트삭제 디스포즈")
+            }.disposed(by: disposeBag)
+        
+    }
+    
     
 }

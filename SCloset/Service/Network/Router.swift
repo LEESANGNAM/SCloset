@@ -25,6 +25,7 @@ enum Router: URLRequestConvertible {
     case postSearch(postId: String)
     case postUpLoad(imageData: Data, title: String, content: String,product_id: String, content1: String)
     case postChange(postId: String, imageData: Data?, title: String?, content: String?)
+    case postDelete(postId: String)
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
     case myInfo
@@ -58,6 +59,8 @@ enum Router: URLRequestConvertible {
             return "post/like/\(postId)"
         case .postSearch(let postId):
             return "post/\(postId)"
+        case .postDelete(let postId):
+            return "post/\(postId)"
         case .writeComment(let postId,_):
             return "post/\(postId)/comment"
         case .myInfo:
@@ -77,7 +80,7 @@ enum Router: URLRequestConvertible {
     var header: HTTPHeaders {
         switch self {
         case .join, .login, .emailVlidation,
-                .postLoad, .postLike,.postSearch,
+                .postLoad, .postLike,.postSearch,.postDelete,
                 .writeComment,.myInfo,.myLikePost,.myPost,
                 .follow,.unfollow:
             return ["SesacKey": Router.key ]
@@ -103,7 +106,7 @@ enum Router: URLRequestConvertible {
             return .get
         case .postChange, .editProfile:
             return .put
-        case .unfollow:
+        case .unfollow,.postDelete:
             return .delete
         }
     }
@@ -182,7 +185,7 @@ enum Router: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: request)
         case .postLoad,.myPost:
             request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
-        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo,.editProfile,.follow,.unfollow:
+        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo,.editProfile,.follow,.unfollow,.postDelete:
             break
         case .writeComment(_,let comment):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(comment, into: request)

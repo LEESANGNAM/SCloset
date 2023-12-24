@@ -76,7 +76,7 @@ class StyleDetailViewController: BaseViewController {
                         owner.navigationController?.pushViewController(vc, animated: true)
                     }
                 } deleteAction: {
-                    print("삭제")
+                    owner.viewModel.postDelete()
                 }
             }.disposed(by: disposeBag)
         
@@ -93,12 +93,21 @@ class StyleDetailViewController: BaseViewController {
         output.isCommentValid
             .bind(to: mainView.commentWriteView.doneButton.rx.isHidden)
             .disposed(by: disposeBag)
+        
         output.myPost
             .bind(to: mainView.profileView.followButton.rx.isHidden)
             .disposed(by: disposeBag)
+        
         output.followResult
             .bind(with: self) { owner, value in
                 owner.setfollowButton(isFollow: value)
+            }.disposed(by: disposeBag)
+        
+        output.isPostDelete
+            .bind(with: self) { owner, value in
+                if value {
+                    owner.backScreenAction()
+                }
             }.disposed(by: disposeBag)
         
     }
@@ -108,6 +117,9 @@ class StyleDetailViewController: BaseViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     @objc func backButtonTapped() {
+        backScreenAction()
+    }
+    private func backScreenAction() {
         if let _ = self.presentingViewController {
             dismiss(animated: true)
         } else {
