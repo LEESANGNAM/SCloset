@@ -64,19 +64,24 @@ class StyleDetailViewController: BaseViewController {
             }.disposed(by: disposeBag)
         
         output.ellipsisButtonTapped
-            .bind(with: self) { owner, _ in
-                owner.showPostActionSheet {
-                    print("수정")
-                    if let data = owner.viewModel.getPost(){
-                        let vm = StyleEditViewModel()
-                        vm.postData.accept(data)
-                        vm.setImageData(owner.mainView.lookImageView.image?.jpegData(compressionQuality: 1.0))
-                        let vc = StyleEditViewController(viewModel: vm)
-                        vc.delegate = self
-                        owner.navigationController?.pushViewController(vc, animated: true)
+            .withLatestFrom(output.myPost)
+            .bind(with: self) { owner, isMypost in
+                if isMypost {
+                    owner.showPostActionSheet {
+                        print("수정")
+                        if let data = owner.viewModel.getPost(){
+                            let vm = StyleEditViewModel()
+                            vm.postData.accept(data)
+                            vm.setImageData(owner.mainView.lookImageView.image?.jpegData(compressionQuality: 1.0))
+                            let vc = StyleEditViewController(viewModel: vm)
+                            vc.delegate = self
+                            owner.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    } deleteAction: {
+                        owner.viewModel.postDelete()
                     }
-                } deleteAction: {
-                    owner.viewModel.postDelete()
+                } else {
+                    print("내 포스트 아님")
                 }
             }.disposed(by: disposeBag)
         
