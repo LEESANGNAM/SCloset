@@ -67,8 +67,7 @@ class StyleDetailViewController: BaseViewController {
             .withLatestFrom(output.myPost)
             .bind(with: self) { owner, isMypost in
                 if isMypost {
-                    owner.showPostActionSheet {
-                        print("수정")
+                    owner.showPostActionSheet(firstTitle: "게시글 수정", secondTitle: "게시글 삭제") {
                         if let data = owner.viewModel.getPost(){
                             let vm = StyleEditViewModel()
                             vm.postData.accept(data)
@@ -81,7 +80,11 @@ class StyleDetailViewController: BaseViewController {
                         owner.viewModel.postDelete()
                     }
                 } else {
-                    print("내 포스트 아님")
+                    owner.showPostActionSheet(firstTitle: "신고하기", secondTitle: "차단하기") {
+                        print("신고하기")
+                    } deleteAction: {
+                        print("차단하기")
+                    }
                 }
             }.disposed(by: disposeBag)
         
@@ -178,14 +181,14 @@ class StyleDetailViewController: BaseViewController {
         }
     }
     
-    private func showPostActionSheet(editAction: @escaping () -> Void, deleteAction: @escaping () -> Void) {
+    private func showPostActionSheet(firstTitle:String ,secondTitle: String,editAction: @escaping () -> Void, deleteAction: @escaping () -> Void) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let editAction = UIAlertAction(title: "게시글 수정", style: .default) { _ in
+        let editAction = UIAlertAction(title: firstTitle, style: .default) { _ in
             editAction()
         }
         
-        let deleteAction = UIAlertAction(title: "게시글 삭제", style: .destructive) { _ in
+        let deleteAction = UIAlertAction(title: secondTitle, style: .destructive) { _ in
             deleteAction()
         }
         
