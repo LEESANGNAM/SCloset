@@ -42,6 +42,15 @@ class MyInfoManager {
         followerCount = profile.followerCount
         followingCount = profile.followingCount
     }
+    func myComment(commentCratorId: String?) -> Bool {
+        guard let myinfo else { return false }
+        guard let commentCratorId else { return false }
+        if myinfo._id == commentCratorId {
+            return true
+        } else {
+            return false
+        }
+    }
     func mypost(postId: String) -> Bool {
         guard let myinfo else { return false }
         return myinfo.posts.contains(postId)

@@ -225,13 +225,27 @@ extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let item = viewModel.getcommnet(indexPath.row)
-        let deleteAction = UIContextualAction(style: .normal, title: "삭제") { (_, _, succes: @escaping (Bool) -> Void) in
-            print("삭제 기능")
+        let ellipsisAction = UIContextualAction(style: .normal, title: "더보기") {[weak self] (_, _, succes: @escaping (Bool) -> Void) in
+            guard let self else { return }
+            let ismypost = self.viewModel.myCommentValid(item?.creator._id)
+            if ismypost {
+                self.showPostActionSheet(firstTitle: "댓글 수정", secondTitle: "댓글 삭제") {
+                    print("수정")
+                } deleteAction: {
+                    print("삭제")
+                }
+            } else {
+                self.showPostActionSheet(firstTitle: "신고하기", secondTitle: "차단하기") {
+                    print("신고하기")
+                } deleteAction: {
+                    print("차단하기")
+                }
+            }
             succes(true)
         }
-        deleteAction.backgroundColor = .systemRed
+        ellipsisAction.backgroundColor = .systemGray
         
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        return UISwipeActionsConfiguration(actions: [ellipsisAction])
     }
     
 }

@@ -86,6 +86,9 @@ class StyleDetailViewModel: ViewModelProtocol {
     func getPost() -> PostInfoModel? {
         return postData.value
     }
+    func myCommentValid(_ id: String?) -> Bool {
+        return MyInfoManager.shared.myComment(commentCratorId: id)
+    }
     func isLikeValid(){
         if let post = getPost() {
             let like = post.likes.contains(UserDefaultsManager.id)
