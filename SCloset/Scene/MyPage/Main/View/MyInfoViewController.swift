@@ -12,6 +12,8 @@ import RxSwift
 class MyInfoViewController: BaseViewController {
     
     let mainView = MyInfoView()
+    let viewModel = MyInfoViewModel()
+    let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
@@ -20,25 +22,38 @@ class MyInfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setEditButton()
         title = "마이페이지"
+        bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MyInfoManager.shared.fetch()
-        setData()
-    }
     
-    private func setEditButton() {
-        mainView.profileEditButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    private func bind() {
+        let input = MyInfoViewModel.Input(viewWillAppear: self.rx.viewWillAppear.map { _ in },
+                                          profileEditButtonTap: mainView.profileEditButton.rx.tap,
+                                          logOutButtonTap: mainView.logOutButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.viewWillAppear
+            .bind(with: self) { owner, _ in
+                owner.setData()
+            }.disposed(by: disposeBag)
+        
+        output.profileEditButtonTap
+            .bind(with: self) { owner, _ in
+                owner.showProfileEditScreen()
+            }.disposed(by: disposeBag)
+        
+        output.logOutButtonTap
+            .bind(with: self) { owner, _ in
+                owner.logout()
+            }.disposed(by: disposeBag)
+        
     }
-    @objc func editButtonTapped(){
+    private func showProfileEditScreen(){
         var imagedata: Data?
         if let profile = MyInfoManager.shared.myinfo?.profile {
             imagedata = mainView.profileImageView.image?.jpegData(compressionQuality: 1.0)
         }
-        print("이미지 데이터 확인 : ", imagedata)
         let vm = ProfileEditViewModel()
         vm.setImageData(imagedata)
         let vc = ProfileEditViewController(viewModel: vm)
@@ -63,6 +78,21 @@ class MyInfoViewController: BaseViewController {
         }else {
             mainView.profileImageView.image = UIImage(systemName: "person.fill")
         }
+    }
+    
+    private func logout(){
+        resetLogin()
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let vc = LoginViewController()
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
+    }
+    private func resetLogin(){
+        UserDefaultsManager.isLogin = false
+        UserDefaultsManager.token = ""
+        UserDefaultsManager.refresh = ""
+        UserDefaultsManager.id = ""
     }
     
     

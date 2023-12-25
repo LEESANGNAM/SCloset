@@ -48,9 +48,9 @@ class MyInfoView: BaseView {
         view.layer.borderColor = UIColor.systemGray6.cgColor
         return view
     }()
-    let profileSharedButton = {
+    let logOutButton = {
         let view = UIButton()
-        view.setTitle("프로필 공유", for: .normal)
+        view.setTitle("로그아웃", for: .normal)
         view.setTitleColor(.black, for: .normal)
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
@@ -72,7 +72,7 @@ class MyInfoView: BaseView {
         addSubview(emailLabel)
         
         addSubview(profileEditButton)
-        addSubview(profileSharedButton)
+        addSubview(logOutButton)
         
         addSubview(tabmanView)
         tabmanView.addSubview(tabmanVC.view)
@@ -110,7 +110,7 @@ class MyInfoView: BaseView {
             make.width.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.43)
             make.height.equalTo(40)
         }
-        profileSharedButton.snp.makeConstraints { make in
+        logOutButton.snp.makeConstraints { make in
             make.top.equalTo(profileEditButton.snp.top)
             make.leading.equalTo(profileEditButton.snp.trailing).offset(5)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
