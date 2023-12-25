@@ -33,12 +33,12 @@ class StyleListViewModel {
         input.viewDidLoad
             .bind(with: self) { owner, _ in
                 WeatherManager.shared.updateWeather()
-                MyInfoManager.shared.fetch()
             }.disposed(by: disposeBag)
         
         input.viewWillAppear
             .delay(.milliseconds(50), scheduler: MainScheduler.instance)
             .bind(with: self) { owner, _ in
+                MyInfoManager.shared.fetch()
                 owner.postData.accept([])
                 owner.cursor.accept("")
                 owner.postLoad()

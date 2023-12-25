@@ -50,25 +50,19 @@ enum Router: URLRequestConvertible {
             return "validation/email"
         case .refresh:
             return "refresh"
-        case .postLoad(_,_,_):
+        case .postLoad,.postUpLoad:
             return "post"
-        case .postUpLoad:
-            return "post"
-        case .postChange(let postId,_,_,_):
+        case .postChange(let postId,_,_,_),
+            .postSearch(let postId),
+            .postDelete(let postId):
             return "post/\(postId)"
         case .postLike(let postId):
             return "post/like/\(postId)"
-        case .postSearch(let postId):
-            return "post/\(postId)"
-        case .postDelete(let postId):
-            return "post/\(postId)"
         case .writeComment(let postId,_):
             return "post/\(postId)/comment"
         case .deleteComment(let postId,let commentId):
             return "post/\(postId)/comment/\(commentId)"
-        case .myInfo:
-            return "profile/me"
-        case .editProfile:
+        case .myInfo, .editProfile:
             return "profile/me"
         case .myLikePost(_,_):
             return "post/like/me"
