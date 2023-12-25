@@ -223,5 +223,15 @@ extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = viewModel.getcommnet(indexPath.row)
+        let deleteAction = UIContextualAction(style: .normal, title: "삭제") { (_, _, succes: @escaping (Bool) -> Void) in
+            print("삭제 기능")
+            succes(true)
+        }
+        deleteAction.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
     
 }
