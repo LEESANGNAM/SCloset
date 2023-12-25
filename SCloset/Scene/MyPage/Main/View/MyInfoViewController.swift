@@ -45,7 +45,7 @@ class MyInfoViewController: BaseViewController {
         
         output.logOutButtonTap
             .bind(with: self) { owner, _ in
-                owner.logout()
+                owner.showAlert()
             }.disposed(by: disposeBag)
         
     }
@@ -78,6 +78,17 @@ class MyInfoViewController: BaseViewController {
         }else {
             mainView.profileImageView.image = UIImage(systemName: "person.fill")
         }
+    }
+    private func showAlert() {
+        let alert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let done = UIAlertAction(title: "로그아웃", style: .destructive) { [weak self] _ in
+            self?.logout()
+        }
+        alert.addAction(done)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
     }
     
     private func logout(){
