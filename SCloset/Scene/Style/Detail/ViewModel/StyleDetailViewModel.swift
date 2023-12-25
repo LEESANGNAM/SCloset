@@ -129,6 +129,8 @@ class StyleDetailViewModel: ViewModelProtocol {
             }
         } onCompleted: { owner in
             owner.postSearch()
+            owner.commentText = ""
+            owner.CommentValid()
         } onDisposed: { _ in
             print("디스포즈")
         }.disposed(by: disposeBag)
