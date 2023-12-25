@@ -232,7 +232,7 @@ extension StyleDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 self.showPostActionSheet(firstTitle: "댓글 수정", secondTitle: "댓글 삭제") {
                     print("수정")
                 } deleteAction: {
-                    print("삭제")
+                    self.viewModel.commentDelete(commentId: item?._id)
                 }
             } else {
                 self.showPostActionSheet(firstTitle: "신고하기", secondTitle: "차단하기") {

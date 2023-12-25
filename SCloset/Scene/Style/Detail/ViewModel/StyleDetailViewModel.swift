@@ -218,7 +218,28 @@ class StyleDetailViewModel: ViewModelProtocol {
             } onDisposed: { _ in
                 print("포스트삭제 디스포즈")
             }.disposed(by: disposeBag)
+    }
+    
+    func commentDelete(commentId: String?) {
+        guard let postData = postData.value else { return }
+        guard let commentId else { return }
+        let postId = postData._id
         
+        let commentDeleteResponse = NetworkManager.shared.request(type: DeleteCommnetResponseModel.self, api: .deleteComment(postId: postId, commentId: commentId))
+        
+        commentDeleteResponse
+            .subscribe(with: self) { owner, value in
+                print("댓글 삭제",value)
+            } onError: { owner, error in
+                if let networkError = error as? NetWorkError {
+                    let errorText = networkError.message()
+                    print(errorText)
+                }
+            } onCompleted: { owner in
+                owner.postSearch()
+            } onDisposed: { _ in
+                print("댓글 삭제 디스포즈")
+            }.disposed(by: disposeBag)
     }
     
     

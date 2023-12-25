@@ -10,3 +10,8 @@ import Foundation
 struct commnetRequestModel: Encodable {
     let content: String
 }
+
+struct DeleteCommnetResponseModel: Decodable {
+    let postID: String
+    let commentID: String
+}

@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case postDelete(postId: String)
     case postLike(postId: String)
     case writeComment(postId: String,comment: commnetRequestModel)
+    case deleteComment(postId: String, commentId: String)
     case myInfo
     case editProfile(nick: String, phone: String?, birthday: String?, profileImage: Data?)
     case myPost(userId:String,next: String, limit: String, product_id: String)
@@ -63,6 +64,8 @@ enum Router: URLRequestConvertible {
             return "post/\(postId)"
         case .writeComment(let postId,_):
             return "post/\(postId)/comment"
+        case .deleteComment(let postId,let commentId):
+            return "post/\(postId)/comment/\(commentId)"
         case .myInfo:
             return "profile/me"
         case .editProfile:
@@ -81,7 +84,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .join, .login, .emailVlidation,
                 .postLoad, .postLike,.postSearch,.postDelete,
-                .writeComment,.myInfo,.myLikePost,.myPost,
+                .writeComment,.deleteComment,
+                .myInfo,.myLikePost,.myPost,
                 .follow,.unfollow:
             return ["SesacKey": Router.key ]
         case .refresh:
@@ -106,7 +110,7 @@ enum Router: URLRequestConvertible {
             return .get
         case .postChange, .editProfile:
             return .put
-        case .unfollow,.postDelete:
+        case .unfollow,.postDelete,.deleteComment:
             return .delete
         }
     }
@@ -185,7 +189,7 @@ enum Router: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(emailValidationRequestModel, into: request)
         case .postLoad,.myPost:
             request = try URLEncodedFormParameterEncoder(destination: .queryString).encode(query, into: request)
-        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo,.editProfile,.follow,.unfollow,.postDelete:
+        case .refresh, .postUpLoad,.postChange,.postLike,.postSearch,.myInfo,.editProfile,.follow,.unfollow,.postDelete,.deleteComment:
             break
         case .writeComment(_,let comment):
             request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(comment, into: request)
