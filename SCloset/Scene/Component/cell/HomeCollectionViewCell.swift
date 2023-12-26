@@ -7,8 +7,12 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class HomeCollectionViewCell: BaseCollectionViewCell {
+    var disposeBag = DisposeBag()
+    var isLike = false
     let lookImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 15
@@ -70,7 +74,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(lookImageView.snp.bottom).offset(5)
             make.leading.equalTo(userProfileImageView.snp.trailing).offset(5)
             make.height.equalTo(20)
-            make.width.equalToSuperview().multipliedBy(0.6)
+            make.width.lessThanOrEqualToSuperview().multipliedBy(0.5)
         }
         likeButton.snp.makeConstraints { make in
             make.centerY.equalTo(userNameLabel)
@@ -88,9 +92,35 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
             make.bottom.lessThanOrEqualTo(self.safeAreaLayoutGuide)
         }
         
-        
     }
-    func setData(data: PostLoad){
+    
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            disposeBag = DisposeBag()
+        }
+    
+    func likeButtonAction(action: @escaping () -> Void) {
+        likeButton.rx.tap
+               .subscribe(onNext: {
+                   action()
+               })
+               .disposed(by: disposeBag)
+       }
+    
+
+    func likeButtonTapped(postId: String) -> Observable<Bool> {
+        return NetworkManager.shared.request(type: PostLikeModel.self, api: .postLike(postId: postId))
+               .map { likeModel in
+                   return likeModel.like_status
+               }
+    }
+    
+    func postSearch(postId: String) -> Observable<PostInfoModel> {
+        return NetworkManager.shared.request(type: PostInfoModel.self, api: .postSearch(postId: postId))
+    }
+    
+    func setData(data: PostInfoModel){
+        print("셀데이터 넣음 ")
         if let locationContent = data.content1 {
             contentLabel.text = locationContent
         }
@@ -99,8 +129,8 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         setImage(data: data)
         likeCountLabel.text = "\(data.likeCount)"
         var heartImage: UIImage
-        let islike = data.likes.contains(UserDefaultsManager.id)
-        if islike {
+        isLike = data.likes.contains(UserDefaultsManager.id)
+        if isLike {
             heartImage = UIImage(systemName: "heart.fill")!
         }else {
             heartImage = UIImage(systemName: "heart")!
@@ -109,7 +139,7 @@ class HomeCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    private func setImage(data: PostLoad) {
+    private func setImage(data: PostInfoModel) {
         layoutIfNeeded()
         if let imageBase = data.image.first,
            let imageBase {

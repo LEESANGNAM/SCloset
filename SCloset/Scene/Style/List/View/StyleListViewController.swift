@@ -98,7 +98,32 @@ extension StyleListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell()}
         let data = viewModel.getPostData(index: indexPath.row)
-        cell.setData(data: data)
+        cell.setData(data: data.toPostInfo())
+        
+        cell.likeButtonAction {
+                print("라이크 버튼탭 \(indexPath.row)번째 아이템,\(data)")
+                print("cell like ", cell.isLike)
+                // 서버 통신
+                cell.likeButtonTapped(postId: data._id)
+                    .flatMapLatest { _ in
+                        return cell.postSearch(postId: data._id)
+                    }
+                    .subscribe(onNext: { postData in
+                        // 서버 응답에 따라 데이터를 다시 갱신
+                        cell.isLike = postData.likes.contains(UserDefaultsManager.id)
+                        cell.setData(data: postData)
+                    }, onError: { error in
+                        if let networkError = error as? NetWorkError {
+                            let errorText = networkError.message()
+                            print(errorText)
+                        }
+                    }, onDisposed: {
+                        print("라이크 디스포즈")
+                    })
+                    .disposed(by: cell.disposeBag)
+            }
+
+        
         return cell
     }
     
