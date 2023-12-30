@@ -58,37 +58,67 @@ class MyInfoView: BaseView {
         view.layer.borderColor = UIColor.systemGray6.cgColor
         return view
     }()
+    let scrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    let contentView = UIView()
+    
+    let myProfileInfoView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     let tabmanView = UIView()
     let tabmanVC = TabManViewController()
     
     
     override func setHierarchy() {
-        addSubview(profileImageView)
-        addSubview(nicknameLabel)
-        addSubview(followerLabel)
-        addSubview(followingLabel)
+        addSubview(scrollView)
+        contentView.backgroundColor = .blue
+        scrollView.addSubview(contentView)
+        contentView.addSubview(myProfileInfoView)
+    
+        myProfileInfoView.addSubview(profileImageView)
+        myProfileInfoView.addSubview(nicknameLabel)
+        myProfileInfoView.addSubview(followerLabel)
+        myProfileInfoView.addSubview(followingLabel)
         
-        addSubview(emailLabel)
+        myProfileInfoView.addSubview(emailLabel)
         
-        addSubview(profileEditButton)
-        addSubview(logOutButton)
+        myProfileInfoView.addSubview(profileEditButton)
+        myProfileInfoView.addSubview(logOutButton)
         
-        addSubview(tabmanView)
+        
+        contentView.addSubview(tabmanView)
         tabmanView.addSubview(tabmanVC.view)
         
     }
     
     override func setconstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.width.equalTo(scrollView)
+            make.height.equalToSuperview()
+        }
+        myProfileInfoView.snp.makeConstraints { make in
+            make.width.equalTo(contentView)
+            make.top.equalTo(contentView.snp.top)
+        }
         profileImageView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(0.2)
             make.height.equalTo(profileImageView.snp.width)
-            make.leading.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.leading.equalTo(myProfileInfoView.snp.leading).offset(20)
+            make.top.equalTo(myProfileInfoView.snp.top).offset(20)
         }
         nicknameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(profileImageView).offset(-10)
             make.leading.equalTo(profileImageView.snp.trailing).offset(10)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.trailing.equalTo(myProfileInfoView.snp.trailing).offset(-20)
         }
         followerLabel.snp.makeConstraints { make in
             make.centerY.equalTo(profileImageView).offset(10)
@@ -97,35 +127,36 @@ class MyInfoView: BaseView {
         followingLabel.snp.makeConstraints { make in
             make.top.equalTo(followerLabel.snp.top)
             make.leading.equalTo(followerLabel.snp.trailing).offset(10)
-            make.trailing.lessThanOrEqualTo(self.safeAreaLayoutGuide).offset(-30)
+            make.trailing.lessThanOrEqualTo(myProfileInfoView.snp.trailing).offset(-30)
         }
         
         emailLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalTo(myProfileInfoView).inset(20)
             make.top.equalTo(profileImageView.snp.bottom).offset(10)
         }
         profileEditButton.snp.makeConstraints { make in
             make.top.equalTo(emailLabel.snp.bottom).offset(10)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.width.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.43)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalToSuperview().multipliedBy(0.43)
+            make.bottom.equalTo(myProfileInfoView.snp.bottom).offset(-10)
             make.height.equalTo(40)
         }
         logOutButton.snp.makeConstraints { make in
             make.top.equalTo(profileEditButton.snp.top)
             make.leading.equalTo(profileEditButton.snp.trailing).offset(5)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
-            make.width.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.43)
+            make.trailing.equalToSuperview().offset(-20)
+            make.width.equalToSuperview().multipliedBy(0.43)
+            make.bottom.equalTo(myProfileInfoView.snp.bottom).offset(-10)
             make.height.equalTo(40)
         }
+        
         tabmanView.snp.makeConstraints { make in
-            make.top.equalTo(profileEditButton.snp.bottom).offset(20)
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.top.equalTo(myProfileInfoView.snp.bottom)
+            make.width.equalTo(contentView)
+            make.bottom.equalTo(contentView.snp.bottom)
         }
         tabmanVC.view.snp.makeConstraints { make in
-              make.top.equalToSuperview()
-              make.horizontalEdges.bottom.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         
