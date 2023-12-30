@@ -25,7 +25,7 @@ class MyPostViewModel:ViewModelProtocol {
     
     func transform(input: Input) -> Output{
         input.viewWillAppear
-            .delay(.milliseconds(50), scheduler: MainScheduler.instance)
+            .delay(.milliseconds(500), scheduler: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 owner.postData.accept([])
                 owner.cursor.accept("")
