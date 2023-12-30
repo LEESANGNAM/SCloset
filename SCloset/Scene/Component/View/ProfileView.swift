@@ -58,7 +58,7 @@ class ProfileView: BaseView {
             make.bottom.equalTo(dateLabel.snp.top)
             make.leading.equalTo(profileImageView.snp.trailing).offset(10)
             make.height.equalTo(20)
-            make.trailing.lessThanOrEqualTo(ellipsisButton.snp.leading).offset(-10)
+            make.trailing.lessThanOrEqualTo(followButton.snp.leading).offset(-5)
         }
         ellipsisButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
