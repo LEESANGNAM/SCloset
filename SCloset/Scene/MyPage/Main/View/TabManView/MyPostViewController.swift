@@ -86,12 +86,20 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+               if scrollView.contentOffset.y <= 0 {
+                   collectionView.isScrollEnabled = false
+               } else {
+                   collectionView.isScrollEnabled = true
+               }
+           }
 }
 
 extension MyPostViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths{
-            if viewModel.getPostCount() - 1 == indexPath.row &&  !viewModel.getCursor().isEmpty {
+            print(indexPath.row,"번째")
+            if  (viewModel.getPostCount() - 9 == indexPath.row &&  !viewModel.getCursor().isEmpty) {
                 viewModel.myPostLoad()
             }
         }

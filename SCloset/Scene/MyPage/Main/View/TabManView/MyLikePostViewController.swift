@@ -58,7 +58,7 @@ class MyLikePostViewController: BaseViewController {
         // 전체 너비 가져와서 빼기
         let width = UIScreen.main.bounds.width - (spacing * 4)
         let itemWidth = width / 3
-        layout.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.2)
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.3)
         //컬렉션뷰 inset
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
         // 최소 간격
@@ -88,16 +88,23 @@ extension MyLikePostViewController: UICollectionViewDelegate, UICollectionViewDa
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
     }
-    
-    
-}
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+               if scrollView.contentOffset.y <= 0 {
+                   collectionView.isScrollEnabled = false
+               } else {
+                   collectionView.isScrollEnabled = true
+               }
+           }
+    }
 extension MyLikePostViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths{
-            if viewModel.getPostCount() - 1 == indexPath.row &&  !viewModel.getCursor().isEmpty {
+            print("indexPath",indexPath)
+            if (viewModel.getPostCount() - 9 == indexPath.row &&  !viewModel.getCursor().isEmpty) {
                 viewModel.likePostLoad()
             }
         }
     }
     
 }
+

@@ -110,17 +110,9 @@ class MyInfoViewController: BaseViewController {
 
 extension MyInfoViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let profileViewHeight = mainView.myProfileInfoView.frame.height
-               let tabmanHeaderHeight = mainView.frame.height
-               print("스크롤뷰 contentOffset: ", scrollView.contentOffset.y)
-               print("프로필뷰 높이 : ", profileViewHeight)
-               
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {               
                // 프로필뷰가 보일 때
-               if scrollView.contentOffset.y < 0 {
-                   mainView.tabmanView.frame.origin.y = profileViewHeight
-                   mainView.tabmanView.frame.size.height = tabmanHeaderHeight + abs(scrollView.contentOffset.y)
-                   
+               if scrollView.contentOffset.y < 83 {
                    // 첫 번째 뷰 컨트롤러(MyPostViewController)에 대한 접근
                    if let myPostViewController = mainView.tabmanVC.ViewControllers.first as? MyPostViewController {
                        myPostViewController.collectionView.isScrollEnabled = false
@@ -134,9 +126,7 @@ extension MyInfoViewController: UIScrollViewDelegate {
                    }
                } else {
                    // 프로필뷰가 가려질 때
-                   mainView.tabmanView.frame.origin.y = 0
-                   mainView.tabmanView.frame.size.height = tabmanHeaderHeight
-                   
+
                    // 첫 번째 뷰 컨트롤러(MyPostViewController)에 대한 접근
                    if let myPostViewController = mainView.tabmanVC.ViewControllers.first as? MyPostViewController {
                        myPostViewController.collectionView.isScrollEnabled = true
@@ -150,4 +140,4 @@ extension MyInfoViewController: UIScrollViewDelegate {
                    }
                }
            }
-    }
+}

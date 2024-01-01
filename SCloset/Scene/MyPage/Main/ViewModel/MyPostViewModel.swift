@@ -39,6 +39,8 @@ class MyPostViewModel:ViewModelProtocol {
     
     
     func getPostCount() -> Int {
+        print("포스트갯수 함수 : ",postData.value.count)
+        print("-----------------")
         return postData.value.count
     }
     func getPostData(index: Int) -> PostLoad {
@@ -55,6 +57,7 @@ class MyPostViewModel:ViewModelProtocol {
             var data = owner.postData.value
             data.append(contentsOf: value.data)
             owner.postData.accept(data)
+            print("데이터 갯수,",data.count)
             owner.setCursor(value.next_cursor)
         } onError: { owner, error in
             if let networkError = error as? NetWorkError {
