@@ -12,7 +12,7 @@ import Pageboy
 class TabManViewController: TabmanViewController {
     let baseView = UIView()
     
-    private var ViewControllers: [UIViewController] = []
+    var ViewControllers: [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

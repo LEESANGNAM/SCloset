@@ -23,6 +23,7 @@ class MyInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "마이페이지"
+        mainView.scrollView.delegate = self
         bind()
     }
     
@@ -105,6 +106,48 @@ class MyInfoViewController: BaseViewController {
         UserDefaultsManager.refresh = ""
         UserDefaultsManager.id = ""
     }
-    
-    
 }
+
+extension MyInfoViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let profileViewHeight = mainView.myProfileInfoView.frame.height
+               let tabmanHeaderHeight = mainView.frame.height
+               print("스크롤뷰 contentOffset: ", scrollView.contentOffset.y)
+               print("프로필뷰 높이 : ", profileViewHeight)
+               
+               // 프로필뷰가 보일 때
+               if scrollView.contentOffset.y < 0 {
+                   mainView.tabmanView.frame.origin.y = profileViewHeight
+                   mainView.tabmanView.frame.size.height = tabmanHeaderHeight + abs(scrollView.contentOffset.y)
+                   
+                   // 첫 번째 뷰 컨트롤러(MyPostViewController)에 대한 접근
+                   if let myPostViewController = mainView.tabmanVC.ViewControllers.first as? MyPostViewController {
+                       myPostViewController.collectionView.isScrollEnabled = false
+                       // 첫 번째 뷰 컨트롤러의 컬렉션뷰 사용 불가능
+                   }
+
+                   // 두 번째 뷰 컨트롤러(MyLikePostViewController)에 대한 접근
+                   if let myLikePostViewController = mainView.tabmanVC.ViewControllers.last as? MyLikePostViewController {
+                       myLikePostViewController.collectionView.isScrollEnabled = false
+                       // 두 번째 뷰 컨트롤러의 컬렉션뷰 사용 불가능
+                   }
+               } else {
+                   // 프로필뷰가 가려질 때
+                   mainView.tabmanView.frame.origin.y = 0
+                   mainView.tabmanView.frame.size.height = tabmanHeaderHeight
+                   
+                   // 첫 번째 뷰 컨트롤러(MyPostViewController)에 대한 접근
+                   if let myPostViewController = mainView.tabmanVC.ViewControllers.first as? MyPostViewController {
+                       myPostViewController.collectionView.isScrollEnabled = true
+                       // 첫 번째 뷰 컨트롤러의 컬렉션뷰 사용 가능
+                   }
+
+                   // 두 번째 뷰 컨트롤러(MyLikePostViewController)에 대한 접근
+                   if let myLikePostViewController = mainView.tabmanVC.ViewControllers.last as? MyLikePostViewController {
+                       myLikePostViewController.collectionView.isScrollEnabled = true
+                       // 두 번째 뷰 컨트롤러의 컬렉션뷰 사용 가능
+                   }
+               }
+           }
+    }
