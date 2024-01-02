@@ -15,8 +15,7 @@ class MyPostViewController: BaseViewController {
         cv.register(PostImageCollectionViewCell.self, forCellWithReuseIdentifier: PostImageCollectionViewCell.identifier)
         cv.delegate = self
         cv.dataSource = self
-        cv.prefetchDataSource = self
-//        cv.isScrollEnabled = false
+        cv.isScrollEnabled = false
         cv.backgroundColor = .white
         return cv
     }()
@@ -87,22 +86,20 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
     }
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//               if scrollView.contentOffset.y <= 0 {
-//                   collectionView.isScrollEnabled = false
-//               } else {
-//                   collectionView.isScrollEnabled = true
-//               }
-//           }
-}
 
-extension MyPostViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths{
-            print(indexPath.row,"번째")
-            if  (viewModel.getPostCount() - 9 == indexPath.row &&  !viewModel.getCursor().isEmpty) {
-                viewModel.myPostLoad()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+            let height = scrollView.frame.size.height
+
+            if offsetY > contentHeight - height {
+                print("내 포스트 컬렉션 뷰 바닥임!")
+                
+                if !viewModel.getCursor().isEmpty {
+                    viewModel.myPostLoad()
+                }
             }
         }
-    }
 }
+
+

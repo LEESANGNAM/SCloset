@@ -17,8 +17,7 @@ class MyLikePostViewController: BaseViewController {
         cv.register(PostImageCollectionViewCell.self, forCellWithReuseIdentifier: PostImageCollectionViewCell.identifier)
         cv.delegate = self
         cv.dataSource = self
-        cv.prefetchDataSource = self
-//        cv.isScrollEnabled = false
+        cv.isScrollEnabled = false
         cv.backgroundColor = .white
         return cv
     }()
@@ -89,23 +88,18 @@ extension MyLikePostViewController: UICollectionViewDelegate, UICollectionViewDa
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
     }
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//               if scrollView.contentOffset.y <= 0 {
-//                   collectionView.isScrollEnabled = false
-//               } else {
-//                   collectionView.isScrollEnabled = true
-//               }
-//           }
-    }
-extension MyLikePostViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths{
-            print("indexPath",indexPath)
-            if (viewModel.getPostCount() - 9 == indexPath.row &&  !viewModel.getCursor().isEmpty) {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            print("좋아요 포스트 컬렉션 뷰 바닥임!")
+            if !viewModel.getCursor().isEmpty {
                 viewModel.likePostLoad()
             }
         }
     }
-    
 }
 

@@ -134,8 +134,8 @@ extension MyInfoViewController: UIScrollViewDelegate {
            // outer scroll이 스크롤 할 수 있는 최대값 (이 값을 sticky header 뷰가 있다면 그 뷰의 frame.maxY와 같은 값으로 사용해도 가능)
            let outerScrollMaxOffsetY = outerScrollView.contentSize.height - outerScrollView.frame.height 
            let innerScrollMaxOffsetY = innerScrollView.contentSize.height - innerScrollView.frame.height
-           print("컬렉션뷰 스크롤값 \(innerScrollMaxOffsetY)")
-           print("바깥 스크롤값 \(outerScrollMaxOffsetY)")
+//           print("컬렉션뷰 스크롤값 \(innerScrollMaxOffsetY)")
+//           print("바깥 스크롤값 \(outerScrollMaxOffsetY)")
            // 1. outer scroll을 more 스크롤
            // 만약 outer scroll을 more scroll 다 했으면, inner scroll을 more scroll
            if outerScroll && moreScroll {
