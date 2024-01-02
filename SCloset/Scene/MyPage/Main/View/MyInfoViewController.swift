@@ -132,10 +132,13 @@ extension MyInfoViewController: UIScrollViewDelegate {
            
            let outerScrollView = mainView.outerScrollView
            // outer scroll이 스크롤 할 수 있는 최대값 (이 값을 sticky header 뷰가 있다면 그 뷰의 frame.maxY와 같은 값으로 사용해도 가능)
-           let outerScrollMaxOffsetY = outerScrollView.contentSize.height - outerScrollView.frame.height 
+           let outerScrollMaxOffsetY = outerScrollView.contentSize.height - outerScrollView.frame.height + 80
            let innerScrollMaxOffsetY = innerScrollView.contentSize.height - innerScrollView.frame.height
-//           print("컬렉션뷰 스크롤값 \(innerScrollMaxOffsetY)")
-//           print("바깥 스크롤값 \(outerScrollMaxOffsetY)")
+           print("outerScrollMaxOffsetY : \(outerScrollMaxOffsetY)")
+           print("outerScrollView.contentSize.height  : \(outerScrollView.contentSize.height )")
+           print("outerScrollView.frame.height  : \(outerScrollView.frame.height )")
+           print("mainView.myProfileInfoView.frame.height  : \(mainView.myProfileInfoView.frame.height )")
+
            // 1. outer scroll을 more 스크롤
            // 만약 outer scroll을 more scroll 다 했으면, inner scroll을 more scroll
            if outerScroll && moreScroll {
@@ -145,9 +148,9 @@ extension MyInfoViewController: UIScrollViewDelegate {
                
                // innerScrollView를 모두 스크롤 한 경우 stop
                guard innerScrollView.contentOffset.y < innerScrollMaxOffsetY else { return }
-               
                innerScrollView.contentOffset.y = innerScrollView.contentOffset.y + outerScrollView.contentOffset.y - outerScrollMaxOffsetY
                outerScrollView.contentOffset.y = outerScrollMaxOffsetY
+               
            }
            
            // 2. outer scroll을 less 스크롤
@@ -161,6 +164,7 @@ extension MyInfoViewController: UIScrollViewDelegate {
                innerScrollView.contentOffset.y = max(innerScrollView.contentOffset.y - (outerScrollMaxOffsetY - outerScrollView.contentOffset.y), 0)
                
                // outer scroll은 스크롤 되지 않고 고정
+               
                outerScrollView.contentOffset.y = outerScrollMaxOffsetY
            }
            
