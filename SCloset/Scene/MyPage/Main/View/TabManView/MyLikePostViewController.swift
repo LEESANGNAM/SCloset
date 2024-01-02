@@ -18,6 +18,7 @@ class MyLikePostViewController: BaseViewController {
         cv.delegate = self
         cv.dataSource = self
         cv.prefetchDataSource = self
+//        cv.isScrollEnabled = false
         cv.backgroundColor = .white
         return cv
     }()
@@ -88,13 +89,13 @@ extension MyLikePostViewController: UICollectionViewDelegate, UICollectionViewDa
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-               if scrollView.contentOffset.y <= 0 {
-                   collectionView.isScrollEnabled = false
-               } else {
-                   collectionView.isScrollEnabled = true
-               }
-           }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//               if scrollView.contentOffset.y <= 0 {
+//                   collectionView.isScrollEnabled = false
+//               } else {
+//                   collectionView.isScrollEnabled = true
+//               }
+//           }
     }
 extension MyLikePostViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {

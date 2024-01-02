@@ -58,7 +58,7 @@ class MyInfoView: BaseView {
         view.layer.borderColor = UIColor.systemGray6.cgColor
         return view
     }()
-    let scrollView = {
+    let outerScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -74,11 +74,20 @@ class MyInfoView: BaseView {
     let tabmanView = UIView()
     let tabmanVC = TabManViewController()
     
+    var innerScrollView: UIScrollView? {
+        if let currentTabmanMyPostVC = tabmanVC.currentViewController as? MyPostViewController {
+            return currentTabmanMyPostVC.collectionView
+        } else if let currentTabmanMyLikePostVC = tabmanVC.currentViewController as? MyLikePostViewController{
+            return currentTabmanMyLikePostVC.collectionView
+        } else {
+            return nil
+        }
+    }
     
     override func setHierarchy() {
-        addSubview(scrollView)
+        addSubview(outerScrollView)
         contentView.backgroundColor = .blue
-        scrollView.addSubview(contentView)
+        outerScrollView.addSubview(contentView)
         contentView.addSubview(myProfileInfoView)
     
         myProfileInfoView.addSubview(profileImageView)
@@ -98,11 +107,11 @@ class MyInfoView: BaseView {
     }
     
     override func setconstraints() {
-        scrollView.snp.makeConstraints { make in
+        outerScrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         contentView.snp.makeConstraints { make in
-            make.edges.width.equalTo(scrollView)
+            make.edges.width.equalTo(outerScrollView)
             make.height.equalToSuperview()
         }
         myProfileInfoView.snp.makeConstraints { make in
