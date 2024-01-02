@@ -22,6 +22,8 @@ class MyPostViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     let viewModel = MyPostViewModel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
@@ -37,6 +39,13 @@ class MyPostViewController: BaseViewController {
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // 다른 화면으로 이동할 때 스크롤 위치 초기화
+        collectionView.setContentOffset(.zero, animated: false)
     }
     
     private func bind() {

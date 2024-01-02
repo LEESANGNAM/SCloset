@@ -26,8 +26,8 @@ class MyLikePostViewController: BaseViewController {
         super.viewDidLoad()
         setCollectionView()
         bind()
-        
     }
+    
     private func setCollectionView() {
         view.addSubview(collectionView)
         view.backgroundColor = .white
@@ -37,6 +37,13 @@ class MyLikePostViewController: BaseViewController {
             make.top.equalToSuperview().offset(50)
             make.bottom.equalToSuperview()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // 다른 화면으로 이동할 때 스크롤 위치 초기화
+        collectionView.setContentOffset(.zero, animated: false)
     }
     
     private func bind() {
