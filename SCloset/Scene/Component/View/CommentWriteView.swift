@@ -12,6 +12,7 @@ class CommentWriteView: BaseView {
     let profileIamgeView = {
         let view = UIImageView()
         view.backgroundColor = .systemGray5
+        view.tintColor = .lightGray
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
         return view
