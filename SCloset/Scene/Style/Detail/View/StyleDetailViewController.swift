@@ -15,6 +15,7 @@ class StyleDetailViewController: BaseViewController {
     let mainView = StyleDetailView()
     let disposeBag = DisposeBag()
     let viewModel: StyleDetailViewModel
+    var refreshControl: UIRefreshControl!
     
     init(viewModel: StyleDetailViewModel) {
         self.viewModel = viewModel
@@ -32,10 +33,22 @@ class StyleDetailViewController: BaseViewController {
         super.viewDidLoad()
         setbackButton()
         bind()
+        setRefresh()
         view.backgroundColor = .white
         title = "게시물"
     }
-    
+    private func setRefresh() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        mainView.scrollView.refreshControl = refreshControl
+    }
+    @objc func refresh() {
+            // 새로고침 작업을 수행하는 함수 호출
+        viewModel.postSearch()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                    self.refreshControl.endRefreshing()
+                }
+        }
     func bind() {
         mainView.commentTableView.dataSource = self
         mainView.commentTableView.delegate = self

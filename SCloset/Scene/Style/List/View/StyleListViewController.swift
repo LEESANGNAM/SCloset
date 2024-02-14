@@ -84,7 +84,9 @@ class StyleListViewController: BaseViewController {
     @objc private func refreshData() {
         print("리프레시 재요청")
         viewModel.refreshPost()
-        refreshControl.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
+            self.refreshControl.endRefreshing()
+        }
     }
     
     private func setCollectionViewLayout() -> UICollectionViewFlowLayout{
