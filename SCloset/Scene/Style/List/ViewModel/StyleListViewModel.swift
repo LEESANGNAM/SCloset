@@ -39,9 +39,7 @@ class StyleListViewModel {
             .delay(.milliseconds(50), scheduler: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 MyInfoManager.shared.fetch()
-                owner.postData.accept([])
-                owner.cursor.accept("")
-                owner.postLoad()
+                owner.refreshPost()
             }.disposed(by: disposeBag)
         
         
@@ -56,6 +54,12 @@ class StyleListViewModel {
     }
     func getCursor() -> String {
         return cursor.value
+    }
+    
+    func refreshPost() {
+        postData.accept([])
+        cursor.accept("")
+        postLoad()
     }
     
     func postLoad(){

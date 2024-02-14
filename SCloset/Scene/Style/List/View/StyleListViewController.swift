@@ -24,6 +24,7 @@ class StyleListViewController: BaseViewController {
     let viewModel = StyleListViewModel()
     let disposeBag = DisposeBag()
     var addbutton: UIBarButtonItem!
+    var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         view.backgroundColor = .white
         setCollectionView()
@@ -73,7 +74,19 @@ class StyleListViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
+    
+    @objc private func refreshData() {
+        print("리프레시 재요청")
+        viewModel.refreshPost()
+        refreshControl.endRefreshing()
+    }
+    
     private func setCollectionViewLayout() -> UICollectionViewFlowLayout{
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
