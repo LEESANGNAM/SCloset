@@ -38,6 +38,7 @@ class StyleEditViewController: BaseViewController {
         setcontenView()
         setPHPicker()
         setImageViewTapGesture()
+        setbackButton()
         bind()
     }
     private func bind() {
@@ -103,6 +104,14 @@ class StyleEditViewController: BaseViewController {
             }.disposed(by: disposeBag)
       
     }
+    private func setbackButton() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
+    }
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
     
     private func setcontenView(){
         mainView.contentTextView.text = viewModel.getPlaceHolder()
@@ -158,7 +167,7 @@ extension StyleEditViewController: PHPickerViewControllerDelegate{
            itemProvider.canLoadObject(ofClass: UIImage.self) { // 3
             itemProvider.loadObject(ofClass: UIImage.self) {[weak self] (image, error) in // 4
                 DispatchQueue.main.async { [weak self] in
-                    if let imageData = (image as? UIImage)?.jpegData(compressionQuality: 0.5) {
+                    if let imageData = (image as? UIImage)?.jpegData(compressionQuality: 0.001) {
                         self?.viewModel.setImageData(imageData)
                     }
                     self?.mainView.plusImageView.isHidden = true

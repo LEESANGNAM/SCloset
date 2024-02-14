@@ -28,9 +28,9 @@ class StyleListViewController: BaseViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         setCollectionView()
-        setupSearchBar()
         setupRigthButton()
         bind()
+        title = "Style"
     }
     
     private func bind() {
@@ -54,14 +54,9 @@ class StyleListViewController: BaseViewController {
         
     }
     
-    
-    private func setupSearchBar(){
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "검색어를 입력해주세요"
-        navigationItem.titleView = searchBar
-    }
     private func setupRigthButton(){
         addbutton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        addbutton.tintColor = .black
         navigationItem.rightBarButtonItem = addbutton
     }
     
