@@ -21,7 +21,7 @@
 <!-- [게시글_좋아요댓글_내용수정]  -->
 <img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/7f4a8e5e-4a13-43b4-8bec-1e569533d4f9" width="20%"/>  
 <!-- [동적높이테이블뷰]  -->
-<img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/dbdb1298-945b-487f-b546-adf34fd7507b" width="20%"/>   
+<img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/93e81805-3cbc-4f13-81c2-e2c26ec605df" width="20%"/>   
 <!-- gif -->
 </p>
 
