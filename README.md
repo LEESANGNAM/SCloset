@@ -78,9 +78,77 @@
 
 ## 트러블슈팅
 
-### 웨더킷
+### WeatherKit, 사용자 위치와 기온정보
+[사용법](https://sangnam2.tistory.com/entry/1129-위젯)
++ 앱을 사용할 때 사용자의 위치와 기온을 유지 시킬 필요가 있다고 생각 되어 데이터 모델을 생성하고, 싱글톤패턴을 이용하여 앱을 사용하는동안 정보를 유지시켰다.
+~~~ swift 
+struct TodayWeatherModel {
+    let date : String
+    let location: String
+    let highTemperature: Measurement<UnitTemperature>
+    let lowTemperature: Measurement<UnitTemperature>
+    let symbolName: String
+    
+    
+    var temperatureString: String {
+        return "\(lowTemperature) / \(highTemperature)"
+    }
+    
+}
+~~~
+~~~ swift 
+class WeatherManager: NSObject {
+    static let shared = WeatherManager()
+    private var currentLocation: CLLocation?
+    private var currentWeather: TodayWeatherModel?
+    private var locationName = ""
+
+     private func fetchCurrentWeather() {
+         Task {
+            do {
+                let result = try await WeatherService().weather(for: location)
+                guard let weather = result.dailyForecast.forecast.first else { return }
+                ...
+                currentWeather = todayWeather
+            }
+         }
+     }
+     private func fetchAddressNameAndWeather() {
+        guard let location = currentLocation else {
+            return
+        }
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error {
+                print("Geocoding 실패: \(error.localizedDescription)")
+                return
+            }
+            if let placemark = placemarks?.first {
+                self.locationName = self.getAddressName(placemark: placemark)
+                self.fetchCurrentWeather()
+            } else {
+                print("placemarks 실패")
+            }
+        }
+    }
+    private func getAddressName(placemark: CLPlacemark) -> String {
+        var result = ""
+        guard let administrativeArea = placemark.administrativeArea,
+              let locality = placemark.locality,
+              let subLocality = placemark.subLocality else { return "" }
+        
+        if administrativeArea == "서울특별시" {
+            result = "\(locality) \(subLocality)"
+        } else {
+            result = "\(administrativeArea) \(locality) \(subLocality)"
+        }
+        return result
+    }
+}
+~~~
 
 ### dynamic height tableView
+
 
 ### netstedScroll (이중스크롤)
 
