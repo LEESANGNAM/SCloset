@@ -6,15 +6,11 @@
 <img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/1431c5b0-7288-424a-bad5-514f5ec72b30" width="20%"/>  
 <!-- [로그인화면]  -->
 <img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/b2f85511-9965-410c-9ed0-b9299ecd2875" width="20%"/>  
-</p>
-<p>
-<!-- [스타일리스트_리프레시]  -->
-<img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/f76b43ac-d27b-4a61-b31d-74856eeba5fb" width="20%"/>   
-<!-- gif -->
-<!-- [스타일리스트_리프레시]  -->
-<img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/a72bc622-5ecf-4f18-a482-340e6f12aa43" width="20%"/>  
 <!-- [스타일리스트]  -->
 <img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/664d2d39-a245-4a68-af6f-a413f914ba5b" width="20%"/>  
+<!-- [스타일리스트_리프레시]  -->
+<img src = "https://github.com/LEESANGNAM/SCloset/assets/61412496/f76b43ac-d27b-4a61-b31d-74856eeba5fb" width="20%"/>   
+<!-- gif -->  
 </p>
 
 <p>
