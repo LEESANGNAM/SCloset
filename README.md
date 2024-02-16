@@ -148,8 +148,43 @@ class WeatherManager: NSObject {
 ~~~
 
 ### dynamic height tableView
+댓글 창을 구현하면서 컨텐츠에 따라 높이가 늘어나는 뷰가 필요했다.
++ selfSize TableView를 생성
++ TableView 스크롤막기
++ stackView에 넣기
++ 스크롤뷰에 넣기
 
+~~~ swift 
+class SelfSizingTableView: UITableView {
+  override var intrinsicContentSize: CGSize {
+    contentSize
+  }
+  
+  override func layoutSubviews() {
+    invalidateIntrinsicContentSize()
+    super.layoutSubviews()
+  }
+}
+~~~
 
+~~~ swift 
+class StyleDetailView: BaseView {
+let commentTableView = {
+        let view = SelfSizingTableView()
+        view.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.identifier)
+        view.allowsSelection = false
+        view.rowHeight = UITableView.automaticDimension
+        view.isScrollEnabled = false
+        view.estimatedRowHeight = 120
+        return view
+    }()
+    lazy var commentStackView = {
+       let view = UIStackView(arrangedSubviews: [commentTableView])
+        view.axis = .vertical
+        return view
+    }()
+}
+~~~
 ### netstedScroll (이중스크롤)
 
 
