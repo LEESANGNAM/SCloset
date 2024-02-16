@@ -187,7 +187,7 @@ let commentTableView = {
 ~~~
 ### netstedScroll (이중스크롤)
 + 스크롤 될때 isScrollEnabled를 변경 했더니 스크롤이 끊기는 현상이 발생
-
++ 각 스크롤뷰의 contentOffset을 조절하는방식으로 해결 
 ~~~ swift 
 class MyInfoView: BaseView {
     var innerScrollView: UIScrollView? {
@@ -217,10 +217,12 @@ class MyInfoViewController: UIScrollViewDelegate {
             return
         }
         
+        // 스크롤되는 뷰의 위치
         let outerScroll = mainView.outerScrollView == scrollView
-        let innerScroll = !outerScroll
-        let moreScroll = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0
-        let lessScroll = !moreScroll
+        let innerScroll = !outerScroll 
+        // 스크롤되는 방향
+        let moreScroll = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 
+        let lessScroll = !moreScroll 
         
         let outerScrollView = mainView.outerScrollView
         // outer scroll이 스크롤 할 수 있는 최대값 (헤더뷰의 값)
